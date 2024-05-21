@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://bebiuwit13drx"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
+[ext_resource type="PackedScene" uid="uid://djoyq5u5yhw5h" path="res://assets/3d/zahir/240519_Zahir_04.glb" id="2_bi3h0"]
+[ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/zahir-brown.tres" id="3_ugebt"]
+[ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/zahir-white.tres" id="4_r274i"]
+[ext_resource type="Material" uid="uid://1swa15erc0ug" path="res://assets/3d/zahir/materials/zahir-teal.tres" id="5_jk3hu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_forhr"]
+radius = 0.389712
+height = 1.78901
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ltja3"]
+transparency = 4
+albedo_color = Color(0.0588235, 0.298039, 0.403922, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lcei"]
+render_priority = -1
+next_pass = SubResource("ORMMaterial3D_ltja3")
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.443137, 0.0156863, 0.117647, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m2k26"]
+material = SubResource("StandardMaterial3D_4lcei")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_pk6wu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.896639, 0)
+shape = SubResource("CapsuleShape3D_forhr")
+
+[node name="240519_Zahir_04" parent="CollisionShape3D" instance=ExtResource("2_bi3h0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188389, -0.896639, 0.0103669)
+
+[node name="Skeleton3D" parent="CollisionShape3D/240519_Zahir_04/Armature" index="1"]
+bones/0/position = Vector3(1.57465e-32, -7.0916e-17, 0.319377)
+bones/0/rotation = Quaternion(0.0876819, 0, 1.94693e-17, 0.996149)
+bones/2/rotation = Quaternion(-1.81922e-12, 0.00278182, 0.0156796, 0.999873)
+bones/3/rotation = Quaternion(-0.0285385, 0.00662946, 0.0269001, 0.999209)
+bones/4/rotation = Quaternion(-2.92947e-08, 0.00418314, 0.999991, 6.16846e-09)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.00349142, 1.19209e-07, 1.11018e-10, 0.999994)
+bones/6/rotation = Quaternion(3.81404e-08, 0.471849, 0.881679, -9.35219e-08)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.673404, -8.81293e-08, -2.14049e-08, 0.739275)
+bones/8/rotation = Quaternion(8.42937e-08, 0.707107, 0.707107, 8.42937e-08)
+bones/9/position = Vector3(0.703569, -4.69805, -0.535735)
+bones/9/rotation = Quaternion(-5.33851e-08, 0.707107, -0.707107, 5.33851e-08)
+bones/10/rotation = Quaternion(-8.42937e-08, 0.707107, 0.707107, -8.42937e-08)
+bones/11/position = Vector3(-0.703569, -3.37313, -0.120859)
+bones/11/rotation = Quaternion(5.33851e-08, 0.707107, -0.707107, -5.33851e-08)
+bones/12/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="bagflap" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_ugebt")
+
+[node name="bag" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_ugebt")
+
+[node name="face" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_ugebt")
+
+[node name="hood" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("4_r274i")
+
+[node name="legs" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_ugebt")
+
+[node name="scarf01" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("5_jk3hu")
+
+[node name="scarf02" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("5_jk3hu")
+
+[node name="tunic" parent="CollisionShape3D/240519_Zahir_04/Armature/Skeleton3D" index="7"]
+surface_material_override/0 = ExtResource("4_r274i")
+surface_material_override/1 = ExtResource("5_jk3hu")
+surface_material_override/2 = ExtResource("3_ugebt")
+
+[node name="AnimationPlayer" parent="CollisionShape3D/240519_Zahir_04" index="1"]
+process_mode = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
+mesh = SubResource("CapsuleMesh_m2k26")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
+near = 0.001
+far = 150.0
+
+[editable path="CollisionShape3D/240519_Zahir_04"]

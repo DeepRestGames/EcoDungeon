@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://beg1gw3psxw86"]
+
+[ext_resource type="PackedScene" uid="uid://bhertfiqp6moh" path="res://assets/3d/environment/bush/bubbly_bushes/bubbly_bush_01/bush_bubbly_01_model.glb" id="1_v0gay"]
+
+[node name="bush_bubbly_01_model" instance=ExtResource("1_v0gay")]
