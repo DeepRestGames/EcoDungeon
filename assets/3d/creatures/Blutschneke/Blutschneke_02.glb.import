@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ds5ybbpoumuly"
-path="res://.godot/imported/240519_blutschneke_01.glb-1dda574f52928246ae175bbef3384631.scn"
+uid="uid://bdlecjgnvp85d"
+path="res://.godot/imported/Blutschneke_02.glb-1fdaa05fc36e70f2dfa282d82d22961f.scn"
 
 [deps]
 
-source_file="res://assets/3d/creatures/240519_blutschneke_01.glb"
-dest_files=["res://.godot/imported/240519_blutschneke_01.glb-1dda574f52928246ae175bbef3384631.scn"]
+source_file="res://assets/3d/creatures/Blutschneke/Blutschneke_02.glb"
+dest_files=["res://.godot/imported/Blutschneke_02.glb-1fdaa05fc36e70f2dfa282d82d22961f.scn"]
 
 [params]
 
