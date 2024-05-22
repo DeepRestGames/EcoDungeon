@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo1a11i38vuh7"]
+[gd_scene load_steps=17 format=3 uid="uid://bo1a11i38vuh7"]
 
 [ext_resource type="Texture2D" uid="uid://doadys4u0nwvv" path="res://assets/background/hdri/golf_course_sunrise_2k.hdr" id="1_jatks"]
 [ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="1_ui8tp"]
@@ -8,6 +8,8 @@
 [ext_resource type="Material" uid="uid://ddgo8827yv4h7" path="res://assets/3d/environment/rock/materials/rock.tres" id="4_l358p"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="6_a2tgg"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="8_rd8q8"]
+[ext_resource type="PackedScene" uid="uid://bdlecjgnvp85d" path="res://assets/3d/creatures/Blutschneke/Blutschneke_02.glb" id="9_gjq70"]
+[ext_resource type="PackedScene" uid="uid://c17ilaij47mhf" path="res://assets/3d/creatures/Flugschneke/Flugschneke_01.glb" id="10_jb8dr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
 panorama = ExtResource("1_jatks")
@@ -26,6 +28,9 @@ ambient_light_color = Color(0.756863, 0.615686, 0.556863, 1)
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gisn"]
+size = Vector3(1.74747, 1, 2.57251)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3jqf"]
 diffuse_mode = 3
 specular_mode = 1
@@ -39,9 +44,6 @@ albedo_color = Color(0.576471, 0.247059, 0.333333, 1)
 roughness = 0.0
 rim = 0.0
 rim_tint = 1.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2gisn"]
-size = Vector3(1.74747, 1, 2.57251)
 
 [node name="PrototypeScene01" type="Node3D"]
 
@@ -58,6 +60,50 @@ shadow_enabled = true
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 200.0
 sky_mode = 1
+
+[node name="EnvironmentAssets" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 1.78814e-07)
+
+[node name="240519_rock_medium_02" parent="EnvironmentAssets" instance=ExtResource("6_a2tgg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431519, 0.002134, 4.08172)
+
+[node name="Icosphere_003" parent="EnvironmentAssets/240519_rock_medium_02" index="0"]
+transform = Transform3D(1.70814, -0.23357, -0.26523, 0.25077, -0.121401, 1.72192, -0.249031, -1.72434, -0.0853034, -10.687, 0.662785, -4.17427)
+surface_material_override/0 = ExtResource("4_l358p")
+
+[node name="CollisionShape3D" parent="EnvironmentAssets/240519_rock_medium_02/Icosphere_003/StaticBody3D" index="0"]
+transform = Transform3D(0.50863, 0.850874, 0.131549, -0.860915, 0.50069, 0.0901755, 0.0108628, -0.159119, 0.987199, 0.10165, 0.208695, -0.211386)
+
+[node name="240519_rock_formatio_big_01" parent="EnvironmentAssets" instance=ExtResource("3_vghce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 0.00213501, -9.41671)
+
+[node name="Icosphere_002" parent="EnvironmentAssets/240519_rock_formatio_big_01" index="0"]
+transform = Transform3D(0.349515, 1.11921, 0.267141, 0.0273551, 0.114194, -2.64088, -1.79421, 0.219765, 0.0117755, 1.48475, 1.39636, 0.36858)
+
+[node name="Icosphere_001" parent="EnvironmentAssets/240519_rock_formatio_big_01" index="1"]
+surface_material_override/0 = ExtResource("4_l358p")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="EnvironmentAssets/240519_rock_formatio_big_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentAssets/240519_rock_formatio_big_01/StaticBody3D2"]
+transform = Transform3D(-1.46456, 0, 1.92919, 0, 6.35541, 0, -3.02743, 0, -0.933271, -0.412592, 3.13888, -0.412773)
+shape = SubResource("BoxShape3D_2gisn")
+
+[node name="240519_bush_bubbly_02" parent="EnvironmentAssets" instance=ExtResource("8_rd8q8")]
+transform = Transform3D(1.80408, 0, 0, 0, 1, 0, 0, 0, 2.0683, 5.511, 0.00213298, 3.48791)
+
+[node name="240519_bush_bubbly_01" parent="EnvironmentAssets" instance=ExtResource("2_13nrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69608, 0.002134, 0.0108071)
+
+[node name="Icosphere_017" parent="EnvironmentAssets/240519_bush_bubbly_01" index="0"]
+surface_material_override/0 = ExtResource("2_18nix")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EnvironmentAssets/240519_bush_bubbly_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139098, -0.5, 0.0519748)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentAssets/240519_bush_bubbly_01/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143517, 0.752829, 0.0440035)
+shape = SubResource("BoxShape3D_2gisn")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -121,50 +167,55 @@ use_collision = true
 size = Vector3(1, 1, 3)
 material = SubResource("StandardMaterial3D_vd8x1")
 
-[node name="240519_bush_bubbly_01" parent="." instance=ExtResource("2_13nrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69608, 0.5, 0.0108073)
-
-[node name="Icosphere_017" parent="240519_bush_bubbly_01" index="0"]
-surface_material_override/0 = ExtResource("2_18nix")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="240519_bush_bubbly_01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139098, -0.5, 0.0519748)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="240519_bush_bubbly_01/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143517, 0.752829, 0.0440035)
-shape = SubResource("BoxShape3D_2gisn")
-
 [node name="Player" parent="." instance=ExtResource("1_ui8tp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
 
-[node name="240519_rock_formatio_big_01" parent="." instance=ExtResource("3_vghce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 0.500001, -9.41671)
+[node name="Skeleton3D" parent="Player/CollisionShape3D/240519_Zahir_04/Armature" index="1"]
+bones/0/position = Vector3(1.57465e-32, -7.0916e-17, 0.319377)
+bones/0/rotation = Quaternion(0.0876819, 0, 1.94693e-17, 0.996149)
+bones/2/rotation = Quaternion(-4.54755e-13, 0.00101452, 0.00571832, 0.999983)
+bones/3/rotation = Quaternion(-0.00228307, 0.00237675, 0.00979766, 0.999947)
+bones/4/rotation = Quaternion(-2.95043e-08, 0.118241, 0.992985, 2.89691e-09)
+bones/5/rotation = Quaternion(-0.00348766, 1.19209e-07, 1.10896e-10, 0.999994)
+bones/6/rotation = Quaternion(4.50344e-08, -0.0765705, 0.997064, -9.78419e-09)
+bones/7/rotation = Quaternion(-0.00349433, -1.19209e-07, -1.1111e-10, 0.999994)
+bones/9/position = Vector3(0.703569, -4.69805, 0.622061)
+bones/11/position = Vector3(-0.703569, -4.53821, -1.34892)
 
-[node name="Icosphere_002" parent="240519_rock_formatio_big_01" index="0"]
-transform = Transform3D(0.349515, 1.11921, 0.267141, 0.0273551, 0.114194, -2.64088, -1.79421, 0.219765, 0.0117755, 1.48475, 1.39636, 0.36858)
+[node name="Blutschneke_02" parent="." instance=ExtResource("9_gjq70")]
+transform = Transform3D(0.467791, 0, -0.883839, 0, 1, 0, 0.883839, 0, 0.467791, -2.3346, 0.5, -0.225004)
 
-[node name="Icosphere_001" parent="240519_rock_formatio_big_01" index="1"]
-surface_material_override/0 = ExtResource("4_l358p")
+[node name="Skeleton3D" parent="Blutschneke_02/Armature" index="0"]
+bones/0/position = Vector3(0.0367839, -0.0420423, -8.44188e-09)
+bones/0/rotation = Quaternion(-3.78067e-08, -6.89549e-08, 0.0290864, 0.999577)
+bones/1/rotation = Quaternion(5.29404e-08, 9.72681e-08, -0.279005, 0.96029)
+bones/1/scale = Vector3(1.0168, 1.00022, 1.017)
+bones/2/scale = Vector3(0.946513, 0.999976, 0.94644)
+bones/3/scale = Vector3(1.10121, 1.00101, 1.10036)
+bones/4/scale = Vector3(0.932857, 1.01726, 0.933)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="240519_rock_formatio_big_01"]
+[node name="Flugschneke_01" parent="." instance=ExtResource("10_jb8dr")]
+transform = Transform3D(-0.0210296, 0, -0.999779, 0, 1, 0, 0.999779, 0, -0.0210296, 2.01909, 0.5, -0.954493)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="240519_rock_formatio_big_01/StaticBody3D2"]
-transform = Transform3D(-1.46456, 0, 1.92919, 0, 6.35541, 0, -3.02743, 0, -0.933271, -0.412592, 3.13888, -0.412773)
-shape = SubResource("BoxShape3D_2gisn")
+[node name="Skeleton3D" parent="Flugschneke_01/Armature" index="0"]
+bones/0/position = Vector3(0.0878653, -2.06082, -2.22351e-07)
+bones/0/rotation = Quaternion(1.13541e-08, -1.86125e-07, -0.00747804, 0.999972)
+bones/1/rotation = Quaternion(3.31922e-08, 3.41602e-07, -0.0134989, 0.999909)
+bones/2/rotation = Quaternion(-1.11967e-07, 8.21255e-08, 0.278701, 0.960378)
+bones/3/rotation = Quaternion(0.00207619, -0.00122979, -0.398759, 0.917053)
+bones/4/rotation = Quaternion(2.66946e-09, 1.87443e-08, -0.146634, 0.989191)
+bones/4/scale = Vector3(1.32006, 1.32006, 1.32006)
+bones/5/rotation = Quaternion(-0.12716, -0.217711, 0.432992, 0.865419)
+bones/6/rotation = Quaternion(0.297718, -0.176657, 0.334398, 0.876547)
+bones/7/rotation = Quaternion(-0.659396, 0.0387047, 0.345324, 0.666671)
+bones/8/rotation = Quaternion(0.655759, -0.0359436, 0.344257, 0.670951)
+bones/9/position = Vector3(0.0878653, -2.06082, -2.25531e-07)
+bones/9/rotation = Quaternion(0.703985, -0.0663694, 0.703985, 0.0663693)
 
-[node name="240519_rock_medium_02" parent="." instance=ExtResource("6_a2tgg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431519, 0.5, 4.08172)
-
-[node name="Icosphere_003" parent="240519_rock_medium_02" index="0"]
-transform = Transform3D(1.70814, -0.23357, -0.26523, 0.25077, -0.121401, 1.72192, -0.249031, -1.72434, -0.0853034, -10.687, 0.662785, -4.17427)
-surface_material_override/0 = ExtResource("4_l358p")
-
-[node name="CollisionShape3D" parent="240519_rock_medium_02/Icosphere_003/StaticBody3D" index="0"]
-transform = Transform3D(0.50863, 0.850874, 0.131549, -0.860915, 0.50069, 0.0901755, 0.0108628, -0.159119, 0.987199, 0.10165, 0.208695, -0.211386)
-
-[node name="240519_bush_bubbly_02" parent="." instance=ExtResource("8_rd8q8")]
-transform = Transform3D(1.80408, 0, 0, 0, 1, 0, 0, 0, 2.0683, 5.511, 0.499999, 3.48791)
-
-[editable path="240519_bush_bubbly_01"]
-[editable path="240519_rock_formatio_big_01"]
-[editable path="240519_rock_medium_02"]
+[editable path="EnvironmentAssets/240519_rock_medium_02"]
+[editable path="EnvironmentAssets/240519_rock_formatio_big_01"]
+[editable path="EnvironmentAssets/240519_bush_bubbly_01"]
+[editable path="Player"]
+[editable path="Player/CollisionShape3D/240519_Zahir_04"]
+[editable path="Blutschneke_02"]
+[editable path="Flugschneke_01"]
