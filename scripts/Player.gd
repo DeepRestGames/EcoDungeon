@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 
+
 const SPEED = 10.0
 const JUMP_VELOCITY = 5.0
 
-# Camera variables
+# --- Camera variables ---
 @onready var camera = $Camera3D
 @export_range(0,1000) var min_zoom: int = 5
 @export_range(0,1000) var max_zoom: int = 20
@@ -16,10 +17,18 @@ const JUMP_VELOCITY = 5.0
 var current_zoom = 10
 var current_rotation = -45
 var zoom_direction = 0
-
+# --- Animation variables ---
+@onready var player_model = $PlayerModel
+var orientation = Transform3D()
+const ROTATION_INTERPOLATE_SPEED = 10
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+#func _ready():
+	## Pre-initialize orientation transform.
+	#orientation = player_model.global_transform
+	#orientation.origin = Vector3()
 
 
 func _unhandled_input(event):
@@ -45,7 +54,6 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -55,6 +63,14 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	# --- Animations ---
+	if direction:
+		var q_from = orientation.basis.get_rotation_quaternion()
+		var q_to = Transform3D().looking_at(-direction, Vector3.UP).basis.get_rotation_quaternion()
+		# Interpolate current rotation with desired one.
+		orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
+
+		player_model.global_transform.basis = orientation.basis
 	move_and_slide()
 
 
