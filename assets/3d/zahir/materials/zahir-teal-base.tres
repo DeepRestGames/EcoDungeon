@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bp3vfh13cd7y3"]
+
+[resource]
+resource_name = "Material.004"
+render_priority = 1
+transparency = 4
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.108948, 0.331998, 0.348202, 1)
+roughness = 0.0
+rim_tint = 0.0
