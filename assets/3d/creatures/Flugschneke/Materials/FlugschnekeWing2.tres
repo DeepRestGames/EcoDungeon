@@ -2,6 +2,9 @@
 
 [resource]
 resource_name = "Material.003"
+transparency = 1
 cull_mode = 2
-albedo_color = Color(0.2478, 0.2478, 0.2478, 0.401266)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.321569, 0.215686, 0.129412, 0.392157)
 roughness = 0.5

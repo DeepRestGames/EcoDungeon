@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c17ilaij47mhf"
-path="res://.godot/imported/Flugschneke_01.glb-6bd1a8c266cb6e84907b70a15164c252.scn"
+path="res://.godot/imported/Flugschneke_0.0.1.glb-3097c349b8ad2a9619c1d222acf5b9ee.scn"
 
 [deps]
 
-source_file="res://assets/3d/creatures/Flugschneke/Flugschneke_01.glb"
-dest_files=["res://.godot/imported/Flugschneke_01.glb-6bd1a8c266cb6e84907b70a15164c252.scn"]
+source_file="res://assets/3d/creatures/Flugschneke/Flugschneke_0.0.1.glb"
+dest_files=["res://.godot/imported/Flugschneke_0.0.1.glb-3097c349b8ad2a9619c1d222acf5b9ee.scn"]
 
 [params]
 

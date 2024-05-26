@@ -3,5 +3,7 @@
 [resource]
 resource_name = "mouth"
 cull_mode = 2
-albedo_color = Color(0, 0.205988, 0.176926, 1)
-roughness = 0.3
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.231373, 0.054902, 0, 1)
+roughness = 0.2
