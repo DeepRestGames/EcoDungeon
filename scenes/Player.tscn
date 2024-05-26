@@ -402,7 +402,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0340668, 0.00751368, 0.011363, 0.999327)
+bones/3/rotation = Quaternion(-0.0361412, 0.00776974, 0.0117503, 0.999247)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -524,6 +524,9 @@ explosiveness = 0.79
 mesh = SubResource("SphereMesh_dfbda")
 spread = 15.0
 gravity = Vector3(0, 0, 0)
+
+[node name="BulletTo" type="Node3D" parent="PlayerModel/Armature/Skeleton3D/BulletOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
 libraries = {

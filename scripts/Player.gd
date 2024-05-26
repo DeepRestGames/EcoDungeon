@@ -29,15 +29,16 @@ const MOTION_INTERPOLATE_SPEED = 10
 # --- Shooting variables ---
 @onready var fire_cooldown = $FireCooldown 
 @onready var shoot_from = player_model.get_node("Armature/Skeleton3D/BulletOrigin")
+@onready var shoot_to = player_model.get_node("Armature/Skeleton3D/BulletOrigin/BulletTo")
 
 # ------------------------------------
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _ready():
-	# Pre-initialize orientation transform.
-	orientation = player_model.global_transform
-	orientation.origin = Vector3()
+#func _ready():
+	## Pre-initialize orientation transform.
+	#orientation = player_model.global_transform
+	#orientation.origin = Vector3()
 
 
 func _unhandled_input(event):
@@ -89,13 +90,13 @@ func _physics_process(delta):
 	# --- Shooting ---
 	if Input.is_action_just_pressed("shoot"):
 		var shoot_origin = shoot_from.global_transform.origin
-		var shoot_dir = (direction - shoot_origin).normalized()
+		var shoot_dir = shoot_to.global_transform.origin
 		# Spawn and shoot bullet
 		var bullet = preload("res://scenes/Projectile.tscn").instantiate()
 		get_parent().add_child(bullet, true)
 		bullet.global_transform.origin = shoot_origin
 		# If we don't rotate the bullets there is no useful way to control the particles ..
-		bullet.look_at(shoot_origin + shoot_dir, Vector3.UP)
+		bullet.look_at(shoot_dir, Vector3.UP)
 		bullet.add_collision_exception_with(self)
 		
 	move_and_slide()

@@ -19,11 +19,10 @@ func _physics_process(delta):
 	if time_alive < 0:
 		hit = true
 	# TODO: will need collion masks and layers to determine impact
-	var collision = move_and_collide(-delta * BULLET_VELOCITY * transform.basis.x)
+	var collision = move_and_collide(-delta * BULLET_VELOCITY * transform.basis.z)
 	if collision:
 		collision_shape.disabled = true
 		hit = true
-	print(hit)
 
 
 #func explode():
