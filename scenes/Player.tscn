@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bebiuwit13drx"]
+[gd_scene load_steps=26 format=3 uid="uid://bebiuwit13drx"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
 [ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/zahir-brown.tres" id="3_ugebt"]
@@ -319,6 +319,26 @@ _data = {
 "walk": ExtResource("6_87cuf")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qh3cp"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_b4rwt"]
+resource_name = "Idle2Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ljwev"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_iup1y"]
+graph_offset = Vector2(-342.551, -25.4601)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_qh3cp")
+nodes/Idle/position = Vector2(-40, 26.6667)
+nodes/Idle2Walk/node = SubResource("AnimationNodeBlend2_b4rwt")
+nodes/Idle2Walk/position = Vector2(133.333, 66.6667)
+nodes/Walk/node = SubResource("AnimationNodeAnimation_ljwev")
+nodes/Walk/position = Vector2(-40, 186.667)
+nodes/output/position = Vector2(386.667, 80)
+node_connections = [&"Idle2Walk", 0, &"Idle", &"Idle2Walk", 1, &"Walk", &"output", 0, &"Idle2Walk"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_forhr"]
 radius = 0.389712
 height = 1.78901
@@ -344,7 +364,9 @@ script = ExtResource("1_pk6wu")
 [node name="PlayerModel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188389, 0, 0.0103669)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="PlayerModel"]
+[node name="Armature" type="Node3D" parent="PlayerModel"]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="PlayerModel/Armature"]
 transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, 0, 0.663497, 0)
 bones/0/name = "root"
 bones/0/parent = -1
@@ -365,42 +387,42 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35085, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 1.35085, 0)
-bones/2/rotation = Quaternion(-1.81922e-12, 0.00278182, 0.0156796, 0.999873)
+bones/2/rotation = Quaternion(0, 0.00204917, 0.0115501, 0.999931)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "head"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0285385, 0.00662946, 0.0269001, 0.999209)
+bones/3/rotation = Quaternion(-0.0120566, 0.0048385, 0.0198025, 0.99972)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-1, 1.11022e-14, 1.50996e-07, 9.80546e-09, -0.99789, 0.064939, 1.50677e-07, 0.0649387, 0.997894, 0.703569, 0.323642, -0.0422141)
 bones/4/enabled = true
 bones/4/position = Vector3(0.703569, 0.323642, -0.0422141)
-bones/4/rotation = Quaternion(-2.92947e-08, 0.00418314, 0.999991, 6.16846e-09)
+bones/4/rotation = Quaternion(-2.94152e-08, 0.0838454, 0.996479, 3.91996e-09)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "lowerleg.L"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, -1.4747e-08, 2.37697e-07, -8.53804e-09, 0.995219, 0.0976646, -2.38001e-07, -0.0976646, 0.995219, -7.65884e-08, 1.95019, -4.27762e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(-7.65884e-08, 1.95019, -4.27762e-08)
-bones/5/rotation = Quaternion(-0.00349142, 1.19209e-07, 1.11018e-10, 0.999994)
+bones/5/rotation = Quaternion(-0.00348957, 1.19209e-07, 1.10958e-10, 0.999994)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "upperleg.R"
 bones/6/parent = 0
 bones/6/rest = Transform3D(-1, -1.11022e-14, -1.50996e-07, -9.80546e-09, -0.99789, 0.064939, -1.50677e-07, 0.0649387, 0.997894, -0.703569, 0.323642, -0.0422141)
 bones/6/enabled = true
 bones/6/position = Vector3(-0.703569, 0.323642, -0.0422141)
-bones/6/rotation = Quaternion(3.81404e-08, 0.471849, 0.881679, -9.35219e-08)
+bones/6/rotation = Quaternion(4.04206e-08, 0.178556, 0.98393, -5.23065e-08)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "lowerleg.R"
 bones/7/parent = 6
 bones/7/rest = Transform3D(1, 1.4747e-08, -2.37697e-07, 8.53804e-09, 0.995219, 0.0976646, 2.38001e-07, -0.0976646, 0.995219, 7.65884e-08, 1.95019, -4.27762e-08)
 bones/7/enabled = true
 bones/7/position = Vector3(7.65884e-08, 1.95019, -4.27762e-08)
-bones/7/rotation = Quaternion(-0.673404, -8.81293e-08, -2.14049e-08, 0.739275)
+bones/7/rotation = Quaternion(-0.360735, -1.11183e-07, -1.14664e-08, 0.932668)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "IKLegPole.L"
 bones/8/parent = -1
@@ -413,7 +435,7 @@ bones/9/name = "IKTarget.L"
 bones/9/parent = -1
 bones/9/rest = Transform3D(-1, 0, 1.50996e-07, -1.50996e-07, 0, -1, 0, -1, 0, 0.703569, -4.62104, -0.0140713)
 bones/9/enabled = true
-bones/9/position = Vector3(0.703569, -4.69805, -0.535735)
+bones/9/position = Vector3(0.703569, -4.69805, 0.274307)
 bones/9/rotation = Quaternion(-5.33851e-08, 0.707107, -0.707107, 5.33851e-08)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "IKLegPole.R"
@@ -427,7 +449,7 @@ bones/11/name = "IKTarget.R"
 bones/11/parent = -1
 bones/11/rest = Transform3D(-1, 0, -1.50996e-07, 1.50996e-07, 0, -1, 0, -1, 0, -0.703569, -4.62104, -0.0140713)
 bones/11/enabled = true
-bones/11/position = Vector3(-0.703569, -3.37313, -0.120859)
+bones/11/position = Vector3(-0.703569, -4.10454, -0.891804)
 bones/11/rotation = Quaternion(5.33851e-08, 0.707107, -0.707107, -5.33851e-08)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "neutral_bone"
@@ -438,47 +460,55 @@ bones/12/position = Vector3(0, 0, 0)
 bones/12/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/12/scale = Vector3(1, 1, 1)
 
-[node name="bagflap" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="bagflap" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_wjtg4")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("3_ugebt")
 
-[node name="bag" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="bag" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_d1mgh")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("3_ugebt")
 
-[node name="face" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="face" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_c8yqp")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("3_ugebt")
 
-[node name="hood" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="hood" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_jv8ny")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("4_r274i")
 
-[node name="legs" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="legs" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_py6hq")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("3_ugebt")
 
-[node name="scarf01" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="scarf01" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_qnpq8")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("5_jk3hu")
 
-[node name="scarf02" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="scarf02" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_6o04r")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("5_jk3hu")
 
-[node name="tunic" type="MeshInstance3D" parent="PlayerModel/Skeleton3D"]
+[node name="tunic" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_t2vut")
 skin = SubResource("Skin_vojjn")
 surface_material_override/0 = ExtResource("4_r274i")
 surface_material_override/1 = ExtResource("5_jk3hu")
 surface_material_override/2 = ExtResource("3_ugebt")
+
+[node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
+libraries = {
+"": SubResource("AnimationLibrary_krws2")
+}
+tree_root = SubResource("AnimationNodeBlendTree_iup1y")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle2Walk/blend_amount = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerModel"]
 process_mode = 3

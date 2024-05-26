@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo1a11i38vuh7"]
+[gd_scene load_steps=17 format=3 uid="uid://bo1a11i38vuh7"]
 
 [ext_resource type="Texture2D" uid="uid://doadys4u0nwvv" path="res://assets/background/hdri/golf_course_sunrise_2k.hdr" id="1_jatks"]
 [ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="1_ui8tp"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_vghce"]
 [ext_resource type="Material" uid="uid://ddgo8827yv4h7" path="res://assets/3d/environment/rock/materials/rock.tres" id="4_l358p"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="6_a2tgg"]
-[ext_resource type="PackedScene" uid="uid://bdlat1gi2vit7" path="res://scenes/Killzone.tscn" id="8_e2mof"]
+[ext_resource type="PackedScene" uid="uid://c0bpdb63lwl0h" path="res://scenes/Killzone.tscn" id="8_e2mof"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="8_rd8q8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]

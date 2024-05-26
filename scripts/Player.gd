@@ -21,10 +21,12 @@ var zoom_direction = 0
 # Rotation
 @onready var player_model = $PlayerModel
 var orientation = Transform3D()
-const ROTATION_INTERPOLATE_SPEED = 10
+const ROTATION_INTERPOLATE_SPEED = 8
 # Animate 
 enum ANIMATIONS {IDLE, WALK}
 @export var current_animation := ANIMATIONS.WALK
+@onready var animation_tree = $PlayerModel/AnimationTree
+const MOTION_INTERPOLATE_SPEED = 10
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -84,20 +86,25 @@ func _physics_process(delta):
 	# ---
 	move_and_slide()
 
-func _animate(anim: int, _delta := 0.0):
+func _animate(anim: int, delta := 0.0):
 	current_animation = anim as ANIMATIONS
 
 	if anim == ANIMATIONS.IDLE:
 		pass
 		#print("idle")
 		#animation_tree["parameters/state/transition_request"] = "jump_up"
-
+		var current_blend: float = animation_tree["parameters/Idle2Walk/blend_amount"]
+		var new_blend: float = max(current_blend - delta*MOTION_INTERPOLATE_SPEED, 0)
+		animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
 	elif anim == ANIMATIONS.WALK:
 		pass
 		#print("WALKING")
 		## Change state to walk.
 		#animation_tree["parameters/state/transition_request"] = "walk"
 		## Blend position for walk speed based checked motion.
+		var current_blend: float = animation_tree["parameters/Idle2Walk/blend_amount"]
+		var new_blend: float = min(current_blend + delta*MOTION_INTERPOLATE_SPEED, 1)
+		animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
 		#animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0)
 
 func _zoom(delta: float) -> void:
