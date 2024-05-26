@@ -24,7 +24,7 @@ var orientation = Transform3D()
 const ROTATION_INTERPOLATE_SPEED = 8
 # Animate 
 enum ANIMATIONS {IDLE, WALK}
-@export var current_animation := ANIMATIONS.WALK
+@export var current_animation := ANIMATIONS.IDLE
 @onready var animation_tree = $PlayerModel/AnimationTree
 const MOTION_INTERPOLATE_SPEED = 10
 
@@ -90,22 +90,16 @@ func _animate(anim: int, delta := 0.0):
 	current_animation = anim as ANIMATIONS
 
 	if anim == ANIMATIONS.IDLE:
-		pass
-		#print("idle")
-		#animation_tree["parameters/state/transition_request"] = "jump_up"
 		var current_blend: float = animation_tree["parameters/Idle2Walk/blend_amount"]
-		var new_blend: float = max(current_blend - delta*MOTION_INTERPOLATE_SPEED, 0)
-		animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
+		if not current_blend == 0:
+			var new_blend: float = max(current_blend - delta*MOTION_INTERPOLATE_SPEED, 0)
+			animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
 	elif anim == ANIMATIONS.WALK:
-		pass
-		#print("WALKING")
-		## Change state to walk.
-		#animation_tree["parameters/state/transition_request"] = "walk"
-		## Blend position for walk speed based checked motion.
+
 		var current_blend: float = animation_tree["parameters/Idle2Walk/blend_amount"]
-		var new_blend: float = min(current_blend + delta*MOTION_INTERPOLATE_SPEED, 1)
-		animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
-		#animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0)
+		if not current_blend == 1:
+			var new_blend: float = min(current_blend + delta*MOTION_INTERPOLATE_SPEED, 1)
+			animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
 
 func _zoom(delta: float) -> void:
 	# calculate the new zoom position and clamp zoom between min and max

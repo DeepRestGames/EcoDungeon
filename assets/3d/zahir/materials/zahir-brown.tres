@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://wy8gy8k36n5r"]
 
-[ext_resource type="Material" path="res://assets/3d/zahir/materials/zahir-brown-base.tres" id="1_cyao5"]
+[ext_resource type="Material" uid="uid://xqqnwj85opwq" path="res://assets/3d/zahir/materials/zahir-brown-base.tres" id="1_cyao5"]
 
 [resource]
 resource_name = "Material.002"
