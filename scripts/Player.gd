@@ -18,9 +18,13 @@ var current_zoom = 10
 var current_rotation = -45
 var zoom_direction = 0
 # --- Animation variables ---
+# Rotation
 @onready var player_model = $PlayerModel
 var orientation = Transform3D()
 const ROTATION_INTERPOLATE_SPEED = 10
+# Animate 
+enum ANIMATIONS {IDLE, WALK}
+@export var current_animation := ANIMATIONS.WALK
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -64,15 +68,37 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	# --- Animations ---
+	# Rotation
 	if direction:
 		var q_from = orientation.basis.get_rotation_quaternion()
 		var q_to = Transform3D().looking_at(-direction, Vector3.UP).basis.get_rotation_quaternion()
 		# Interpolate current rotation with desired one.
 		orientation.basis = Basis(q_from.slerp(q_to, delta * ROTATION_INTERPOLATE_SPEED))
-
 		player_model.global_transform.basis = orientation.basis
+	# Animate
+	if not direction:
+		_animate(ANIMATIONS.IDLE, delta)
+	else:
+		_animate(ANIMATIONS.WALK, delta)
+
+	# ---
 	move_and_slide()
 
+func _animate(anim: int, _delta := 0.0):
+	current_animation = anim as ANIMATIONS
+
+	if anim == ANIMATIONS.IDLE:
+		pass
+		#print("idle")
+		#animation_tree["parameters/state/transition_request"] = "jump_up"
+
+	elif anim == ANIMATIONS.WALK:
+		pass
+		#print("WALKING")
+		## Change state to walk.
+		#animation_tree["parameters/state/transition_request"] = "walk"
+		## Blend position for walk speed based checked motion.
+		#animation_tree["parameters/walk/blend_position"] = Vector2(motion.length(), 0)
 
 func _zoom(delta: float) -> void:
 	# calculate the new zoom position and clamp zoom between min and max
