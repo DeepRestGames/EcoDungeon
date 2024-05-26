@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
 [ext_resource type="PackedScene" uid="uid://djoyq5u5yhw5h" path="res://assets/3d/zahir/240519_Zahir_04.glb" id="2_bi3h0"]
-[ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/zahir-brown.tres" id="3_ugebt"]
-[ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/zahir-white.tres" id="4_r274i"]
-[ext_resource type="Material" uid="uid://1swa15erc0ug" path="res://assets/3d/zahir/materials/zahir-teal.tres" id="5_jk3hu"]
+[ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/ZahirLeather.tres" id="3_ugebt"]
+[ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/ZahirTunic.tres" id="4_r274i"]
+[ext_resource type="Material" uid="uid://1swa15erc0ug" path="res://assets/3d/zahir/materials/ZahirScarf.tres" id="5_jk3hu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_forhr"]
 radius = 0.389712

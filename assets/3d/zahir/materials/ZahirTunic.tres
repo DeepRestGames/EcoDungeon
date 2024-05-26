@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://g5j04dnk5dcg"]
+
+[resource]
+resource_name = "Material.003"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.898039, 0.87451, 0.72549, 1)
+metallic_specular = 0.0
+roughness = 0.2
+rim_enabled = true
+rim = 0.5
+clearcoat_roughness = 0.0
+subsurf_scatter_strength = 0.88
+backlight = Color(0.415686, 0.27451, 0.14902, 1)
+refraction_scale = 1.0
+grow_amount = 4.525
