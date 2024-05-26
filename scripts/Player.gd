@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-
-
 const SPEED = 10.0
 const JUMP_VELOCITY = 5.0
 
@@ -28,13 +26,18 @@ enum ANIMATIONS {IDLE, WALK}
 @onready var animation_tree = $PlayerModel/AnimationTree
 const MOTION_INTERPOLATE_SPEED = 10
 
+# --- Shooting variables ---
+@onready var fire_cooldown = $FireCooldown 
+@onready var shoot_from = player_model.get_node("Armature/Skeleton3D/BulletOrigin")
+
+# ------------------------------------
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-#func _ready():
-	## Pre-initialize orientation transform.
-	#orientation = player_model.global_transform
-	#orientation.origin = Vector3()
+func _ready():
+	# Pre-initialize orientation transform.
+	orientation = player_model.global_transform
+	orientation.origin = Vector3()
 
 
 func _unhandled_input(event):
@@ -51,7 +54,7 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	# Add the gravity.
+	# Add the gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -82,8 +85,19 @@ func _physics_process(delta):
 		_animate(ANIMATIONS.IDLE, delta)
 	else:
 		_animate(ANIMATIONS.WALK, delta)
-
-	# ---
+		
+	# --- Shooting ---
+	if Input.is_action_just_pressed("shoot"):
+		var shoot_origin = shoot_from.global_transform.origin
+		var shoot_dir = (direction - shoot_origin).normalized()
+		# Spawn and shoot bullet
+		var bullet = preload("res://scenes/Projectile.tscn").instantiate()
+		get_parent().add_child(bullet, true)
+		bullet.global_transform.origin = shoot_origin
+		# If we don't rotate the bullets there is no useful way to control the particles ..
+		bullet.look_at(shoot_origin + shoot_dir, Vector3.UP)
+		bullet.add_collision_exception_with(self)
+		
 	move_and_slide()
 
 func _animate(anim: int, delta := 0.0):
@@ -101,6 +115,14 @@ func _animate(anim: int, delta := 0.0):
 			var new_blend: float = min(current_blend + delta*MOTION_INTERPOLATE_SPEED, 1)
 			animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
 
+func _shoot():
+	var shoot_particle = $PlayerModel/Armature/Skeleton3D/BulletOrigin/ShootParticle
+	shoot_particle.restart()
+	shoot_particle.emitting = true
+	fire_cooldown.start()
+	#sound_effect_shoot.play()
+
+
 func _zoom(delta: float) -> void:
 	# calculate the new zoom position and clamp zoom between min and max
 	var new_zoom_position_z = clamp(
@@ -117,19 +139,7 @@ func _zoom(delta: float) -> void:
 	
 	# zoom 
 	camera.position.z = new_zoom_position_z
-	camera.position.y = new_zoom_position_y
-	
-	
-	## calculate the new zoom rotation and clamp zoom between min and max
-	#var new_zoom_rotation_x = clamp(
-		#camera.rotation.x + zoom_rotation_speed * delta * zoom_direction,
-		#min_rotation,
-		#max_rotation
-		#)
-	#
-	## zoom 
-	#camera.rotation.x = new_zoom_rotation_x
-	
+	camera.position.y = new_zoom_position_y	
 	
 	# stop scrolling
 	zoom_direction *= zoom_speed_damp

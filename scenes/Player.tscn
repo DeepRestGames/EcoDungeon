@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bebiuwit13drx"]
+[gd_scene load_steps=28 format=3 uid="uid://bebiuwit13drx"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
 [ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/zahir-brown.tres" id="3_ugebt"]
@@ -231,6 +231,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxawu"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.964706, 0.831373, 0.937255, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dfbda"]
+radius = 0.003
+height = 0.02
+
 [sub_resource type="Animation" id="Animation_m3dxs"]
 resource_name = "ArmatureAction"
 length = 2.5
@@ -393,7 +402,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0178629, 0.00551303, 0.00833741, 0.99979)
+bones/3/rotation = Quaternion(-0.0340668, 0.00751368, 0.011363, 0.999327)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -501,6 +510,21 @@ surface_material_override/0 = ExtResource("4_r274i")
 surface_material_override/1 = ExtResource("5_jk3hu")
 surface_material_override/2 = ExtResource("3_ugebt")
 
+[node name="BulletOrigin" type="Node3D" parent="PlayerModel/Armature/Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5629, 0)
+
+[node name="ShootParticle" type="CPUParticles3D" parent="PlayerModel/Armature/Skeleton3D/BulletOrigin"]
+material_override = SubResource("StandardMaterial3D_mxawu")
+cast_shadow = 0
+emitting = false
+amount = 10
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.79
+mesh = SubResource("SphereMesh_dfbda")
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+
 [node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
 libraries = {
 "": SubResource("AnimationLibrary_krws2")
@@ -527,3 +551,8 @@ mesh = SubResource("CapsuleMesh_m2k26")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
 near = 0.001
 far = 150.0
+
+[node name="FireCooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
