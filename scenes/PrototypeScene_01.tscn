@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_vghce"]
 [ext_resource type="Material" uid="uid://ddgo8827yv4h7" path="res://assets/3d/environment/rock/materials/rock.tres" id="4_l358p"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="6_a2tgg"]
+[ext_resource type="PackedScene" uid="uid://bdlat1gi2vit7" path="res://scenes/Killzone.tscn" id="8_e2mof"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="8_rd8q8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
@@ -43,6 +44,8 @@ rim_tint = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gisn"]
 size = Vector3(1.74747, 1, 2.57251)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_m1146"]
+
 [node name="PrototypeScene01" type="Node3D"]
 
 [node name="Lights" type="Node" parent="."]
@@ -65,34 +68,6 @@ sky_mode = 1
 transform = Transform3D(0.706724, 0, -0.707489, 0, 1, 0, 0.707489, 0, 0.706724, 0, 0, 0)
 use_collision = true
 size = Vector3(20, 1, 20)
-material = SubResource("StandardMaterial3D_l3jqf")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(0.706724, 0, -0.707489, 0, 1, 0, 0.707489, 0, 0.706724, -7.07489, 2.58258, 7.06724)
-visible = false
-use_collision = true
-size = Vector3(20, 5, 1)
-material = SubResource("StandardMaterial3D_l3jqf")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(0.706724, 0, -0.707489, 0, 1, 0, 0.707489, 0, 0.706724, 7.07489, 2.58258, -7.06724)
-visible = false
-use_collision = true
-size = Vector3(20, 5, 1)
-material = SubResource("StandardMaterial3D_l3jqf")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(0.707489, 0, 0.706724, 0, 1, 0, -0.706724, 0, 0.707489, -7.06724, 2.58258, -7.07489)
-visible = false
-use_collision = true
-size = Vector3(20, 5, 1)
-material = SubResource("StandardMaterial3D_l3jqf")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(0.707489, 0, 0.706724, 0, 1, 0, -0.706724, 0, 0.707489, 7.06724, 2.58258, 7.07489)
-visible = false
-use_collision = true
-size = Vector3(20, 5, 1)
 material = SubResource("StandardMaterial3D_l3jqf")
 
 [node name="Objects" type="Node" parent="."]
@@ -164,6 +139,12 @@ transform = Transform3D(0.50863, 0.850874, 0.131549, -0.860915, 0.50069, 0.09017
 
 [node name="240519_bush_bubbly_02" parent="." instance=ExtResource("8_rd8q8")]
 transform = Transform3D(1.80408, 0, 0, 0, 1, 0, 0, 0, 2.0683, 5.511, 0.499999, 3.48791)
+
+[node name="Killzone" parent="." instance=ExtResource("8_e2mof")]
+
+[node name="BottomBoundary" type="CollisionShape3D" parent="Killzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+shape = SubResource("WorldBoundaryShape3D_m1146")
 
 [editable path="240519_bush_bubbly_01"]
 [editable path="240519_rock_formatio_big_01"]
