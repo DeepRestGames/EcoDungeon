@@ -8,8 +8,8 @@
 [ext_resource type="Material" uid="uid://ddgo8827yv4h7" path="res://assets/3d/environment/rock/materials/rock.tres" id="4_l358p"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="6_a2tgg"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="8_rd8q8"]
-[ext_resource type="PackedScene" uid="uid://bdlecjgnvp85d" path="res://assets/3d/creatures/Blutschneke/Blutschneke_02.glb" id="9_gjq70"]
-[ext_resource type="PackedScene" uid="uid://c17ilaij47mhf" path="res://assets/3d/creatures/Flugschneke/Flugschneke_01.glb" id="10_jb8dr"]
+[ext_resource type="PackedScene" uid="uid://bmnvvqm6r55t6" path="res://assets/3d/creatures/Blutschneke/Blutschneke.tscn" id="10_1tv7t"]
+[ext_resource type="PackedScene" uid="uid://c17ilaij47mhf" path="res://assets/3d/creatures/Flugschneke/Flugschneke_0.0.1.glb" id="10_jb8dr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
 panorama = ExtResource("1_jatks")
@@ -19,13 +19,19 @@ sky_material = SubResource("PanoramaSkyMaterial_dka55")
 
 [sub_resource type="Environment" id="Environment_slfb0"]
 background_mode = 1
-background_color = Color(0, 0.517647, 0.760784, 1)
+background_color = Color(0.3555, 0.695858, 0.79, 1)
+background_energy_multiplier = 0.9
 background_canvas_max_layer = 2
 sky = SubResource("Sky_6pnag")
 sky_rotation = Vector3(0, 2.26893, 0)
-ambient_light_source = 3
-ambient_light_color = Color(0.756863, 0.615686, 0.556863, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72549, 0.576471, 0.494118, 1)
+ambient_light_sky_contribution = 0.25
+ambient_light_energy = 0.3
+reflected_light_source = 1
 tonemap_mode = 2
+tonemap_exposure = 1.1
+tonemap_white = 0.9
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gisn"]
@@ -34,7 +40,7 @@ size = Vector3(1.74747, 1, 2.57251)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3jqf"]
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.603922, 0.384314, 0, 1)
+albedo_color = Color(0.886275, 0.796078, 0.572549, 1)
 roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd8x1"]
@@ -54,9 +60,10 @@ environment = SubResource("Environment_slfb0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-0.547093, -0.724926, 0.418534, 1.47562e-08, 0.499998, 0.866027, -0.837072, 0.473797, -0.273545, 0, 0, 0)
-light_color = Color(0.984314, 0.67451, 0.439216, 1)
-light_energy = 1.5
+light_color = Color(0.72549, 0.576471, 0.494118, 1)
+light_energy = 2.2
 shadow_enabled = true
+shadow_blur = 1.5
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 200.0
 sky_mode = 1
@@ -171,8 +178,6 @@ material = SubResource("StandardMaterial3D_vd8x1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
 
 [node name="Skeleton3D" parent="Player/CollisionShape3D/240519_Zahir_04/Armature" index="1"]
-bones/0/position = Vector3(1.57465e-32, -7.0916e-17, 0.319377)
-bones/0/rotation = Quaternion(0.0876819, 0, 1.94693e-17, 0.996149)
 bones/2/rotation = Quaternion(-4.54755e-13, 0.00101452, 0.00571832, 0.999983)
 bones/3/rotation = Quaternion(-0.00228307, 0.00237675, 0.00979766, 0.999947)
 bones/4/rotation = Quaternion(-2.95043e-08, 0.118241, 0.992985, 2.89691e-09)
@@ -181,18 +186,6 @@ bones/6/rotation = Quaternion(4.50344e-08, -0.0765705, 0.997064, -9.78419e-09)
 bones/7/rotation = Quaternion(-0.00349433, -1.19209e-07, -1.1111e-10, 0.999994)
 bones/9/position = Vector3(0.703569, -4.69805, 0.622061)
 bones/11/position = Vector3(-0.703569, -4.53821, -1.34892)
-
-[node name="Blutschneke_02" parent="." instance=ExtResource("9_gjq70")]
-transform = Transform3D(0.467791, 0, -0.883839, 0, 1, 0, 0.883839, 0, 0.467791, -2.3346, 0.5, -0.225004)
-
-[node name="Skeleton3D" parent="Blutschneke_02/Armature" index="0"]
-bones/0/position = Vector3(0.0367839, -0.0420423, -8.44188e-09)
-bones/0/rotation = Quaternion(-3.78067e-08, -6.89549e-08, 0.0290864, 0.999577)
-bones/1/rotation = Quaternion(5.29404e-08, 9.72681e-08, -0.279005, 0.96029)
-bones/1/scale = Vector3(1.0168, 1.00022, 1.017)
-bones/2/scale = Vector3(0.946513, 0.999976, 0.94644)
-bones/3/scale = Vector3(1.10121, 1.00101, 1.10036)
-bones/4/scale = Vector3(0.932857, 1.01726, 0.933)
 
 [node name="Flugschneke_01" parent="." instance=ExtResource("10_jb8dr")]
 transform = Transform3D(-0.0210296, 0, -0.999779, 0, 1, 0, 0.999779, 0, -0.0210296, 2.01909, 0.5, -0.954493)
@@ -212,10 +205,12 @@ bones/8/rotation = Quaternion(0.655759, -0.0359436, 0.344257, 0.670951)
 bones/9/position = Vector3(0.0878653, -2.06082, -2.25531e-07)
 bones/9/rotation = Quaternion(0.703985, -0.0663694, 0.703985, 0.0663693)
 
+[node name="Blutschneke" parent="." instance=ExtResource("10_1tv7t")]
+transform = Transform3D(0.926948, 0, -0.375189, 0, 1, 0, 0.375189, 0, 0.926948, -1.57196, 0.479769, 3.2125)
+
 [editable path="EnvironmentAssets/240519_rock_medium_02"]
 [editable path="EnvironmentAssets/240519_rock_formatio_big_01"]
 [editable path="EnvironmentAssets/240519_bush_bubbly_01"]
 [editable path="Player"]
 [editable path="Player/CollisionShape3D/240519_Zahir_04"]
-[editable path="Blutschneke_02"]
 [editable path="Flugschneke_01"]
