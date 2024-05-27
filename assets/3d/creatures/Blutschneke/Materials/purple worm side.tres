@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://chiolitor8d42"]
-
-[resource]
-resource_name = "purple worm side"
-cull_mode = 2
-albedo_color = Color(0.268773, 0.215104, 0.163847, 1)
-roughness = 0.5

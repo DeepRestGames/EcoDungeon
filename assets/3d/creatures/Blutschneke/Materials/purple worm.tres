@@ -1,7 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cg83csjaitgbt"]
-
-[resource]
-resource_name = "purple worm"
-cull_mode = 2
-albedo_color = Color(0.13155, 0.0471484, 0.324098, 1)
-roughness = 0.5
