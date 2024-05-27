@@ -95,7 +95,6 @@ func _physics_process(delta):
 		var bullet = preload("res://scenes/Projectile.tscn").instantiate()
 		get_parent().add_child(bullet, true)
 		bullet.global_transform.origin = shoot_origin
-		# If we don't rotate the bullets there is no useful way to control the particles ..
 		bullet.look_at(shoot_dir, Vector3.UP)
 		bullet.add_collision_exception_with(self)
 		
