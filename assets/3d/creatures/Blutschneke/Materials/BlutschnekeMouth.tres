@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bnbudwjysr1dp"]
+
+[ext_resource type="Shader" path="res://assets/shaders/CelShader.gdshader" id="1_q3a2s"]
+
+[resource]
+resource_name = "mouth"
+render_priority = 0
+shader = ExtResource("1_q3a2s")
+shader_parameter/color = Color(0.0352941, 0.109804, 0.258824, 1)
+shader_parameter/specular = Color(0.301961, 0.301961, 0.301961, 0.501961)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
