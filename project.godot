@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="EcoDungeon"
-run/main_scene="res://scenes/PrototypeScene_01.tscn"
+run/main_scene="res://scenes/PrototypeScene_EnemyAI_01.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -55,4 +55,35 @@ zoom_in={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(144.4, 21.4),"global_position":Vector2(148, 60),"factor":1.0,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="Ground"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemies"
+3d_physics/layer_4="Obstacles"
+3d_physics/layer_5="Projectiles"
+
+[shader_globals]
+
+diffuse_curve={
+"type": "sampler2D",
+"value": "res://assets/shaders/diffuse-texture.tres"
+}
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
 }
