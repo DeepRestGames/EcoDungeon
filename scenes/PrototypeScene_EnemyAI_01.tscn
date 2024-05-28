@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=3 uid="uid://bo1a11i38vuh7"]
 
-[ext_resource type="Texture2D" uid="uid://doadys4u0nwvv" path="res://assets/background/hdri/golf_course_sunrise_2k.hdr" id="1_jatks"]
-[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="1_ui8tp"]
-[ext_resource type="PackedScene" uid="uid://bhertfiqp6moh" path="res://assets/3d/environment/bush/bubbly_bushes/bubbly_bush_01/bush_bubbly_01_model.glb" id="2_13nrr"]
-[ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_vghce"]
-[ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="6_a2tgg"]
-[ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="8_rd8q8"]
-[ext_resource type="PackedScene" uid="uid://btufku1u8vmw" path="res://scenes/EnemyFollow.tscn" id="9_fcsbd"]
+[ext_resource type="Texture2D" uid="uid://doadys4u0nwvv" path="res://assets/background/hdri/golf_course_sunrise_2k.hdr" id="1_h7a24"]
+[ext_resource type="PackedScene" uid="uid://bhertfiqp6moh" path="res://assets/3d/environment/bush/bubbly_bushes/bubbly_bush_01/bush_bubbly_01_model.glb" id="2_3cq2b"]
+[ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_bbs5b"]
+[ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="4_wopoa"]
+[ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="5_sded1"]
+[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="6_ntm0e"]
+[ext_resource type="PackedScene" uid="uid://btufku1u8vmw" path="res://scenes/EnemyFollow.tscn" id="7_4fenl"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
-panorama = ExtResource("1_jatks")
+panorama = ExtResource("1_h7a24")
 
 [sub_resource type="Sky" id="Sky_6pnag"]
 sky_material = SubResource("PanoramaSkyMaterial_dka55")
@@ -128,7 +128,7 @@ use_collision = true
 size = Vector3(1, 1, 3)
 material = SubResource("StandardMaterial3D_vd8x1")
 
-[node name="240519_bush_bubbly_01" parent="NavigationRegion3D" instance=ExtResource("2_13nrr")]
+[node name="240519_bush_bubbly_01" parent="NavigationRegion3D" instance=ExtResource("2_3cq2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69608, 0.5, 0.0108073)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/240519_bush_bubbly_01"]
@@ -138,7 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139098, -0.5, 0.0519748)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143517, 0.752829, 0.0440035)
 shape = SubResource("BoxShape3D_2gisn")
 
-[node name="240519_rock_formatio_big_01" parent="NavigationRegion3D" instance=ExtResource("3_vghce")]
+[node name="240519_rock_formatio_big_01" parent="NavigationRegion3D" instance=ExtResource("3_bbs5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 0.500001, -9.41671)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D/240519_rock_formatio_big_01"]
@@ -147,15 +147,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 0.500001, -9.41671)
 transform = Transform3D(-1.46456, 0, 1.92919, 0, 6.35541, 0, -3.02743, 0, -0.933271, -0.412592, 3.13888, -0.412773)
 shape = SubResource("BoxShape3D_2gisn")
 
-[node name="240519_rock_medium_02" parent="NavigationRegion3D" instance=ExtResource("6_a2tgg")]
+[node name="240519_rock_medium_02" parent="NavigationRegion3D" instance=ExtResource("4_wopoa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48795, 0.864551, -0.746867)
 
-[node name="240519_bush_bubbly_02" parent="NavigationRegion3D" instance=ExtResource("8_rd8q8")]
+[node name="240519_bush_bubbly_02" parent="NavigationRegion3D" instance=ExtResource("5_sded1")]
 transform = Transform3D(1.80408, 0, 0, 0, 1, 0, 0, 0, 2.0683, 5.511, 0.499999, 3.48791)
 
-[node name="Player" parent="." instance=ExtResource("1_ui8tp")]
+[node name="Player" parent="." instance=ExtResource("6_ntm0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
 
-[node name="EnemyFollow" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_fcsbd")]
+[node name="EnemyFollow" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_4fenl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48209, 1.5, 5.86624)
 player = NodePath("../Player")
