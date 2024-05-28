@@ -1,45 +1,36 @@
 [gd_scene load_steps=17 format=3 uid="uid://bo1a11i38vuh7"]
 
-[ext_resource type="Texture2D" uid="uid://doadys4u0nwvv" path="res://assets/background/hdri/golf_course_sunrise_2k.hdr" id="1_jatks"]
+[ext_resource type="Texture2D" uid="uid://dbgonf4pso6vy" path="res://assets/background/skybox/240528_Skybox3.png" id="1_5euls"]
 [ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="1_ui8tp"]
-[ext_resource type="PackedScene" uid="uid://bhertfiqp6moh" path="res://assets/3d/environment/bush/bubbly_bushes/bubbly_bush_01/bush_bubbly_01_model.glb" id="2_13nrr"]
-[ext_resource type="Material" uid="uid://svsp6aprban5" path="res://assets/3d/environment/bush/materials/bush.tres" id="2_18nix"]
 [ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_vghce"]
 [ext_resource type="Material" uid="uid://ddgo8827yv4h7" path="res://assets/3d/environment/rock/materials/rock.tres" id="4_l358p"]
+[ext_resource type="Material" uid="uid://84tp5e65irvt" path="res://assets/3d/environment/ground/materials/DesertGround.tres" id="5_6ess5"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="6_a2tgg"]
 [ext_resource type="PackedScene" uid="uid://c0bpdb63lwl0h" path="res://scenes/Killzone.tscn" id="8_e2mof"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="8_rd8q8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
-panorama = ExtResource("1_jatks")
+panorama = ExtResource("1_5euls")
 
 [sub_resource type="Sky" id="Sky_6pnag"]
 sky_material = SubResource("PanoramaSkyMaterial_dka55")
 
 [sub_resource type="Environment" id="Environment_slfb0"]
-background_mode = 1
-background_color = Color(0, 0.517647, 0.760784, 1)
+background_mode = 2
+background_color = Color(0.356863, 0.694118, 0.788235, 1)
+background_energy_multiplier = 0.9
 background_canvas_max_layer = 2
 sky = SubResource("Sky_6pnag")
 sky_rotation = Vector3(0, 2.26893, 0)
-ambient_light_source = 3
-ambient_light_color = Color(0.756863, 0.615686, 0.556863, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72549, 0.576471, 0.494118, 1)
+ambient_light_sky_contribution = 0.25
+ambient_light_energy = 0.3
+reflected_light_source = 1
 tonemap_mode = 2
+tonemap_exposure = 1.1
+tonemap_white = 0.9
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3jqf"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.603922, 0.384314, 0, 1)
-roughness = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vd8x1"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.576471, 0.247059, 0.333333, 1)
-roughness = 0.0
-rim = 0.0
-rim_tint = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gisn"]
 size = Vector3(1.74747, 1, 2.57251)
@@ -55,12 +46,41 @@ environment = SubResource("Environment_slfb0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-0.547093, -0.724926, 0.418534, 1.47562e-08, 0.499998, 0.866027, -0.837072, 0.473797, -0.273545, 0, 0, 0)
-light_color = Color(0.984314, 0.67451, 0.439216, 1)
-light_energy = 1.5
+light_color = Color(0.72549, 0.576471, 0.494118, 1)
+light_energy = 2.2
 shadow_enabled = true
+shadow_blur = 1.5
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 200.0
 sky_mode = 1
+
+[node name="EnvironmentAssets" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 1.78814e-07)
+
+[node name="240519_rock_medium_02" parent="EnvironmentAssets" instance=ExtResource("6_a2tgg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431519, 0.002134, 4.08172)
+
+[node name="Icosphere_003" parent="EnvironmentAssets/240519_rock_medium_02" index="0"]
+transform = Transform3D(1.70814, -0.23357, -0.26523, 0.25077, -0.121401, 1.72192, -0.249031, -1.72434, -0.0853034, -10.687, 0.662785, -4.17427)
+surface_material_override/0 = ExtResource("4_l358p")
+
+[node name="CollisionShape3D" parent="EnvironmentAssets/240519_rock_medium_02/Icosphere_003/StaticBody3D" index="0"]
+transform = Transform3D(0.50863, 0.850874, 0.131549, -0.860915, 0.50069, 0.0901755, 0.0108628, -0.159119, 0.987199, 0.10165, 0.208695, -0.211386)
+
+[node name="240519_rock_formatio_big_01" parent="EnvironmentAssets" instance=ExtResource("3_vghce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 0.00213501, -9.41671)
+
+[node name="Icosphere_002" parent="EnvironmentAssets/240519_rock_formatio_big_01" index="0"]
+transform = Transform3D(0.349515, 1.11921, 0.267141, 0.0273551, 0.114194, -2.64088, -1.79421, 0.219765, 0.0117755, 1.48475, 1.39636, 0.36858)
+
+[node name="Icosphere_001" parent="EnvironmentAssets/240519_rock_formatio_big_01" index="1"]
+surface_material_override/0 = ExtResource("4_l358p")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="EnvironmentAssets/240519_rock_formatio_big_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentAssets/240519_rock_formatio_big_01/StaticBody3D2"]
+transform = Transform3D(-1.46456, 0, 1.92919, 0, 6.35541, 0, -3.02743, 0, -0.933271, -0.412592, 3.13888, -0.412773)
+shape = SubResource("BoxShape3D_2gisn")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -68,46 +88,9 @@ sky_mode = 1
 transform = Transform3D(0.706724, 0, -0.707489, 0, 1, 0, 0.707489, 0, 0.706724, 0, 0, 0)
 use_collision = true
 size = Vector3(20, 1, 20)
-material = SubResource("StandardMaterial3D_l3jqf")
+material = ExtResource("5_6ess5")
 
 [node name="Objects" type="Node" parent="."]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Objects"]
-transform = Transform3D(0.949756, 0.0317856, -0.311372, -0.0936762, 0.978096, -0.185887, 0.298643, 0.205716, 0.93193, 6.86521, 2.16467, -5.03361)
-use_collision = true
-size = Vector3(1, 1, 3)
-material = SubResource("StandardMaterial3D_vd8x1")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Objects"]
-transform = Transform3D(0.949756, 0.0317856, -0.311372, -0.0936762, 0.978096, -0.185887, 0.298643, 0.205716, 0.93193, 9.05431, 3.03334, -3.70158)
-use_collision = true
-size = Vector3(0.98645, 0.753782, 2.93652)
-material = SubResource("StandardMaterial3D_vd8x1")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Objects"]
-transform = Transform3D(0.949756, 0.0317856, -0.311372, -0.0257071, 0.999391, 0.0236084, 0.311933, -0.0144174, 0.949995, 11.2007, 3.70068, -2.44812)
-use_collision = true
-size = Vector3(0.98645, 0.753782, 2.93652)
-material = SubResource("StandardMaterial3D_vd8x1")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Objects"]
-transform = Transform3D(0.80607, -0.00277622, -0.591814, -0.236108, 0.915454, -0.325881, 0.542683, 0.402415, 0.737264, 4.87314, 1.41317, -7.35204)
-use_collision = true
-size = Vector3(1, 1, 3)
-material = SubResource("StandardMaterial3D_vd8x1")
-
-[node name="240519_bush_bubbly_01" parent="." instance=ExtResource("2_13nrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69608, 0.5, 0.0108073)
-
-[node name="Icosphere_017" parent="240519_bush_bubbly_01" index="0"]
-surface_material_override/0 = ExtResource("2_18nix")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="240519_bush_bubbly_01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139098, -0.5, 0.0519748)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="240519_bush_bubbly_01/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143517, 0.752829, 0.0440035)
-shape = SubResource("BoxShape3D_2gisn")
 
 [node name="Player" parent="." instance=ExtResource("1_ui8tp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
@@ -122,17 +105,32 @@ text = "YOU DIED"
 [node name="240519_rock_formatio_big_01" parent="." instance=ExtResource("3_vghce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 0.500001, -9.41671)
 
-[node name="Icosphere_002" parent="240519_rock_formatio_big_01" index="0"]
-transform = Transform3D(0.349515, 1.11921, 0.267141, 0.0273551, 0.114194, -2.64088, -1.79421, 0.219765, 0.0117755, 1.48475, 1.39636, 0.36858)
+[node name="Flugschneke_01" parent="." instance=ExtResource("10_jb8dr")]
+transform = Transform3D(-0.0210296, 0, -0.999779, 0, 1, 0, 0.999779, 0, -0.0210296, 2.01909, 0.5, -0.954493)
 
-[node name="Icosphere_001" parent="240519_rock_formatio_big_01" index="1"]
-surface_material_override/0 = ExtResource("4_l358p")
+[node name="Skeleton3D" parent="Flugschneke_01/Armature" index="0"]
+bones/0/position = Vector3(0.0878653, -2.06082, -2.22351e-07)
+bones/0/rotation = Quaternion(1.13541e-08, -1.86125e-07, -0.00747804, 0.999972)
+bones/1/rotation = Quaternion(3.31922e-08, 3.41602e-07, -0.0134989, 0.999909)
+bones/2/rotation = Quaternion(-1.11967e-07, 8.21255e-08, 0.278701, 0.960378)
+bones/3/rotation = Quaternion(0.00207619, -0.00122979, -0.398759, 0.917053)
+bones/4/rotation = Quaternion(2.66946e-09, 1.87443e-08, -0.146634, 0.989191)
+bones/4/scale = Vector3(1.32006, 1.32006, 1.32006)
+bones/5/rotation = Quaternion(-0.12716, -0.217711, 0.432992, 0.865419)
+bones/6/rotation = Quaternion(0.297718, -0.176657, 0.334398, 0.876547)
+bones/7/rotation = Quaternion(-0.659396, 0.0387047, 0.345324, 0.666671)
+bones/8/rotation = Quaternion(0.655759, -0.0359436, 0.344257, 0.670951)
+bones/9/position = Vector3(0.0878653, -2.06082, -2.25531e-07)
+bones/9/rotation = Quaternion(0.703985, -0.0663694, 0.703985, 0.0663693)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="240519_rock_formatio_big_01"]
+[node name="Blutschneke" parent="." instance=ExtResource("10_1tv7t")]
+transform = Transform3D(0.926948, 0, -0.375189, 0, 1, 0, 0.375189, 0, 0.926948, -1.57196, 0.479769, 3.2125)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="240519_rock_formatio_big_01/StaticBody3D2"]
-transform = Transform3D(-1.46456, 0, 1.92919, 0, 6.35541, 0, -3.02743, 0, -0.933271, -0.412592, 3.13888, -0.412773)
-shape = SubResource("BoxShape3D_2gisn")
+[editable path="EnvironmentAssets/240519_rock_medium_02"]
+[editable path="EnvironmentAssets/240519_rock_formatio_big_01"]
+[editable path="Player"]
+[editable path="Player/CollisionShape3D/240519_Zahir_04"]
+[editable path="Flugschneke_01"]
 
 [node name="240519_rock_medium_02" parent="." instance=ExtResource("6_a2tgg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431519, 0.5, 4.08172)

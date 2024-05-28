@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dyfuqkntvtbjt"]
+
+[ext_resource type="Shader" path="res://assets/shaders/CelShader.gdshader" id="1_oq4yt"]
+
+[resource]
+resource_name = "teeth"
+render_priority = 0
+shader = ExtResource("1_oq4yt")
+shader_parameter/color = Color(0.843137, 0.843137, 0.843137, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
