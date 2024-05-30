@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://btufku1u8vmw"]
+
+[ext_resource type="Script" path="res://scripts/enemy/EnemyFollowPlayerBehaviour.gd" id="1_ks8fn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w5k6s"]
+radius = 5.0
+
+[node name="EnemyFollowPlayerBehaviour" type="Node3D"]
+script = ExtResource("1_ks8fn")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_w5k6s")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
