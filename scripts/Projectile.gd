@@ -12,7 +12,6 @@ var hit = false
 
 func _physics_process(delta):
 	if hit:
-		# TODO: re-enable once it seems ok
 		queue_free()
 		return
 	time_alive -= delta
@@ -23,10 +22,7 @@ func _physics_process(delta):
 	if collision:
 		collision_shape.disabled = true
 		hit = true
-
-
-#func explode():
-	#animation_player.play("explode")
+	
 
 func destroy():
 	queue_free()

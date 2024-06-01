@@ -121,15 +121,34 @@ material = ExtResource("5_6ess5")
 [node name="Player" parent="." instance=ExtResource("1_ui8tp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
 
-[node name="Skeleton3D" parent="Player/CollisionShape3D/240519_Zahir_04/Armature" index="1"]
-bones/2/rotation = Quaternion(-4.54755e-13, 0.00101452, 0.00571832, 0.999983)
-bones/3/rotation = Quaternion(-0.00228307, 0.00237675, 0.00979766, 0.999947)
-bones/4/rotation = Quaternion(-2.95043e-08, 0.118241, 0.992985, 2.89691e-09)
-bones/5/rotation = Quaternion(-0.00348766, 1.19209e-07, 1.10896e-10, 0.999994)
-bones/6/rotation = Quaternion(4.50344e-08, -0.0765705, 0.997064, -9.78419e-09)
-bones/7/rotation = Quaternion(-0.00349433, -1.19209e-07, -1.1111e-10, 0.999994)
-bones/9/position = Vector3(0.703569, -4.69805, 0.622061)
-bones/11/position = Vector3(-0.703569, -4.53821, -1.34892)
+[node name="Skeleton3D" parent="Player/PlayerModel/Armature" index="0"]
+bones/3/rotation = Quaternion(0.000578633, 0.00323501, 0.00489233, 0.999983)
+
+[node name="bagflap" parent="Player/PlayerModel/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = null
+
+[node name="bag" parent="Player/PlayerModel/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = null
+
+[node name="face" parent="Player/PlayerModel/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = null
+
+[node name="hood" parent="Player/PlayerModel/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = null
+
+[node name="legs" parent="Player/PlayerModel/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = null
+
+[node name="scarf01" parent="Player/PlayerModel/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = null
+
+[node name="scarf02" parent="Player/PlayerModel/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = null
+
+[node name="tunic" parent="Player/PlayerModel/Armature/Skeleton3D" index="7"]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
 
 [node name="Flugschneke_01" parent="." instance=ExtResource("10_jb8dr")]
 transform = Transform3D(-0.0210296, 0, -0.999779, 0, 1, 0, 0.999779, 0, -0.0210296, 2.01909, 0.5, -0.954493)
@@ -155,5 +174,4 @@ transform = Transform3D(0.926948, 0, -0.375189, 0, 1, 0, 0.375189, 0, 0.926948, 
 [editable path="EnvironmentAssets/240519_rock_medium_02"]
 [editable path="EnvironmentAssets/240519_rock_formatio_big_01"]
 [editable path="Player"]
-[editable path="Player/CollisionShape3D/240519_Zahir_04"]
 [editable path="Flugschneke_01"]

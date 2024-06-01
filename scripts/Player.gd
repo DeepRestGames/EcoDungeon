@@ -31,15 +31,11 @@ const MOTION_INTERPOLATE_SPEED = 10
 @onready var fire_cooldown = $FireCooldown 
 @onready var shoot_from = player_model.get_node("Armature/Skeleton3D/BulletOrigin")
 @onready var shoot_to = player_model.get_node("Armature/Skeleton3D/BulletOrigin/BulletTo")
-
+@onready var bullet_instance = preload("res://scenes/Projectile.tscn")
+		
 # ------------------------------------
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-#func _ready():
-	## Pre-initialize orientation transform.
-	#orientation = player_model.global_transform
-	#orientation.origin = Vector3()
 
 
 func _unhandled_input(event):
@@ -93,7 +89,7 @@ func _physics_process(delta):
 		var shoot_origin = shoot_from.global_transform.origin
 		var shoot_dir = shoot_to.global_transform.origin
 		# Spawn and shoot bullet
-		var bullet = preload("res://scenes/Projectile.tscn").instantiate()
+		var bullet = bullet_instance.instantiate()
 		get_parent().add_child(bullet, true)
 		bullet.global_transform.origin = shoot_origin
 		bullet.look_at(shoot_dir, Vector3.UP)
@@ -117,9 +113,6 @@ func _animate(anim: int, delta := 0.0):
 			animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
 
 func _shoot():
-	var shoot_particle = $PlayerModel/Armature/Skeleton3D/BulletOrigin/ShootParticle
-	shoot_particle.restart()
-	shoot_particle.emitting = true
 	fire_cooldown.start()
 	#sound_effect_shoot.play()
 
