@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="4_wopoa"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="5_sded1"]
 [ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="6_ntm0e"]
-[ext_resource type="PackedScene" uid="uid://qkcjf1kmlcy8" path="res://scenes/Enemies/EnemyFollowPlayer.tscn" id="7_nrile"]
-[ext_resource type="PackedScene" uid="uid://0fsec0fdg581" path="res://scenes/Enemies/EnemyFollowEnemy.tscn" id="8_j7cbr"]
+[ext_resource type="Script" path="res://scripts/enemy/EnemySpawner.gd" id="7_cmxaw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
 panorama = ExtResource("1_h7a24")
@@ -47,7 +46,14 @@ rim_tint = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gisn"]
 size = Vector3(1.74747, 1, 2.57251)
 
-[node name="PrototypeScene01" type="Node3D"]
+[sub_resource type="Curve3D" id="Curve3D_8fc5c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 1.5, -20, 0, 0, 0, 0, 0, 0, 15, 1.5, -15, 0, 0, 0, 0, 0, 0, 20, 1.5, 0, 0, 0, 0, 0, 0, 0, 15, 1.5, 15, 0, 0, 0, 0, 0, 0, 0, 1.5, 20, 0, 0, 0, 0, 0, 0, -15, 1.5, 15, 0, 0, 0, 0, 0, 0, -20, 1.5, 0, 0, 0, 0, 0, 0, 0, -15, 1.5, -15, 0, 0, 0, 0, 0, 0, 0, 1.5, -20),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[node name="PrototypeScene_EnemyAI_01" type="Node3D"]
 
 [node name="Lights" type="Node" parent="."]
 
@@ -129,29 +135,19 @@ transform = Transform3D(1.80408, 0, 0, 0, 1, 0, 0, 0, 2.0683, 5.511, 0.499999, 3
 [node name="Player" parent="." instance=ExtResource("6_ntm0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
 
-[node name="EnemyFollowPlayer" parent="." instance=ExtResource("7_nrile")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.06992, 1.5, 10.8149)
+[node name="EnemySpawner" type="Node3D" parent="Player"]
+script = ExtResource("7_cmxaw")
 
-[node name="EnemyFollowPlayer2" parent="." instance=ExtResource("7_nrile")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.424, 1.5, 7.96151)
+[node name="EnemySpawnPath" type="Path3D" parent="Player/EnemySpawner"]
+curve = SubResource("Curve3D_8fc5c")
 
-[node name="EnemyFollowPlayer3" parent="." instance=ExtResource("7_nrile")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4143, 1.5, -3.50006)
+[node name="EnemySpawnLocation" type="PathFollow3D" parent="Player/EnemySpawner/EnemySpawnPath"]
+transform = Transform3D(-0.316227, 0, -0.948683, 0, 1, 0, 0.948683, 0, -0.316227, 0, 1.5, -20)
 
-[node name="EnemyFollowPlayer4" parent="." instance=ExtResource("7_nrile")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.04205, 1.5, -19.3455)
+[node name="EnemySpawnCooldown" type="Timer" parent="Player/EnemySpawner"]
+wait_time = 2.0
+autostart = true
 
-[node name="EnemyFollowEnemy" parent="." instance=ExtResource("8_j7cbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95531, 1.5, 14.6229)
+[node name="Enemies" type="Node3D" parent="."]
 
-[node name="EnemyFollowEnemy2" parent="." instance=ExtResource("8_j7cbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5251, 1.5, -1.22966)
-
-[node name="EnemyFollowEnemy3" parent="." instance=ExtResource("8_j7cbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3474, 1.5, 19.5936)
-
-[node name="EnemyFollowEnemy4" parent="." instance=ExtResource("8_j7cbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3143, 1.49999, 6.73423)
-
-[node name="EnemyFollowEnemy5" parent="." instance=ExtResource("8_j7cbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1982, 1.49999, -20.542)
+[connection signal="timeout" from="Player/EnemySpawner/EnemySpawnCooldown" to="Player/EnemySpawner" method="_on_enemy_spawn_cooldown_timeout"]
