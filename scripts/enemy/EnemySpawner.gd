@@ -11,6 +11,6 @@ func _on_enemy_spawn_cooldown_timeout():
 	
 	var enemy_location = get_node("EnemySpawnPath/EnemySpawnLocation")
 	enemy_location.progress_ratio = randf()
-	enemy_instance.position = enemy_location.position
+	enemy_instance.position = enemy_location.global_transform.origin
 	
 	enemies_node.add_child(enemy_instance)
