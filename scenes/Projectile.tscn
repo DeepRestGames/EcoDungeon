@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://djnmr5ceovg88"]
+
+[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_noppo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3uyy1"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbceu"]
+diffuse_mode = 3
+albedo_color = Color(0.447059, 0.552941, 0.529412, 1)
+metallic = 1.0
+clearcoat_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_q6bo4"]
+material = SubResource("StandardMaterial3D_gbceu")
+radius = 0.25
+height = 0.5
+
+[node name="Projectile" type="CharacterBody3D"]
+script = ExtResource("1_noppo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3uyy1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_q6bo4")

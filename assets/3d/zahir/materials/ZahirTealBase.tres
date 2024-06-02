@@ -1,7 +1,9 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://1swa15erc0ug"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://p7g3v55216tr"]
 
 [resource]
 resource_name = "Material.004"
+render_priority = 1
+transparency = 4
 cull_mode = 2
 diffuse_mode = 3
 specular_mode = 2
