@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://wy8gy8k36n5r"]
+
+[ext_resource type="Material" uid="uid://xqqnwj85opwq" path="res://assets/3d/zahir/materials/ZahirBrownBase.tres" id="1_cyao5"]
+
+[resource]
+resource_name = "Material.002"
+render_priority = -1
+next_pass = ExtResource("1_cyao5")
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.419608, 0.152941, 0.678431, 1)
