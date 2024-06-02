@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bebiuwit13drx"]
+[gd_scene load_steps=27 format=3 uid="uid://bebiuwit13drx"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
 [ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/ZahirWhite.tres" id="3_jh4bb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://1swa15erc0ug" path="res://assets/3d/zahir/materials/ZahirTeal.tres" id="4_b7ysj"]
 [ext_resource type="Animation" uid="uid://cwul2vdvsod7p" path="res://assets/3d/zahir/animations/idle.res" id="5_68od8"]
 [ext_resource type="Animation" uid="uid://d3i55dprcwkdy" path="res://assets/3d/zahir/animations/walk.res" id="6_87cuf"]
+[ext_resource type="PackedScene" uid="uid://bwla884csp1dm" path="res://scenes/weapons/ShootNearest.tscn" id="7_qkvy2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wjtg4"]
 resource_name = "240519_Zahir_04_Cube_005"
@@ -395,7 +396,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(0.0191382, 0.000941201, 0.00142339, 0.999815)
+bones/3/rotation = Quaternion(0.00790158, 0.0023301, 0.00352382, 0.99996)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -503,10 +504,10 @@ surface_material_override/0 = ExtResource("3_jh4bb")
 surface_material_override/1 = ExtResource("4_b7ysj")
 surface_material_override/2 = ExtResource("3_ugebt")
 
-[node name="BulletOrigin" type="Node3D" parent="PlayerModel/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5629, 2.81158)
+[node name="BulletOrigin" type="Node3D" parent="PlayerModel"]
+transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, 0, 1.02749, 0.399315)
 
-[node name="BulletTo" type="Node3D" parent="PlayerModel/Armature/Skeleton3D/BulletOrigin"]
+[node name="BulletTo" type="Node3D" parent="PlayerModel/BulletOrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
@@ -540,3 +541,8 @@ far = 150.0
 wait_time = 0.4
 one_shot = true
 autostart = true
+
+[node name="Weapons" type="Node3D" parent="."]
+
+[node name="ShootNearest" parent="Weapons" node_paths=PackedStringArray("player") instance=ExtResource("7_qkvy2")]
+player = NodePath("../..")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfmatcepkbl1t"]
+
+[ext_resource type="Script" path="res://scripts/components/weapons/WeaponRangeComponent.gd" id="1_qxkyd"]
+[ext_resource type="Script" path="res://scripts/components/weapons/WeaponRangeAreaComponent.gd" id="2_octlo"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cgd3i"]
+height = 0.1
+radius = 3.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_oucra"]
+inner_radius = 2.8
+outer_radius = 3.0
+
+[node name="WeaponRangeComponent" type="Node3D"]
+script = ExtResource("1_qxkyd")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("2_octlo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CylinderShape3D_cgd3i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0980544, 0)
+mesh = SubResource("TorusMesh_oucra")

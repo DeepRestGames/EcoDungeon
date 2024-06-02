@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwla884csp1dm"]
+
+[ext_resource type="Script" path="res://scripts/weapons/ShootNearest.gd" id="1_3vond"]
+[ext_resource type="PackedScene" uid="uid://cqq6pdach2rbj" path="res://scenes/components/weapons/WeaponAttributesComponent.tscn" id="1_n2eci"]
+
+[node name="ShootNearest" type="Node3D"]
+script = ExtResource("1_3vond")
+
+[node name="WeaponAttributesComponent" parent="." instance=ExtResource("1_n2eci")]

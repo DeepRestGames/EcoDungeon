@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd0diwf45gujr"]
+
+[ext_resource type="Shader" path="res://assets/shaders/CelShader.gdshader" id="1_2kiei"]
+[ext_resource type="PackedScene" uid="uid://drcajjf2ewngn" path="res://scenes/components/weapons/HurtBoxComponent.tscn" id="1_2qlp2"]
+[ext_resource type="Script" path="res://scripts/weapons/Pew.gd" id="1_pva2c"]
+[ext_resource type="PackedScene" uid="uid://bixwjj5ibwliu" path="res://scenes/components/weapons/ProjectileAttributesComponent.tscn" id="3_ddeds"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_x8sxo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bs4dn"]
+render_priority = 0
+shader = ExtResource("1_2kiei")
+shader_parameter/color = Color(0.258824, 0.392157, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Pew" type="CharacterBody3D"]
+script = ExtResource("1_pva2c")
+
+[node name="HurtBoxComponent" parent="." instance=ExtResource("1_2qlp2")]
+
+[node name="ProjectileAttributesComponent" parent="." instance=ExtResource("3_ddeds")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_x8sxo")
+surface_material_override/0 = SubResource("ShaderMaterial_bs4dn")
