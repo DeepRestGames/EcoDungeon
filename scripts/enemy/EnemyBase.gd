@@ -9,7 +9,7 @@ extends CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var player: Player = $"../../Player"
 
-@export var SPEED: float = 5.0
+@export var SPEED: float = 3.0
 @export var max_hp: int = 5
 var current_hp: int = max_hp
 
@@ -25,3 +25,10 @@ func _physics_process(_delta):
 
 func take_damage(damage: int):
 	current_hp -= damage
+	
+	if current_hp <= 0:
+		death()
+
+
+func death():
+	queue_free()
