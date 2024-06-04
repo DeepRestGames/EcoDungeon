@@ -12,7 +12,7 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
 panorama = ExtResource("1_5euls")
 
-[sub_resource type="Sky" id="Sky_6pnag"]
+[sub_resource type="Sky" id="Sky_wf8cw"]
 sky_material = SubResource("PanoramaSkyMaterial_dka55")
 
 [sub_resource type="Environment" id="Environment_slfb0"]
@@ -20,7 +20,7 @@ background_mode = 2
 background_color = Color(0.356863, 0.694118, 0.788235, 1)
 background_energy_multiplier = 0.9
 background_canvas_max_layer = 2
-sky = SubResource("Sky_6pnag")
+sky = SubResource("Sky_wf8cw")
 sky_rotation = Vector3(0, 2.26893, 0)
 ambient_light_source = 2
 ambient_light_color = Color(0.72549, 0.576471, 0.494118, 1)
@@ -122,7 +122,15 @@ material = ExtResource("5_6ess5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
 
 [node name="Skeleton3D" parent="Player/PlayerModel/Armature" index="0"]
-bones/3/rotation = Quaternion(0.000578633, 0.00323501, 0.00489233, 0.999983)
+bones/1/rotation = Quaternion(0.0284007, 0, 7.29199e-18, 0.999597)
+bones/2/rotation = Quaternion(0.0308202, 0, 7.91321e-18, 0.999525)
+bones/3/rotation = Quaternion(-0.0388933, 0.00810942, 0.012264, 0.999135)
+bones/4/rotation = Quaternion(-2.78864e-08, 0.0324971, 0.999472, 1.1254e-08)
+bones/5/rotation = Quaternion(-0.0489076, 1.19067e-07, 1.55464e-09, 0.998803)
+bones/6/rotation = Quaternion(4.38017e-08, 0.0324971, 0.999472, -1.16808e-08)
+bones/7/rotation = Quaternion(-0.0489076, -1.19067e-07, -1.55463e-09, 0.998803)
+bones/9/position = Vector3(0.703569, -4.62104, -0.0140713)
+bones/11/position = Vector3(-0.703569, -4.62104, -0.0140713)
 
 [node name="bagflap" parent="Player/PlayerModel/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = null

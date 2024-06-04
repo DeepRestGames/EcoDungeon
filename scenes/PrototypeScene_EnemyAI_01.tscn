@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bo1a11i38vuh7"]
 
-[ext_resource type="Texture2D" uid="uid://doadys4u0nwvv" path="res://assets/background/hdri/golf_course_sunrise_2k.hdr" id="1_h7a24"]
+[ext_resource type="Texture2D" uid="uid://dbgonf4pso6vy" path="res://assets/background/skybox/240528_Skybox3.png" id="1_t4fvo"]
 [ext_resource type="PackedScene" uid="uid://bhertfiqp6moh" path="res://assets/3d/environment/bush/bubbly_bushes/bubbly_bush_01/bush_bubbly_01_model.glb" id="2_3cq2b"]
 [ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_bbs5b"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="4_wopoa"]
@@ -8,21 +8,27 @@
 [ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="6_ntm0e"]
 [ext_resource type="PackedScene" uid="uid://btufku1u8vmw" path="res://scenes/EnemyFollow.tscn" id="7_4fenl"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
-panorama = ExtResource("1_h7a24")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4tbx4"]
+panorama = ExtResource("1_t4fvo")
 
-[sub_resource type="Sky" id="Sky_6pnag"]
-sky_material = SubResource("PanoramaSkyMaterial_dka55")
+[sub_resource type="Sky" id="Sky_0jod7"]
+sky_material = SubResource("PanoramaSkyMaterial_4tbx4")
 
-[sub_resource type="Environment" id="Environment_slfb0"]
-background_mode = 1
-background_color = Color(0, 0.517647, 0.760784, 1)
+[sub_resource type="Environment" id="Environment_dmujg"]
+background_mode = 2
+background_color = Color(0.356863, 0.694118, 0.788235, 1)
+background_energy_multiplier = 0.9
 background_canvas_max_layer = 2
-sky = SubResource("Sky_6pnag")
+sky = SubResource("Sky_0jod7")
 sky_rotation = Vector3(0, 2.26893, 0)
-ambient_light_source = 3
-ambient_light_color = Color(0.756863, 0.615686, 0.556863, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.72549, 0.576471, 0.494118, 1)
+ambient_light_sky_contribution = 0.25
+ambient_light_energy = 0.3
+reflected_light_source = 1
 tonemap_mode = 2
+tonemap_exposure = 1.1
+tonemap_white = 0.9
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_yu4ur"]
@@ -51,14 +57,14 @@ size = Vector3(1.74747, 1, 2.57251)
 [node name="Lights" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
-environment = SubResource("Environment_slfb0")
+environment = SubResource("Environment_dmujg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
-transform = Transform3D(-0.547093, -0.724926, 0.418534, 1.47562e-08, 0.499998, 0.866027, -0.837072, 0.473797, -0.273545, 0, 0, 0)
-light_color = Color(0.984314, 0.67451, 0.439216, 1)
-light_energy = 1.5
+transform = Transform3D(-0.547093, -0.724926, 0.418534, 1.47562e-08, 0.499998, 0.866026, -0.837072, 0.473797, -0.273545, 0, 0, 0)
+light_color = Color(0.72549, 0.576471, 0.494118, 1)
+light_energy = 2.2
 shadow_enabled = true
-shadow_blur = 0.0
+shadow_blur = 1.5
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 200.0
 sky_mode = 1
