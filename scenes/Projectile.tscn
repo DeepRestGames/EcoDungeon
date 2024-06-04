@@ -18,7 +18,7 @@ height = 0.5
 
 [node name="Projectile" type="CharacterBody3D"]
 collision_layer = 16
-collision_mask = 4
+collision_mask = 13
 script = ExtResource("1_noppo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

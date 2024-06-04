@@ -36,4 +36,9 @@ script = ExtResource("2_xlqba")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368022, 0)
 mesh = SubResource("TorusMesh_ghhmf")
 
+[node name="FireCooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
 [connection signal="found_enemies" from="WeaponRangeArea" to="." method="_on_weapon_range_area_found_enemies"]

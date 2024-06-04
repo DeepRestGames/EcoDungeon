@@ -363,6 +363,9 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_pk6wu")
 
+[node name="BulletOrigin" type="Node3D" parent="."]
+transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, -0.00188389, 1.02749, 0.409681)
+
 [node name="PlayerModel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188389, 0, 0.0103669)
 
@@ -396,7 +399,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0425719, 0.00856343, 0.0129506, 0.998973)
+bones/3/rotation = Quaternion(0.0267508, 2.84445e-25, 6.86837e-18, 0.999642)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -504,12 +507,6 @@ surface_material_override/0 = ExtResource("3_jh4bb")
 surface_material_override/1 = ExtResource("4_b7ysj")
 surface_material_override/2 = ExtResource("3_ugebt")
 
-[node name="BulletOrigin" type="Node3D" parent="PlayerModel/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5629, 2.81158)
-
-[node name="BulletTo" type="Node3D" parent="PlayerModel/Armature/Skeleton3D/BulletOrigin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-
 [node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
 libraries = {
 "": SubResource("AnimationLibrary_krws2")
@@ -536,11 +533,6 @@ mesh = SubResource("CapsuleMesh_m2k26")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
 near = 0.001
 far = 150.0
-
-[node name="FireCooldown" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-autostart = true
 
 [node name="BaseWeapon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_ls78v")]
 player = NodePath("..")

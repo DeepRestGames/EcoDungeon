@@ -33,11 +33,10 @@ func apply_scaling():
 
 
 func _on_weapon_range_area_found_enemies(enemy_pos):
-	var shoot_origin = player.shoot_from.global_transform.origin
-	
+	var shoot_origin = player.bullet_origin.global_transform.origin
 	# Spawn and shoot bullet
 	var bullet = bullet_instance.instantiate()
 	get_parent().add_child(bullet, true)
 	bullet.global_transform.origin = shoot_origin
 	bullet.look_at(enemy_pos, Vector3.UP)
-	#bullet.add_collision_exception_with(self)
+	fire_cooldown.start()

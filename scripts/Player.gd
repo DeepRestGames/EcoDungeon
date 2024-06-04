@@ -19,6 +19,8 @@ var zoom_direction = 0
 # --- Animation variables ---
 # Rotation
 @onready var player_model = $PlayerModel
+@onready var bullet_origin = $BulletOrigin
+
 var orientation = Transform3D()
 const ROTATION_INTERPOLATE_SPEED = 8
 # Animate 
@@ -28,10 +30,10 @@ enum ANIMATIONS {IDLE, WALK}
 const MOTION_INTERPOLATE_SPEED = 10
 
 # --- Shooting variables ---
-@onready var fire_cooldown = $FireCooldown 
-@onready var shoot_from = player_model.get_node("Armature/Skeleton3D/BulletOrigin")
-@onready var shoot_to = player_model.get_node("Armature/Skeleton3D/BulletOrigin/BulletTo")
-@onready var bullet_instance = preload("res://scenes/Projectile.tscn")
+#@onready var fire_cooldown = $FireCooldown 
+#@onready var shoot_from = player_model.get_node("Armature/Skeleton3D/BulletOrigin")
+#@onready var shoot_to = player_model.get_node("Armature/Skeleton3D/BulletOrigin/BulletTo")
+#@onready var bullet_instance = preload("res://scenes/Projectile.tscn")
 		
 # ------------------------------------
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -61,6 +63,7 @@ func _process(delta):
 		_zoom(delta)
 	
 	# Gradually reset damage cooldown after getting hit
+	# TODO: is this correct here? Use timer instead
 	if damage_cooldown_time_counter > 0:
 		damage_cooldown_time_counter -= delta
 
@@ -99,15 +102,15 @@ func _physics_process(delta):
 		_animate(ANIMATIONS.WALK, delta)
 		
 	# --- Shooting ---
-	if Input.is_action_just_pressed("shoot"):
-		var shoot_origin = shoot_from.global_transform.origin
-		var shoot_dir = shoot_to.global_transform.origin
-		# Spawn and shoot bullet
-		var bullet = bullet_instance.instantiate()
-		get_parent().add_child(bullet, true)
-		bullet.global_transform.origin = shoot_origin
-		bullet.look_at(shoot_dir, Vector3.UP)
-		bullet.add_collision_exception_with(self)
+	#if Input.is_action_just_pressed("shoot"):
+		#var shoot_origin = shoot_from.global_transform.origin
+		#var shoot_dir = shoot_to.global_transform.origin
+		## Spawn and shoot bullet
+		#var bullet = bullet_instance.instantiate()
+		#get_parent().add_child(bullet, true)
+		#bullet.global_transform.origin = shoot_origin
+		#bullet.look_at(shoot_dir, Vector3.UP)
+		#bullet.add_collision_exception_with(self)
 		
 	#if enemies_in_range:
 		#shoot
@@ -129,8 +132,8 @@ func _animate(anim: int, delta := 0.0):
 			var new_blend: float = min(current_blend + delta*MOTION_INTERPOLATE_SPEED, 1)
 			animation_tree["parameters/Idle2Walk/blend_amount"] = new_blend
 
-func _shoot():
-	fire_cooldown.start()
+#func _shoot():
+	#fire_cooldown.start()
 	#sound_effect_shoot.play()
 
 
