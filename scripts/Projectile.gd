@@ -1,19 +1,23 @@
 extends CharacterBody3D
 
-const BULLET_VELOCITY = 20
-const BULLET_DAMAGE = 2
 
-var time_alive = 1.5
+var bullet_velocity: float
+var current_damage: float
+var projectile_lifetime: float
 
 @onready var collision_shape = $CollisionShape3D
 
+func assign_values(speed, dmg, lifetime):
+	bullet_velocity = speed
+	current_damage = dmg
+	projectile_lifetime = lifetime
 
 func _physics_process(delta):
-	time_alive -= delta
-	if time_alive < 0:
+	projectile_lifetime -= delta
+	if projectile_lifetime < 0:
 		destroy()
 	else:
-		var collision = move_and_collide(-delta * BULLET_VELOCITY * transform.basis.z)
+		var collision = move_and_collide(-delta * bullet_velocity * transform.basis.z)
 		if collision:
 			# Get the collider that has triggered collision and perform actions
 			var collider = collision.get_collider()
@@ -23,7 +27,7 @@ func _physics_process(delta):
 			destroy()
 
 func deal_damage(collider: EnemyBase):
-	var damage_value = BULLET_DAMAGE
+	var damage_value = current_damage
 	collider.take_damage(damage_value)
 
 func destroy():

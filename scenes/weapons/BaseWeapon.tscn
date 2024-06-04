@@ -12,7 +12,7 @@ radius = 10.0
 transparency = 3
 alpha_hash_scale = 0.0
 alpha_antialiasing_mode = 0
-albedo_color = Color(0.388235, 1, 1, 0.380392)
+albedo_color = Color(0.396078, 0.635294, 0.494118, 0.380392)
 
 [sub_resource type="TorusMesh" id="TorusMesh_ghhmf"]
 material = SubResource("StandardMaterial3D_0u0sa")
@@ -21,6 +21,8 @@ outer_radius = 10.0
 
 [node name="BaseWeapon" type="Node3D"]
 script = ExtResource("1_ilb8w")
+bullet_velocity = 30.0
+base_damage = 10.0
 
 [node name="WeaponRangeArea" type="Area3D" parent="."]
 collision_layer = 0
