@@ -13,7 +13,9 @@ extends CharacterBody3D
 
 # Combat variables
 @export var max_hp: int = 5
-var current_hp: int = max_hp
+var current_hp: int = max_hp:
+	set(value):
+		current_hp = clamp(value, 0, max_hp)
 const DAMAGE: int = 1
 
 

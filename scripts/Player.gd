@@ -39,7 +39,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Health variables
 @export var max_hp: int = 5
-var current_hp: int = max_hp
+var current_hp: int = max_hp:
+	set(value):
+		current_hp = clamp(value, 0, max_hp)
 
 # Invincibility frames variables
 var damage_cooldown_time: float = 1.5
@@ -106,6 +108,9 @@ func _physics_process(delta):
 		bullet.global_transform.origin = shoot_origin
 		bullet.look_at(shoot_dir, Vector3.UP)
 		bullet.add_collision_exception_with(self)
+		
+	#if enemies_in_range:
+		#shoot
 		
 	move_and_slide()
 
