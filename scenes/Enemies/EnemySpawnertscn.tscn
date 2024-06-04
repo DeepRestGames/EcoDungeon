@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cux2f180gsm40"]
+
+[ext_resource type="Script" path="res://scripts/enemy/EnemySpawner.gd" id="1_nvhfw"]
+
+[sub_resource type="Curve3D" id="Curve3D_8fc5c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 1.5, -20, 0, 0, 0, 0, 0, 0, 15, 1.5, -15, 0, 0, 0, 0, 0, 0, 20, 1.5, 0, 0, 0, 0, 0, 0, 0, 15, 1.5, 15, 0, 0, 0, 0, 0, 0, 0, 1.5, 20, 0, 0, 0, 0, 0, 0, -15, 1.5, 15, 0, 0, 0, 0, 0, 0, -20, 1.5, 0, 0, 0, 0, 0, 0, 0, -15, 1.5, -15, 0, 0, 0, 0, 0, 0, 0, 1.5, -20),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_nvhfw")
+
+[node name="EnemySpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_8fc5c")
+
+[node name="EnemySpawnLocation" type="PathFollow3D" parent="EnemySpawnPath"]
+transform = Transform3D(-0.316227, 0, -0.948683, 0, 1, 0, 0.948683, 0, -0.316227, 0, 1.5, -20)
+
+[node name="EnemySpawnCooldown" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnCooldown" to="." method="_on_enemy_spawn_cooldown_timeout"]

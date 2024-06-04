@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 const BULLET_VELOCITY = 20
+const BULLET_DAMAGE = 2
 
 var time_alive = 1.5
 var hit = false
@@ -8,21 +9,18 @@ var hit = false
 @onready var collision_shape = $CollisionShape3D
 
 
-
-
 func _physics_process(delta):
-	if hit:
-		queue_free()
-		return
 	time_alive -= delta
 	if time_alive < 0:
-		hit = true
-	# TODO: will need collion masks and layers to determine impact
+		destroy()
+	
 	var collision = move_and_collide(-delta * BULLET_VELOCITY * transform.basis.z)
 	if collision:
-		collision_shape.disabled = true
-		hit = true
-	
+		var enemy = collision.get_collider() as EnemyBase
+		if enemy:
+			enemy.take_damage(BULLET_DAMAGE)
+		destroy()
+
 
 func destroy():
 	queue_free()

@@ -37,6 +37,14 @@ const MOTION_INTERPOLATE_SPEED = 10
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+# Health variables
+@export var max_hp: int = 5
+var current_hp: int = max_hp
+
+# Invincibility frames variables
+var damage_cooldown_time: float = 1.5
+var damage_cooldown_time_counter: float
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("zoom_out"):
@@ -49,6 +57,10 @@ func _unhandled_input(event):
 func _process(delta):
 	if zoom_direction != 0:
 		_zoom(delta)
+	
+	# Gradually reset damage cooldown after getting hit
+	if damage_cooldown_time_counter > 0:
+		damage_cooldown_time_counter -= delta
 
 
 func _physics_process(delta):
@@ -140,3 +152,20 @@ func _zoom(delta: float) -> void:
 	if abs(zoom_direction) <= 0.0001:
 		zoom_direction = 0;
 		
+
+
+func take_damage(damage: int):
+	# Prevent damage if a hit was just taken
+	if damage_cooldown_time_counter > 0:
+		return
+
+	current_hp -= damage
+	if current_hp <= 0:
+		death()
+	
+	# Reset damage intake cooldown after a valid hit
+	damage_cooldown_time_counter = damage_cooldown_time
+
+
+func death():
+	queue_free()
