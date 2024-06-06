@@ -1,26 +1,45 @@
 extends CharacterBody3D
 
-const BULLET_VELOCITY = 20
-const BULLET_DAMAGE = 2
 
-var time_alive = 1.5
-var hit = false
+var bullet_velocity: float
+var current_damage: float
+var lifetime_override: float
+var enemy_to_follow: EnemyBase
 
 @onready var collision_shape = $CollisionShape3D
+@onready var life_time: Timer = $Lifetime
 
+func initialize(speed, dmg, lifetime, enemy):
+	bullet_velocity = speed
+	current_damage = dmg
+	enemy_to_follow = enemy
+	lifetime_override = lifetime
+	
+func _ready():
+	life_time.wait_time = lifetime_override
+	life_time.start()
 
 func _physics_process(delta):
-	time_alive -= delta
-	if time_alive < 0:
+	if life_time.is_stopped():
 		destroy()
-	
-	var collision = move_and_collide(-delta * BULLET_VELOCITY * transform.basis.z)
-	if collision:
-		var enemy = collision.get_collider() as EnemyBase
-		if enemy:
-			enemy.take_damage(BULLET_DAMAGE)
-		destroy()
+	else:
+		var collision = move_and_collide(-delta * bullet_velocity * transform.basis.z)
 
+		if collision:
+			# Get the collider that has triggered collision and perform actions
+			var collider = collision.get_collider()
+			if collider is EnemyBase:
+				# Get damage component and round if needed
+				deal_damage(collider)
+			destroy()
+		else:
+	 		# TODO: less homing?
+			if enemy_to_follow != null:
+				look_at(enemy_to_follow.global_position, Vector3.UP)
+
+func deal_damage(collider: EnemyBase):
+	var damage_value = current_damage
+	collider.take_damage(damage_value)
 
 func destroy():
 	queue_free()

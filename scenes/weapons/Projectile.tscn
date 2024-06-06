@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://djnmr5ceovg88"]
 
-[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_noppo"]
+[ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_xhi56"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3uyy1"]
 radius = 0.25
@@ -18,11 +18,15 @@ height = 0.5
 
 [node name="Projectile" type="CharacterBody3D"]
 collision_layer = 16
-collision_mask = 4
-script = ExtResource("1_noppo")
+collision_mask = 13
+script = ExtResource("1_xhi56")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_3uyy1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_q6bo4")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
