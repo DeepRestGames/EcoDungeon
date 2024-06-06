@@ -9,7 +9,7 @@ var enemy_to_follow: EnemyBase
 @onready var collision_shape = $CollisionShape3D
 @onready var life_time: Timer = $Lifetime
 
-func assign_values(speed, dmg, lifetime, enemy):
+func initialize(speed, dmg, lifetime, enemy):
 	bullet_velocity = speed
 	current_damage = dmg
 	enemy_to_follow = enemy
@@ -20,7 +20,6 @@ func _ready():
 	life_time.start()
 
 func _physics_process(delta):
-	#projectile_lifetime -= delta
 	if life_time.is_stopped():
 		destroy()
 	else:
