@@ -22,7 +22,7 @@ outer_radius = 10.0
 [node name="BaseWeapon" type="Node3D"]
 script = ExtResource("1_ilb8w")
 bullet_velocity = 30.0
-base_damage = 10.0
+weapon_range = 10.0
 
 [node name="WeaponRangeArea" type="Area3D" parent="."]
 collision_layer = 0
