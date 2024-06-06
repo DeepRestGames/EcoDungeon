@@ -3,20 +3,25 @@ extends CharacterBody3D
 
 var bullet_velocity: float
 var current_damage: float
-var projectile_lifetime: float
+var lifetime_override: float
 var enemy_to_follow: EnemyBase
 
 @onready var collision_shape = $CollisionShape3D
+@onready var life_time: Timer = $Lifetime
 
 func assign_values(speed, dmg, lifetime, enemy):
 	bullet_velocity = speed
 	current_damage = dmg
-	projectile_lifetime = lifetime
 	enemy_to_follow = enemy
+	lifetime_override = lifetime
+	
+func _ready():
+	life_time.wait_time = lifetime_override
+	life_time.start()
 
 func _physics_process(delta):
-	projectile_lifetime -= delta
-	if projectile_lifetime < 0:
+	#projectile_lifetime -= delta
+	if life_time.is_stopped():
 		destroy()
 	else:
 		var collision = move_and_collide(-delta * bullet_velocity * transform.basis.z)

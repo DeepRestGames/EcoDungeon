@@ -43,9 +43,6 @@ var current_hp: int = max_hp:
 # Invincibility frames variables
 @onready var invincibility_frames_timer = $InvincibilityFramesTimer
 
-#var damage_cooldown_time: float = 1.5
-#var damage_cooldown_time_counter: float
-
 
 func _unhandled_input(event):
 	if event.is_action_pressed("zoom_out"):
@@ -58,7 +55,6 @@ func _unhandled_input(event):
 func _process(delta):
 	if zoom_direction != 0:
 		_zoom(delta)
-	#invincibility_frames_timer.start()
 	
 
 func _physics_process(delta):
@@ -142,7 +138,6 @@ func take_damage(damage: int):
 	if invincibility_frames_timer.is_stopped():
 		current_hp -= damage
 		invincibility_frames_timer.start()
-		print("OOF")
 	if current_hp <= 0:
 		death()
 
