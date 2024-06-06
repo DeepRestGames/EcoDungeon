@@ -9,6 +9,6 @@ func _physics_process(_delta):
 	if enemies_in_range.size() > 0:
 		# TODO: specify which one; closest?
 		var target_enemy = enemies_in_range.front()
-		var closest_enemy = target_enemy.global_position
+		#var closest_enemy = 
 		#look_at(target_enemy.global_position)
-		found_enemies.emit(closest_enemy)
+		found_enemies.emit(target_enemy)

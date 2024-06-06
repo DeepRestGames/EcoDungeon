@@ -31,13 +31,14 @@ func apply_scaling():
 	pass # TODO: to scale damage of projectiles
 
 
-func _on_weapon_range_area_found_enemies(enemy_pos):
+func _on_weapon_range_area_found_enemies(enemy):
 	if fire_cooldown.is_stopped():
 		var shoot_origin = player.bullet_origin.global_transform.origin
 		# Spawn and shoot bullet
 		var bullet = bullet_instance.instantiate()
-		bullet.assign_values(bullet_velocity, current_damage, projectile_lifetime)
+		# TODO: assign enemy instance instead
+		bullet.assign_values(bullet_velocity, current_damage, projectile_lifetime, enemy)
 		get_parent().add_child(bullet, true)
 		bullet.global_transform.origin = shoot_origin
-		bullet.look_at(enemy_pos, Vector3.UP)
+		bullet.look_at(enemy.global_position, Vector3.UP)
 		fire_cooldown.start()
