@@ -41,8 +41,10 @@ var current_hp: int = max_hp:
 		current_hp = clamp(value, 0, max_hp)
 
 # Invincibility frames variables
-var damage_cooldown_time: float = 1.5
-var damage_cooldown_time_counter: float
+@onready var invincibility_frames_timer = $InvincibilityFramesTimer
+
+#var damage_cooldown_time: float = 1.5
+#var damage_cooldown_time_counter: float
 
 
 func _unhandled_input(event):
@@ -56,12 +58,8 @@ func _unhandled_input(event):
 func _process(delta):
 	if zoom_direction != 0:
 		_zoom(delta)
+	#invincibility_frames_timer.start()
 	
-	# Gradually reset damage cooldown after getting hit
-	# TODO: is this correct here? Use timer instead
-	if damage_cooldown_time_counter > 0:
-		damage_cooldown_time_counter -= delta
-
 
 func _physics_process(delta):
 	# Add the gravity
@@ -141,15 +139,12 @@ func _zoom(delta: float) -> void:
 
 func take_damage(damage: int):
 	# Prevent damage if a hit was just taken
-	if damage_cooldown_time_counter > 0:
-		return
-
-	current_hp -= damage
+	if invincibility_frames_timer.is_stopped():
+		current_hp -= damage
+		invincibility_frames_timer.start()
+		print("OOF")
 	if current_hp <= 0:
 		death()
-	
-	# Reset damage intake cooldown after a valid hit
-	damage_cooldown_time_counter = damage_cooldown_time
 
 
 func death():
