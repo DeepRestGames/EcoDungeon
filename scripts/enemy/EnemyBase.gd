@@ -11,6 +11,7 @@ extends CharacterBody3D
 @onready var player: Player = $"../../Player"
 @export var SPEED: float = 3.0
 
+@onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 # Combat variables
 @export var max_hp: int = 5
 var current_hp: int = max_hp:
@@ -35,11 +36,19 @@ func _physics_process(_delta):
 		player.take_damage(DAMAGE)
 
 func take_damage(damage: int):
-	current_hp -= damage
+	current_hp -= damage	
+	show_damage(damage)
 	
 	if current_hp <= 0:
 		_death()
 
+func show_damage(damage: float):
+	var damage_floating_label = damage_number_3d_template.instantiate()
+	var pos = global_position
+	var height = 10
+	var spread = 10
+	add_child(damage_floating_label, true)
+	damage_floating_label.set_values_and_animate(str(damage), pos, height, spread)
 
 func _death():
 	queue_free()
