@@ -47,7 +47,8 @@ func show_damage(damage: float):
 	var pos = global_position
 	var height = 10
 	var spread = 10
-	add_child(damage_floating_label, true)
+	var level_root =  get_tree().get_root()
+	level_root.add_child(damage_floating_label, true)
 	damage_floating_label.set_values_and_animate(str(damage), pos, height, spread)
 
 func _death():

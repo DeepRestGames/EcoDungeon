@@ -106,6 +106,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.260322, 0)
 
 [node name="Label3D" type="Label3D" parent="AnimationPlayer/LabelContainer"]
+billboard = 1
 no_depth_test = true
 outline_modulate = Color(0, 0, 0, 0)
 text = "123"
