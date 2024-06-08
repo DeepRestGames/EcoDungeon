@@ -29,6 +29,11 @@ enum ANIMATIONS {IDLE, WALK}
 @export var current_animation := ANIMATIONS.IDLE
 @onready var animation_tree = $PlayerModel/AnimationTree
 const MOTION_INTERPOLATE_SPEED = 10
+
+# Damage number variables
+@onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
+@export var dmg_label_height: float = 10
+@export var dmg_label_spread: float = 10
 		
 # ------------------------------------
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -136,10 +141,19 @@ func _zoom(delta: float) -> void:
 func take_damage(damage: int):
 	# Prevent damage if a hit was just taken
 	if invincibility_frames_timer.is_stopped():
+		show_damage(damage)
 		current_hp -= damage
 		invincibility_frames_timer.start()
 	if current_hp <= 0:
 		death()
+
+func show_damage(damage: float):
+	# TODO/NOTE: this is identical in enemy_base
+	var damage_floating_label = damage_number_3d_template.instantiate()
+	var pos = global_position
+	var level_root =  get_tree().get_root()
+	level_root.add_child(damage_floating_label, true)
+	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, Color(255,0,0,255))
 
 
 func death():

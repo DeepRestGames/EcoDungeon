@@ -6,10 +6,13 @@ extends Node3D
 @onready var animation_player = $AnimationPlayer
 
 
-func set_values_and_animate(value: String, start_pos: Vector3, height: float, spread: float) -> void:
+func set_values_and_animate(value: String, start_pos: Vector3, height: float, spread: float, color = Color(255,255,255,255)) -> void:
 	label_3d.text = value
+	
+	label_3d.modulate = color
+	
 	animation_player.play("Rise and Fade")
-	global_position = start_pos # TODO??
+	global_position = start_pos
 	
 	var tween = get_tree().create_tween()
 	var end_pos = Vector3(randf_range(-spread, spread), height, randf_range(-spread, spread)) + start_pos
