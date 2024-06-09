@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo1a11i38vuh7"]
+[gd_scene load_steps=14 format=3 uid="uid://bo1a11i38vuh7"]
 
-[ext_resource type="Texture2D" uid="uid://doadys4u0nwvv" path="res://assets/background/hdri/golf_course_sunrise_2k.hdr" id="1_h7a24"]
+[ext_resource type="Texture2D" uid="uid://dbgonf4pso6vy" path="res://assets/background/skybox/240528_Skybox3.png" id="1_h7a24"]
 [ext_resource type="PackedScene" uid="uid://bhertfiqp6moh" path="res://assets/3d/environment/bush/bubbly_bushes/bubbly_bush_01/bush_bubbly_01_model.glb" id="2_3cq2b"]
 [ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_bbs5b"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="4_wopoa"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="5_sded1"]
 [ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="6_ntm0e"]
-[ext_resource type="PackedScene" uid="uid://btufku1u8vmw" path="res://scenes/EnemyFollow.tscn" id="7_4fenl"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
 panorama = ExtResource("1_h7a24")
@@ -155,7 +154,3 @@ transform = Transform3D(1.80408, 0, 0, 0, 1, 0, 0, 0, 2.0683, 5.511, 0.499999, 3
 
 [node name="Player" parent="." instance=ExtResource("6_ntm0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
-
-[node name="EnemyFollow" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_4fenl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48209, 1.5, 5.86624)
-player = NodePath("../Player")

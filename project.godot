@@ -70,6 +70,11 @@ shoot={
 3d_physics/layer_3="Enemies"
 3d_physics/layer_4="Obstacles"
 3d_physics/layer_5="Projectiles"
+
+[physics]
+
+common/physics_ticks_per_second=300
+common/max_physics_steps_per_frame=30
 3d/physics_engine="JoltPhysics3D"
 
 [shader_globals]

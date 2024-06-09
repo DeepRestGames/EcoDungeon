@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bebiuwit13drx"]
+[gd_scene load_steps=31 format=3 uid="uid://bebiuwit13drx"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
 [ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/ZahirWhite.tres" id="3_jh4bb"]
@@ -231,6 +231,27 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_risga"]
+height = 0.8
+radius = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4en2v"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_okx8a"]
+height = 0.2
+radius = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m6ffc"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k408r"]
+albedo_color = Color(0.203922, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_m3dxs"]
 resource_name = "ArmatureAction"
 length = 2.5
@@ -395,7 +416,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(0.0264159, 4.1416e-05, 6.26328e-05, 0.999651)
+bones/3/rotation = Quaternion(0.023186, 0.000440771, 0.000666581, 0.999731)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -509,6 +530,112 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5629, 2.81158)
 [node name="BulletTo" type="Node3D" parent="PlayerModel/Armature/Skeleton3D/BulletOrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
+[node name="MagicStaffJolt" type="Node3D" parent="PlayerModel/Armature/Skeleton3D"]
+transform = Transform3D(7.04101, 0, 0, 0, 7.04101, 0, 0, 0, 7.04101, -2.29381, 0.550688, 5.80289)
+
+[node name="BaseStaff" type="StaticBody3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/BaseStaff"]
+shape = SubResource("CylinderShape3D_risga")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/BaseStaff/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_4en2v")
+skeleton = NodePath("../..")
+
+[node name="Modifier" type="RigidBody3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+transform = Transform3D(1, 8.94123e-08, -2.794e-09, 0, 0.999999, 4.65661e-09, 0, 1.86264e-09, 0.999999, 0.000180751, 0.505297, 0.100511)
+constant_torque = Vector3(50, 50, 50)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier"]
+shape = SubResource("CylinderShape3D_okx8a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_m6ffc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k408r")
+
+[node name="Modifier2" type="RigidBody3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+transform = Transform3D(1, 5.96099e-08, -3.72532e-09, 0, 0.999999, 6.51926e-09, 0, 2.79397e-09, 0.999999, 0.000208348, 0.709919, 0.0981813)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier2"]
+shape = SubResource("CylinderShape3D_okx8a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier2/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_m6ffc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k408r")
+
+[node name="Modifier3" type="RigidBody3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+transform = Transform3D(1, 5.96099e-08, -3.72532e-09, 0, 0.999999, 6.51926e-09, 0, 2.79397e-09, 0.999999, 0.000208348, 0.923286, 0.0981814)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier3"]
+shape = SubResource("CylinderShape3D_okx8a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier3/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_m6ffc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k408r")
+
+[node name="Modifier4" type="RigidBody3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+transform = Transform3D(1, 5.96099e-08, -3.72532e-09, 0, 0.999999, 6.51926e-09, 0, 2.79397e-09, 0.999999, 0.000208348, 1.13304, 0.0981814)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier4"]
+shape = SubResource("CylinderShape3D_okx8a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt/Modifier4/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_m6ffc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_k408r")
+
+[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+angular_limit_x/upper = 0.0872665
+angular_limit_x/lower = -0.0872665
+angular_limit_y/upper = 0.0872665
+angular_limit_y/lower = -0.0872665
+angular_limit_z/upper = 0.0872665
+angular_limit_z/lower = -0.0872665
+node_a = NodePath("../BaseStaff")
+node_b = NodePath("../Modifier")
+exclude_nodes_from_collision = false
+transform = Transform3D(1, 5.96099e-08, -2.794e-09, 0, 0.999999, 3.72529e-09, 0, 1.86264e-09, 0.999999, 0.000133604, 0.405152, 0.0955074)
+
+[node name="JoltGeneric6DOFJoint3D2" type="JoltGeneric6DOFJoint3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+angular_limit_x/upper = 0.0872665
+angular_limit_x/lower = -0.0872665
+angular_limit_y/upper = 0.0872665
+angular_limit_y/lower = -0.0872665
+angular_limit_z/upper = 0.0872665
+angular_limit_z/lower = -0.0872665
+node_a = NodePath("../Modifier")
+node_b = NodePath("../Modifier2")
+exclude_nodes_from_collision = false
+transform = Transform3D(1, 1.49017e-07, -4.19098e-09, 0, 0.999999, 9.31323e-09, 0, 3.72529e-09, 0.999999, 0.000166625, 0.608319, 0.0931953)
+
+[node name="JoltGeneric6DOFJoint3D3" type="JoltGeneric6DOFJoint3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+angular_limit_x/upper = 0.0872665
+angular_limit_x/lower = -0.0872665
+angular_limit_y/upper = 0.0872665
+angular_limit_y/lower = -0.0872665
+angular_limit_z/upper = 0.0872665
+angular_limit_z/lower = -0.0872665
+node_a = NodePath("../Modifier2")
+node_b = NodePath("../Modifier3")
+exclude_nodes_from_collision = false
+transform = Transform3D(1, 1.49017e-07, -4.19098e-09, 0, 0.999999, 9.31323e-09, 0, 3.72529e-09, 0.999999, 0.000166625, 0.816261, 0.0931953)
+
+[node name="JoltGeneric6DOFJoint3D4" type="JoltGeneric6DOFJoint3D" parent="PlayerModel/Armature/Skeleton3D/MagicStaffJolt"]
+angular_limit_x/upper = 0.0872665
+angular_limit_x/lower = -0.0872665
+angular_limit_y/upper = 0.0872665
+angular_limit_y/lower = -0.0872665
+angular_limit_z/upper = 0.0872665
+angular_limit_z/lower = -0.0872665
+node_a = NodePath("../Modifier3")
+node_b = NodePath("../Modifier4")
+exclude_nodes_from_collision = false
+transform = Transform3D(1, 1.49017e-07, -4.19098e-09, 0, 0.999999, 9.31323e-09, 0, 3.72529e-09, 0.999999, 0.000166625, 1.02782, 0.0931953)
+
 [node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
 libraries = {
 "": SubResource("AnimationLibrary_krws2")
@@ -532,7 +659,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_m2k26")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3.40748, 2.77962)
 near = 0.001
 far = 150.0
 
