@@ -1,10 +1,9 @@
 class_name Player
 extends CharacterBody3D
 
-const SPEED = 10.0
-const JUMP_VELOCITY = 5.0
-
-# --- Camera variables ---
+# ------------------------------------------
+# ------------ Camera variables ------------
+# ------------------------------------------
 @onready var camera = $Camera3D
 @export_range(0,1000) var min_zoom: int = 5
 @export_range(0,1000) var max_zoom: int = 20
@@ -16,38 +15,50 @@ const JUMP_VELOCITY = 5.0
 var current_zoom = 10
 var current_rotation = -45
 var zoom_direction = 0
-# --- Animation variables ---
-# Rotation
-@onready var player_model = $PlayerModel
-# --- Projectile origin ---
-@onready var bullet_origin = $BulletOrigin
 
+# -------------------------------------------
+# ---------------- ANIMATION ----------------
+# -------------------------------------------
+@onready var player_model = $PlayerModel
+# Rotation and interpolation for facing
 var orientation = Transform3D()
 const ROTATION_INTERPOLATE_SPEED = 8
-# Animate 
+# Animation for various states
 enum ANIMATIONS {IDLE, WALK}
 @export var current_animation := ANIMATIONS.IDLE
 @onready var animation_tree = $PlayerModel/AnimationTree
 const MOTION_INTERPOLATE_SPEED = 10
 
+# --------------------------------------------
+# ---------------- STATISTICS ----------------
+# --------------------------------------------
 # Damage number variables
 @onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 @export var dmg_label_height: float = 10
 @export var dmg_label_spread: float = 10
-		
-# ------------------------------------
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 # Health variables
 @export var max_hp: int = 5
 var current_hp: int = max_hp:
 	set(value):
 		current_hp = clamp(value, 0, max_hp)
 
+# --- Experience / level up ---
+@onready var player_experience = $PlayerExperience
+
 # Invincibility frames variables
 @onready var invincibility_frames_timer = $InvincibilityFramesTimer
 
+# ---------------------------------------------
+# ---------------- ENVIRONMENT ----------------
+# ---------------------------------------------
+var SPEED: float = 10.0
+const JUMP_VELOCITY: float = 5.0 # TODO: should probably remove jump
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var bullet_origin = $BulletOrigin
+
+# ****************************************************************************
+# ****************************************************************************
+# ****************************************************************************
 
 func _unhandled_input(event):
 	if event.is_action_pressed("zoom_out"):
@@ -135,8 +146,6 @@ func _zoom(delta: float) -> void:
 	zoom_direction *= zoom_speed_damp
 	if abs(zoom_direction) <= 0.0001:
 		zoom_direction = 0;
-		
-
 
 func take_damage(damage: int):
 	# Prevent damage if a hit was just taken

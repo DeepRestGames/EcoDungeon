@@ -1,12 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://bebiuwit13drx"]
+[gd_scene load_steps=28 format=3 uid="uid://bebiuwit13drx"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
+[ext_resource type="Script" path="res://scripts/Player/Player.gd" id="1_pk6wu"]
 [ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/ZahirWhite.tres" id="3_jh4bb"]
 [ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/ZahirBrown.tres" id="3_ugebt"]
 [ext_resource type="Material" uid="uid://1swa15erc0ug" path="res://assets/3d/zahir/materials/ZahirTeal.tres" id="4_b7ysj"]
 [ext_resource type="Animation" uid="uid://cwul2vdvsod7p" path="res://assets/3d/zahir/animations/idle.res" id="5_68od8"]
 [ext_resource type="Animation" uid="uid://d3i55dprcwkdy" path="res://assets/3d/zahir/animations/walk.res" id="6_87cuf"]
 [ext_resource type="PackedScene" uid="uid://dkgsosm4qwsbf" path="res://scenes/weapons/BaseWeapon.tscn" id="7_ls78v"]
+[ext_resource type="Script" path="res://scripts/Player/PlayerExperience.gd" id="8_3yik5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wjtg4"]
 resource_name = "240519_Zahir_04_Cube_005"
@@ -360,7 +361,7 @@ material = SubResource("StandardMaterial3D_4lcei")
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_pk6wu")
 
 [node name="BulletOrigin" type="Node3D" parent="."]
@@ -399,7 +400,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0337303, 0.00747215, 0.0113002, 0.999339)
+bones/3/rotation = Quaternion(0.0267508, 2.84445e-25, 6.86837e-18, 0.999642)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -541,3 +542,6 @@ base_damage = 1.0
 [node name="InvincibilityFramesTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="PlayerExperience" type="Node" parent="."]
+script = ExtResource("8_3yik5")

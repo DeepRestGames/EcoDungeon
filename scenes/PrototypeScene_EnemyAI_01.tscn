@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_bbs5b"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="4_wopoa"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="5_sded1"]
-[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="6_ntm0e"]
+[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/player/Player.tscn" id="6_ntm0e"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySpawner.gd" id="7_cmxaw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
