@@ -46,7 +46,7 @@ func take_damage(damage: int):
 		_death()
 
 func show_damage(damage: float):
-	# TODO: this is identical in player.
+	# TODO/NOTE: this is identical in player.
 	var damage_floating_label = damage_number_3d_template.instantiate()
 	var pos = global_position
 	var level_root =  get_tree().get_root()
