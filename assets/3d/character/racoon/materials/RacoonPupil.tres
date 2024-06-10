@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cu5msbrg2bi6l"]
+
+[ext_resource type="Shader" path="res://assets/shaders/CelShader.gdshader" id="1_vjqqw"]
+
+[resource]
+resource_name = "RacoonPupil"
+render_priority = 0
+shader = ExtResource("1_vjqqw")
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/specular = Color(1, 1, 1, 0.501961)
+shader_parameter/fresnel = Color(1, 1, 1, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
