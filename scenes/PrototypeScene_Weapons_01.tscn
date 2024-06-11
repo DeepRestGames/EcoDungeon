@@ -161,7 +161,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5966, 3.931)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20215, 1.5966, 3.931)
 
 [node name="XpPickup3" parent="Xps" instance=ExtResource("8_dgl7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5966, 5.18745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5966, 4.52971)
 
 [node name="XpPickup4" parent="Xps" instance=ExtResource("8_dgl7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56137, 1.5966, 5.18745)

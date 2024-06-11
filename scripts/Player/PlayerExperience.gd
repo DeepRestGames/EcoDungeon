@@ -1,5 +1,5 @@
 class_name PlayerExperience
-extends Node
+extends Node3D
 
 # Note: To balance
 const base_value: float = 100.0

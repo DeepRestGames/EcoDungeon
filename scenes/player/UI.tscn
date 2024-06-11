@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=17 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
 [ext_resource type="Texture2D" uid="uid://b44kslvsdke5r" path="res://assets/2d/icons/fire.png" id="2_4swaq"]
@@ -26,6 +26,28 @@ default_font_size = 36
 
 [sub_resource type="Theme" id="Theme_mh1ex"]
 default_font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekq8l"]
+bg_color = Color(0.415686, 0.0666667, 0.596078, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xivap"]
+bg_color = Color(0.65098, 0.121569, 0.654902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -114,9 +136,10 @@ theme = SubResource("Theme_xnxo0")
 text = "Level 1"
 
 [node name="PowerUpMenu" type="PopupMenu" parent="."]
-title = "Choose your power!"
+mode = 3
+title = "PowerUp"
 initial_position = 1
-size = Vector2i(351, 368)
+size = Vector2i(364, 380)
 visible = true
 always_on_top = true
 theme = SubResource("Theme_mh1ex")
@@ -126,6 +149,8 @@ theme_override_constants/outline_size = 0
 theme_override_constants/item_start_padding = 20
 theme_override_constants/item_end_padding = 52
 theme_override_constants/icon_max_width = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekq8l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xivap")
 item_count = 4
 item_0/text = "Blasting fire"
 item_0/icon = ExtResource("2_4swaq")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfikpkwj7l7xs"]
+[gd_scene load_steps=7 format=3 uid="uid://cfikpkwj7l7xs"]
 
 [ext_resource type="Script" path="res://scripts/objects/XpPickup.gd" id="1_2ajwi"]
 [ext_resource type="Shader" path="res://assets/shaders/CelShader.gdshader" id="2_diwp4"]
@@ -7,7 +7,11 @@
 height = 0.2
 radius = 0.2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aue2"]
+albedo_color = Color(1, 1, 1, 0.329412)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_fmdr5"]
+material = SubResource("StandardMaterial3D_3aue2")
 top_radius = 0.2
 bottom_radius = 0.2
 height = 0.2
@@ -24,15 +28,15 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [node name="XpPickup" type="Area3D"]
-collision_layer = 8
+collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_2ajwi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PickupAreaCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_rh6kl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="DebugArea" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_fmdr5")
 surface_material_override/0 = SubResource("ShaderMaterial_4pkx5")

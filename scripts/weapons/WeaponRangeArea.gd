@@ -19,8 +19,5 @@ func _physics_process(_delta):
 	var enemies_in_range: Array[Node3D] = get_overlapping_bodies()
 	# If there are
 	if enemies_in_range.size() > 0:
-		# TODO: specify which one; closest?
 		var target_enemy = closest_enemy(enemies_in_range)
-		#var closest_enemy = 
-		#look_at(target_enemy.global_position)
 		found_enemies.emit(target_enemy)
