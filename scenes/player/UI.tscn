@@ -1,6 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=15 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
+[ext_resource type="Texture2D" uid="uid://b44kslvsdke5r" path="res://assets/2d/icons/fire.png" id="2_4swaq"]
+[ext_resource type="Script" path="res://scripts/Player/PowerUpMenu.gd" id="2_tqs0n"]
+[ext_resource type="Texture2D" uid="uid://byl8l5qs0ovnt" path="res://assets/2d/icons/water.png" id="3_jiahj"]
+[ext_resource type="Texture2D" uid="uid://dbp1v1uln8ymc" path="res://assets/2d/icons/earth.png" id="4_kmomu"]
+[ext_resource type="Texture2D" uid="uid://dhs8cp746bg40" path="res://assets/2d/icons/wind.png" id="5_8tnuf"]
 
 [sub_resource type="Theme" id="Theme_4cvmb"]
 default_font_size = 36
@@ -17,6 +22,9 @@ gradient = SubResource("Gradient_ul203")
 [sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
 
 [sub_resource type="Theme" id="Theme_xnxo0"]
+default_font_size = 36
+
+[sub_resource type="Theme" id="Theme_mh1ex"]
 default_font_size = 36
 
 [node name="UI" type="Control"]
@@ -104,3 +112,33 @@ offset_bottom = 23.0
 grow_horizontal = 2
 theme = SubResource("Theme_xnxo0")
 text = "Level 1"
+
+[node name="PowerUpMenu" type="PopupMenu" parent="."]
+title = "Choose your power!"
+initial_position = 1
+size = Vector2i(351, 368)
+visible = true
+always_on_top = true
+theme = SubResource("Theme_mh1ex")
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 40
+theme_override_constants/outline_size = 0
+theme_override_constants/item_start_padding = 20
+theme_override_constants/item_end_padding = 52
+theme_override_constants/icon_max_width = 32
+item_count = 4
+item_0/text = "Blasting fire"
+item_0/icon = ExtResource("2_4swaq")
+item_0/id = 0
+item_1/text = "Wet Water"
+item_1/icon = ExtResource("3_jiahj")
+item_1/id = 1
+item_2/text = "Soiled Earth"
+item_2/icon = ExtResource("4_kmomu")
+item_2/id = 2
+item_3/text = "Gust of Wind"
+item_3/icon = ExtResource("5_8tnuf")
+item_3/id = 3
+script = ExtResource("2_tqs0n")
+
+[connection signal="id_pressed" from="PowerUpMenu" to="." method="_on_power_up_menu_id_pressed"]
