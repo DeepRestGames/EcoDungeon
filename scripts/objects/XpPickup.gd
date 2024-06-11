@@ -1,10 +1,9 @@
 extends Area3D
 
 
-const XP_GRANTED: float = 10
-#@onready var player_experience = $PlayerExperience
+const XP_GRANTED: float = 50
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	rotate_y(deg_to_rad(3))
 	
 func _on_body_entered(body):

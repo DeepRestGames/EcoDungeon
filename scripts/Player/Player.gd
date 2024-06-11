@@ -147,6 +147,8 @@ func _zoom(delta: float) -> void:
 	if abs(zoom_direction) <= 0.0001:
 		zoom_direction = 0;
 
+signal health_change(hp)
+
 func take_damage(damage: int):
 	# Prevent damage if a hit was just taken
 	if invincibility_frames_timer.is_stopped():
@@ -155,6 +157,7 @@ func take_damage(damage: int):
 		invincibility_frames_timer.start()
 	if current_hp <= 0:
 		death()
+	health_change.emit(current_hp)
 
 func show_damage(damage: float):
 	# TODO/NOTE: this is identical in enemy_base

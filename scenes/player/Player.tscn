@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://bebiuwit13drx"]
+[gd_scene load_steps=29 format=3 uid="uid://bebiuwit13drx"]
 
 [ext_resource type="Script" path="res://scripts/Player/Player.gd" id="1_pk6wu"]
+[ext_resource type="PackedScene" uid="uid://bu5laid0g01qp" path="res://scenes/player/UI.tscn" id="2_tip52"]
 [ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/ZahirWhite.tres" id="3_jh4bb"]
 [ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/ZahirBrown.tres" id="3_ugebt"]
 [ext_resource type="Material" uid="uid://1swa15erc0ug" path="res://assets/3d/zahir/materials/ZahirTeal.tres" id="4_b7ysj"]
@@ -545,3 +546,10 @@ one_shot = true
 
 [node name="PlayerExperience" type="Node" parent="."]
 script = ExtResource("8_3yik5")
+
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_tip52")]
+player = NodePath("..")
+
+[connection signal="health_change" from="." to="UI" method="_on_player_health_change"]
+[connection signal="level_up" from="PlayerExperience" to="UI" method="_on_player_experience_level_up"]
+[connection signal="xp_change" from="PlayerExperience" to="UI" method="_on_player_experience_xp_change"]

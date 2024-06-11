@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bu5laid0g01qp"]
+
+[ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
+
+[sub_resource type="Theme" id="Theme_4cvmb"]
+default_font_size = 36
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
+
+[sub_resource type="Gradient" id="Gradient_ul203"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ptawk"]
+gradient = SubResource("Gradient_ul203")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e7m4a"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
+
+[sub_resource type="Theme" id="Theme_xnxo0"]
+default_font_size = 36
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 17.0
+offset_right = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sghsl")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+modulate = Color(0, 0.72549, 0.270588, 1)
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 70.0
+theme = SubResource("Theme_4cvmb")
+max_value = 5.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_e72mo")
+texture_progress = SubResource("GradientTexture1D_ptawk")
+tint_under = Color(0.294118, 0.796078, 0.466667, 0.564706)
+
+[node name="Experience" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme = SubResource("Theme_4cvmb")
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_e7m4a")
+texture_progress = SubResource("CanvasTexture_b3tfa")
+tint_under = Color(0.772549, 0.792157, 0.419608, 0.360784)
+tint_progress = Color(0.807843, 0.745098, 0.282353, 1)
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = SubResource("Theme_xnxo0")
+text = "Level 1"

@@ -155,6 +155,12 @@ autostart = true
 [node name="Xps" type="Node" parent="."]
 
 [node name="XpPickup" parent="Xps" instance=ExtResource("8_dgl7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39393, 3.931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5966, 3.931)
+
+[node name="XpPickup2" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20215, 1.5966, 3.931)
+
+[node name="XpPickup3" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5966, 5.18745)
 
 [connection signal="timeout" from="Player/EnemySpawner/EnemySpawnCooldown" to="Player/EnemySpawner" method="_on_enemy_spawn_cooldown_timeout"]
