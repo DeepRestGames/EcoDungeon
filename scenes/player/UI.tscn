@@ -44,6 +44,23 @@ texture_under = SubResource("CanvasTexture_e72mo")
 texture_progress = SubResource("GradientTexture1D_ptawk")
 tint_under = Color(0.294118, 0.796078, 0.466667, 0.564706)
 
+[node name="HealthLabel" type="Label" parent="Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Experience" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -58,6 +75,23 @@ texture_under = SubResource("CanvasTexture_e7m4a")
 texture_progress = SubResource("CanvasTexture_b3tfa")
 tint_under = Color(0.772549, 0.792157, 0.419608, 0.360784)
 tint_progress = Color(0.807843, 0.745098, 0.282353, 1)
+
+[node name="XpLabel" type="Label" parent="Experience"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "XP: "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelLabel" type="Label" parent="."]
 layout_mode = 1

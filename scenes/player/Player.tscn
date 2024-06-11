@@ -365,6 +365,9 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_pk6wu")
 
+[node name="PlayerExperience" type="Node" parent="."]
+script = ExtResource("8_3yik5")
+
 [node name="BulletOrigin" type="Node3D" parent="."]
 transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, -0.00188389, 1.02749, 0.409681)
 
@@ -544,11 +547,9 @@ base_damage = 1.0
 wait_time = 0.5
 one_shot = true
 
-[node name="PlayerExperience" type="Node" parent="."]
-script = ExtResource("8_3yik5")
-
-[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_tip52")]
+[node name="UI" parent="." node_paths=PackedStringArray("player", "player_xp") instance=ExtResource("2_tip52")]
 player = NodePath("..")
+player_xp = NodePath("../PlayerExperience")
 
 [connection signal="health_change" from="." to="UI" method="_on_player_health_change"]
 [connection signal="level_up" from="PlayerExperience" to="UI" method="_on_player_experience_level_up"]
