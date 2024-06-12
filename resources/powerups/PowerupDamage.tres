@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource("1_a02b8")
-fire_cooldown_modifier_value = 2.0
-fire_cooldown_modifier_type = 2
+fire_cooldown_modifier_value = 0.0
+fire_cooldown_modifier_type = 0
 projectile_lifetime_modifier_value = 0.0
 projectile_lifetime_modifier_type = 0
 projectile_velocity_modifier_value = 0.0
 projectile_velocity_modifier_type = 0
 range_modifier_value = 0.0
 range_modifier_type = 0
-damage_modifier_value = 3.0
+damage_modifier_value = 0.5
 damage_modifier_type = 0

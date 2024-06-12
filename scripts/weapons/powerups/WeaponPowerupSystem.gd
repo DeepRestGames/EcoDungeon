@@ -27,11 +27,11 @@ func add_powerup(powerup: WeaponPowerup):
 	_apply_powerup_modifiers(powerup)
 	
 	print("Added new powerup! New stats:\n")
-	print("Fire cooldown: " + str(base_weapon.fire_cooldown))
+	print("Damage: " + str(base_weapon.current_damage))
 	print("Projectile lifetime: " + str(base_weapon.projectile_lifetime))
 	print("Projectile velocity: " + str(base_weapon.projectile_velocity))
 	print("Range: " + str(base_weapon.weapon_range))
-	print("Damage: " + str(base_weapon.current_damage))
+	print("Fire cooldown: " + str(base_weapon.fire_cooldown))
 	print("-----------------------------------------------------------")
 
 

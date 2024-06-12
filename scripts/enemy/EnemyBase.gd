@@ -14,11 +14,11 @@ extends CharacterBody3D
 @onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 @onready var xp_shard_template = preload("res://scenes/objects/XpPickup.tscn")
 # Combat variables
-@export var max_hp: int = 5
-var current_hp: int = max_hp:
+@export var max_hp: float = 5.0
+var current_hp: float = max_hp:
 	set(value):
 		current_hp = clamp(value, 0, max_hp)
-const DAMAGE: int = 1
+const DAMAGE: float = 1
 
 # Damage number variables
 @export var dmg_label_height: float = 10
@@ -39,8 +39,8 @@ func _physics_process(_delta):
 	if collision and collision.get_collider() is Player:
 		player.take_damage(DAMAGE)
 
-func take_damage(damage: int):
-	current_hp -= damage	
+func take_damage(damage: float):
+	current_hp -= damage
 	show_damage(damage)
 	
 	if current_hp <= 0:
