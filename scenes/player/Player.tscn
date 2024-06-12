@@ -432,7 +432,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0135458, 0.00497986, 0.00753109, 0.999868)
+bones/3/rotation = Quaternion(-0.0428601, 0.00859898, 0.0130043, 0.998959)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -582,3 +582,5 @@ player_xp = NodePath("../PlayerExperience")
 [connection signal="health_change" from="." to="UI" method="_on_player_health_change"]
 [connection signal="level_up" from="PlayerExperience" to="UI" method="_on_player_experience_level_up"]
 [connection signal="xp_change" from="PlayerExperience" to="UI" method="_on_player_experience_xp_change"]
+
+[editable path="BaseWeapon"]

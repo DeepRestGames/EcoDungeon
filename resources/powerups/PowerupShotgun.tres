@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=2 format=3 uid="uid://b6f0oxqfyb6tq"]
+
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="1_bh262"]
+
+[resource]
+script = ExtResource("1_bh262")
+fire_cooldown_modifier_value = 0.0
+fire_cooldown_modifier_type = 0
+projectile_lifetime_modifier_value = 0.0
+projectile_lifetime_modifier_type = 0
+projectile_velocity_modifier_value = 0.0
+projectile_velocity_modifier_type = 0
+range_modifier_value = 3.0
+range_modifier_type = 3
+damage_modifier_value = 3.0
+damage_modifier_type = 2

@@ -13,7 +13,7 @@ const MAX_RANGE: float = 100.0
 # NOTE: get/set allow to modify ways in which we act on vars
 # This set makes it so values are clamped when changed
 
-@export var base_damage: float = 1.0
+@export var base_damage: float = 3.0
 var current_damage: float 
 @export var projectile_lifetime: float = 2.0:
 	set(value):
@@ -21,7 +21,7 @@ var current_damage: float
 @export var projectile_velocity: float = 20.0:
 	set(value):
 		projectile_velocity = clamp(value, 1, MAX_VELOCITY)
-@export var weapon_range: float = 20.0:
+@export var weapon_range: float = 15.0:
 	set(value):
 		weapon_range = clamp(value, 1, MAX_RANGE)
 @export var fire_cooldown: float = 0.4:

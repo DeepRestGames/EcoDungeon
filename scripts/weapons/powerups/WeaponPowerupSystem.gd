@@ -18,17 +18,10 @@ func _ready():
 	weapon_powerups.clear()
 	
 	# TODO subscribe to new modifier signal, to be defined inside the UI script to choose a powerup
+	$"../../UI".new_powerup.connect(add_powerup)
 
 
 func add_powerup(powerup: WeaponPowerup):
-	print("-----------------------------------------------------------")
-	print("Adding new powerup! Current stats:\n")
-	print("Fire cooldown: " + str(base_weapon.fire_cooldown))
-	print("Projectile lifetime: " + str(base_weapon.projectile_lifetime))
-	print("Projectile velocity: " + str(base_weapon.projectile_velocity))
-	print("Range: " + str(base_weapon.weapon_range))
-	print("Damage: " + str(base_weapon.current_damage))
-	
 	weapon_powerups.append(powerup)
 	
 	_apply_powerup_modifiers(powerup)

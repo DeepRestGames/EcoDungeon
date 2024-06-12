@@ -1,5 +1,4 @@
 class_name WeaponPowerup
-extends Node3D
 
 
 @export_group("Fire Cooldown", "fire_cooldown_")

@@ -22,8 +22,6 @@ outer_radius = 10.0
 
 [node name="BaseWeapon" type="Node3D"]
 script = ExtResource("1_ilb8w")
-base_damage = 3.0
-weapon_range = 15.0
 
 [node name="WeaponRangeArea" type="Area3D" parent="."]
 visible = false
