@@ -1,12 +1,23 @@
-[gd_scene load_steps=27 format=3 uid="uid://bebiuwit13drx"]
+[gd_scene load_steps=32 format=3 uid="uid://bebiuwit13drx"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_pk6wu"]
+[ext_resource type="Script" path="res://scripts/Player/Player.gd" id="1_pk6wu"]
+[ext_resource type="PackedScene" uid="uid://bu5laid0g01qp" path="res://scenes/player/UI.tscn" id="2_tip52"]
 [ext_resource type="Material" uid="uid://g5j04dnk5dcg" path="res://assets/3d/zahir/materials/ZahirWhite.tres" id="3_jh4bb"]
 [ext_resource type="Material" uid="uid://wy8gy8k36n5r" path="res://assets/3d/zahir/materials/ZahirBrown.tres" id="3_ugebt"]
+[ext_resource type="Script" path="res://scripts/Player/PickupArea.gd" id="3_vnkie"]
 [ext_resource type="Material" uid="uid://1swa15erc0ug" path="res://assets/3d/zahir/materials/ZahirTeal.tres" id="4_b7ysj"]
 [ext_resource type="Animation" uid="uid://cwul2vdvsod7p" path="res://assets/3d/zahir/animations/idle.res" id="5_68od8"]
 [ext_resource type="Animation" uid="uid://d3i55dprcwkdy" path="res://assets/3d/zahir/animations/walk.res" id="6_87cuf"]
 [ext_resource type="PackedScene" uid="uid://dkgsosm4qwsbf" path="res://scenes/weapons/BaseWeapon.tscn" id="7_ls78v"]
+[ext_resource type="Script" path="res://scripts/Player/PlayerExperience.gd" id="8_3yik5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ccplv"]
+height = 3.0
+radius = 5.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_k731w"]
+inner_radius = 4.9
+outer_radius = 5.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wjtg4"]
 resource_name = "240519_Zahir_04_Cube_005"
@@ -360,8 +371,30 @@ material = SubResource("StandardMaterial3D_4lcei")
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_pk6wu")
+
+[node name="PlayerExperience" type="Node3D" parent="."]
+script = ExtResource("8_3yik5")
+
+[node name="PickupArea" type="Area3D" parent="PlayerExperience"]
+disable_mode = 1
+collision_layer = 2
+collision_mask = 32
+gravity_point = true
+gravity_point_center = Vector3(0, 0.5, 0)
+gravity_direction = Vector3(0, 0.5, 0)
+gravity = 200.0
+script = ExtResource("3_vnkie")
+
+[node name="PickupAreaCollider" type="CollisionShape3D" parent="PlayerExperience/PickupArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_ccplv")
+
+[node name="DebugPickupArea" type="MeshInstance3D" parent="PlayerExperience/PickupArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
+mesh = SubResource("TorusMesh_k731w")
 
 [node name="BulletOrigin" type="Node3D" parent="."]
 transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, -0.00188389, 1.02749, 0.409681)
@@ -399,7 +432,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0337303, 0.00747215, 0.0113002, 0.999339)
+bones/3/rotation = Quaternion(-0.0135458, 0.00497986, 0.00753109, 0.999868)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
@@ -536,7 +569,16 @@ far = 150.0
 
 [node name="BaseWeapon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_ls78v")]
 player = NodePath("..")
+base_damage = 1.0
 
 [node name="InvincibilityFramesTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.5
 one_shot = true
+
+[node name="UI" parent="." node_paths=PackedStringArray("player", "player_xp") instance=ExtResource("2_tip52")]
+player = NodePath("..")
+player_xp = NodePath("../PlayerExperience")
+
+[connection signal="health_change" from="." to="UI" method="_on_player_health_change"]
+[connection signal="level_up" from="PlayerExperience" to="UI" method="_on_player_experience_level_up"]
+[connection signal="xp_change" from="PlayerExperience" to="UI" method="_on_player_experience_xp_change"]

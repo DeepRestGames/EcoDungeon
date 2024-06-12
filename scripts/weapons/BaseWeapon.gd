@@ -42,8 +42,9 @@ func _on_weapon_range_area_found_enemies(enemy):
 		var shoot_origin = player.bullet_origin.global_transform.origin
 		# Spawn and shoot bullet
 		var bullet = bullet_instance.instantiate()
+		var level_root =  get_tree().get_root()
 		bullet.initialize(projectile_velocity, current_damage, projectile_lifetime, enemy)
-		get_parent().add_child(bullet, true)
+		level_root.add_child(bullet, true)
 		bullet.global_transform.origin = shoot_origin
 		bullet.look_at(enemy.global_position, Vector3.UP)
 		fire_cooldown_timer.start()
