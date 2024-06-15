@@ -17,6 +17,6 @@ var current_xp: float = 0:
 			var overflow = current_xp - xp_to_level
 			current_xp = overflow
 			current_level +=1
-			xp_to_level =  ( xp_to_level + base_value ) * base_multiplier	
+			xp_to_level = ( xp_to_level + base_value ) * base_multiplier
 			level_up.emit(current_level, overflow)
 		xp_change.emit(current_xp)
