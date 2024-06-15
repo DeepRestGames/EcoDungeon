@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bgkncs4c1pyel"
-path="res://.godot/imported/CargoContainer_0.0.1.blend-822dd2cc422ec64291d0ce85bd7ee4be.scn"
+path="res://.godot/imported/CargoContainer1_0.0.1.blend-59f6eb732457509b9b16ebb834958210.scn"
 
 [deps]
 
-source_file="res://assets/3d/environment/cargoContainer/CargoContainer_0.0.1.blend"
-dest_files=["res://.godot/imported/CargoContainer_0.0.1.blend-822dd2cc422ec64291d0ce85bd7ee4be.scn"]
+source_file="res://assets/3d/environment/cargoContainer/CargoContainer1_0.0.1.blend"
+dest_files=["res://.godot/imported/CargoContainer1_0.0.1.blend-59f6eb732457509b9b16ebb834958210.scn"]
 
 [params]
 
