@@ -20,3 +20,7 @@ class_name WeaponPowerup
 @export_group("Damage", "damage_")
 @export var damage_modifier_value: float
 @export var damage_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("Projectiles number", "projectiles_number_")
+@export var projectiles_number_modifier_value: int
+@export var projectiles_number_modifier_type: WeaponPowerupSystem.PowerupModifierType

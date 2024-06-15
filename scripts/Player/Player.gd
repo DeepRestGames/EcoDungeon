@@ -54,7 +54,9 @@ var current_hp: int = max_hp:
 var SPEED: float = 10.0
 const JUMP_VELOCITY: float = 5.0 # TODO: should probably remove jump
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var bullet_origin = $BulletOrigin
+
+# TODO Delete
+# @onready var bullet_origin = $BulletOrigin
 
 # ****************************************************************************
 # ****************************************************************************

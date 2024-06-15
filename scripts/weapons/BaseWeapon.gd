@@ -11,15 +11,18 @@ const MIN_RANGE: float = 1.0
 const MAX_RANGE: float = 100.0
 const MIN_COOLDOWN: float = 0.1
 const MAX_COOLDOWN: float = 5.0
+const MIN_PROJECTILES_NUMBER: int = 1
+const MAX_PROJECTILE_NUMBER: int = 4
 
 @export var player: Player
 
 # --- Shooting variables ---
 @onready var fire_cooldown_timer = $FireCooldown
 @onready var weapon_range_collider = $WeaponRangeArea/WeaponRangeCollider
-@onready var bullet_instance = preload("res://scenes/weapons/Projectile.tscn")
-# NOTE: get/set allow to modify ways in which we act on vars
-# This set makes it so values are clamped when changed
+@onready var projectile_instance = preload("res://scenes/weapons/Projectile.tscn")
+
+# --- Projectiles origins ---
+@onready var projectiles_origins = [$ProjectileOrigin01, $ProjectileOrigin02, $ProjectileOrigin03, $ProjectileOrigin04]
 
 @export var base_damage: float = 1.0
 var current_damage: float:
@@ -39,24 +42,29 @@ var current_damage: float:
 	set(value):
 		fire_cooldown = clamp(value, MIN_COOLDOWN, MAX_COOLDOWN)
 		fire_cooldown_timer.wait_time = fire_cooldown
+@export var base_projectiles_number: int = 1
+var current_projectiles_number: int:
+	set(value):
+		current_projectiles_number = clamp(value, MIN_PROJECTILES_NUMBER, MAX_PROJECTILE_NUMBER)
 
 
 func _ready():
 	current_damage = base_damage
-
-
-func apply_scaling():
-	pass # TODO: to scale damage of projectiles
+	current_projectiles_number = base_projectiles_number
 
 
 func _on_weapon_range_area_found_enemies(enemy):
 	if fire_cooldown_timer.is_stopped():
-		var shoot_origin = player.bullet_origin.global_transform.origin
-		# Spawn and shoot bullet
-		var bullet = bullet_instance.instantiate()
 		var level_root =  get_tree().get_root()
-		bullet.initialize(projectile_velocity, current_damage, projectile_lifetime, enemy)
-		level_root.add_child(bullet, true)
-		bullet.global_transform.origin = shoot_origin
-		bullet.look_at(enemy.global_position, Vector3.UP)
+		
+		for projectile_origin_index in current_projectiles_number:
+			var projectile = projectile_instance.instantiate()
+			projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, enemy)
+			var shoot_origin = projectiles_origins[projectile_origin_index].global_transform.origin
+			
+			# Spawn and shoot projectile
+			level_root.add_child(projectile, true)
+			projectile.global_transform.origin = shoot_origin
+			projectile.look_at(enemy.global_position, Vector3.UP)
+		
 		fire_cooldown_timer.start()
