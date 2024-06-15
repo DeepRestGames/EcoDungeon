@@ -8,6 +8,8 @@ noise_type = 3
 frequency = 0.0089
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hkuky"]
+width = 2000
+height = 2000
 seamless = true
 normalize = false
 color_ramp = SubResource("Gradient_tjhv4")
