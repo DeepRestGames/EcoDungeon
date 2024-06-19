@@ -53,11 +53,14 @@ func _ready():
 	current_projectiles_number = base_projectiles_number
 
 
-func _on_weapon_range_area_found_enemies(enemy):
+func _on_weapon_range_area_enemies_found(enemies: Array):
 	if fire_cooldown_timer.is_stopped():
 		var level_root =  get_tree().get_root()
 		
 		for projectile_origin_index in current_projectiles_number:
+			# Set enemy target, closest one first
+			var enemy = enemies[projectile_origin_index % enemies.size()]
+			
 			var projectile = projectile_instance.instantiate()
 			projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, enemy)
 			var shoot_origin = projectiles_origins[projectile_origin_index].global_transform.origin
