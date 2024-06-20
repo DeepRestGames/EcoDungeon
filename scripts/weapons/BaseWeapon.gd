@@ -12,7 +12,7 @@ const MAX_RANGE: float = 100.0
 const MIN_COOLDOWN: float = 0.1
 const MAX_COOLDOWN: float = 5.0
 const MIN_PROJECTILES_NUMBER: int = 1
-const MAX_PROJECTILE_NUMBER: int = 4
+const MAX_PROJECTILE_NUMBER: int = 10
 
 @export var player: Player
 
@@ -22,7 +22,10 @@ const MAX_PROJECTILE_NUMBER: int = 4
 @onready var projectile_instance = preload("res://scenes/weapons/Projectile.tscn")
 
 # --- Projectiles origins ---
-@onready var projectiles_origins = [$ProjectileOrigin01, $ProjectileOrigin02, $ProjectileOrigin03, $ProjectileOrigin04]
+const PROJECTILE_ORIGIN_DISTANCE_FROM_CENTER = 0.5
+@onready var projectiles_origins_node = $ProjectilesOrigins
+@onready var default_projectiles_origin = $ProjectilesOrigins/ProjectileOrigin01
+var projectiles_origins: Array
 
 @export var base_damage: float = 1.0
 var current_damage: float:
@@ -51,6 +54,7 @@ var current_projectiles_number: int:
 func _ready():
 	current_damage = base_damage
 	current_projectiles_number = base_projectiles_number
+	projectiles_origins.append(default_projectiles_origin)
 
 
 func _on_weapon_range_area_enemies_found(enemies: Array):
@@ -71,3 +75,23 @@ func _on_weapon_range_area_enemies_found(enemies: Array):
 			projectile.look_at(enemy.global_position, Vector3.UP)
 		
 		fire_cooldown_timer.start()
+
+
+func update_projectiles_origins():
+	# Reset origins array, leave only default one
+	projectiles_origins = projectiles_origins.slice(0, 1)
+	
+	# Calculate angle between points
+	var radians_step = deg_to_rad(360 / current_projectiles_number)
+	
+	# Position new projectiles origins
+	for i in range(1, current_projectiles_number):
+		var new_origin_x_position = PROJECTILE_ORIGIN_DISTANCE_FROM_CENTER * sin(i * radians_step)
+		var new_origin_z_position = PROJECTILE_ORIGIN_DISTANCE_FROM_CENTER * cos(i * radians_step)
+		
+		var current_origin = default_projectiles_origin.duplicate()
+		projectiles_origins_node.add_child(current_origin)
+		current_origin.position = Vector3(new_origin_x_position, 0, new_origin_z_position)
+		
+		projectiles_origins.append(current_origin)
+	

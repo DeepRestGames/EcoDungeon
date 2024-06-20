@@ -44,16 +44,10 @@ autostart = true
 
 [node name="WeaponPowerupSystem" parent="." instance=ExtResource("4_kkbd4")]
 
-[node name="ProjectileOrigin01" type="Node3D" parent="."]
-transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, 0, 1, 0.4)
+[node name="ProjectilesOrigins" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="ProjectileOrigin02" type="Node3D" parent="."]
-transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, 0, 1, -0.4)
-
-[node name="ProjectileOrigin03" type="Node3D" parent="."]
-transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, 0.4, 1, 0)
-
-[node name="ProjectileOrigin04" type="Node3D" parent="."]
-transform = Transform3D(0.142025, 0, 0, 0, 0.142025, 0, 0, 0, 0.142025, -0.4, 1, 0)
+[node name="ProjectileOrigin01" type="Node3D" parent="ProjectilesOrigins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
 [connection signal="enemies_found" from="WeaponRangeArea" to="." method="_on_weapon_range_area_enemies_found"]
