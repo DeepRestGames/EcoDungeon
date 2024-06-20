@@ -27,6 +27,7 @@ const PROJECTILE_ORIGIN_DISTANCE_FROM_CENTER = 0.5
 @onready var default_projectiles_origin = $ProjectilesOrigins/ProjectileOrigin01
 var projectiles_origins: Array
 
+# --- Statistics ---
 @export var base_damage: float = 1.0
 var current_damage: float:
 	set(value):
@@ -50,6 +51,9 @@ var current_projectiles_number: int:
 	set(value):
 		current_projectiles_number = clamp(value, MIN_PROJECTILES_NUMBER, MAX_PROJECTILE_NUMBER)
 
+# --- Powerups ---
+var homing_projectiles = false
+
 
 func _ready():
 	current_damage = base_damage
@@ -65,11 +69,16 @@ func _on_weapon_range_area_enemies_found(enemies: Array):
 			# Set enemy target, closest one first
 			var enemy = enemies[projectile_origin_index % enemies.size()]
 			
+			# Create new projectile targeting enemy target
 			var projectile = projectile_instance.instantiate()
-			projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, enemy)
-			var shoot_origin = projectiles_origins[projectile_origin_index].global_transform.origin
+			# Set enemy as target to follow if weapon has homing powerup
+			if homing_projectiles:
+				projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, enemy)
+			else:
+				projectile.initialize(projectile_velocity, current_damage, projectile_lifetime)
 			
-			# Spawn and shoot projectile
+			# Spawn projectile at its origin and shoot it
+			var shoot_origin = projectiles_origins[projectile_origin_index].global_transform.origin
 			level_root.add_child(projectile, true)
 			projectile.global_transform.origin = shoot_origin
 			projectile.look_at(enemy.global_position, Vector3.UP)
@@ -94,4 +103,4 @@ func update_projectiles_origins():
 		current_origin.position = Vector3(new_origin_x_position, 0, new_origin_z_position)
 		
 		projectiles_origins.append(current_origin)
-	
+
