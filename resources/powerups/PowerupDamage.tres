@@ -16,3 +16,5 @@ damage_modifier_value = 0.5
 damage_modifier_type = 0
 projectiles_number_modifier_value = 1
 projectiles_number_modifier_type = 0
+homing_projectiles__modifier_value = false
+homing_projectiles__modifier_type = 0

@@ -97,6 +97,11 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 			base_weapon.current_projectiles_number += powerup.projectiles_number_modifier_value
 		PowerupModifierType.SUBTRACT:
 			base_weapon.current_projectiles_number -= powerup.projectiles_number_modifier_value
-		
+	# If number of projectiles is updated recalculate projectiles origins
 	if powerup.projectiles_number_modifier_value != 0:
 		base_weapon.update_projectiles_origins()
+	
+	# Homing projectiles
+	if powerup.homing_projectiles_modifier_value == true:
+		base_weapon.homing_projectiles = true
+	
