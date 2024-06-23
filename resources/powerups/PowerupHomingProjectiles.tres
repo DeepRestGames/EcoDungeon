@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_0ihbv")
+powerup_name = "Homing"
+powerup_description = ""
+powerup_icon = ""
 fire_cooldown_modifier_value = 0.0
 fire_cooldown_modifier_type = 0
 projectile_lifetime_modifier_value = 0.0

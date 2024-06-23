@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=2 format=3 uid="uid://bsx34846k3ork"]
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://bsx34846k3ork"]
 
 [ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="1_baqlg"]
+[ext_resource type="Texture2D" uid="uid://dhs8cp746bg40" path="res://assets/2d/icons/wind.png" id="1_nwn8x"]
 
 [resource]
 script = ExtResource("1_baqlg")
+powerup_name = "Range"
+powerup_description = ""
+powerup_icon = ExtResource("1_nwn8x")
 fire_cooldown_modifier_value = 0.0
 fire_cooldown_modifier_type = 0
 projectile_lifetime_modifier_value = 0.0
@@ -16,5 +20,4 @@ damage_modifier_value = 0.0
 damage_modifier_type = 0
 projectiles_number_modifier_value = 0
 projectiles_number_modifier_type = 0
-homing_projectiles__modifier_value = false
-homing_projectiles__modifier_type = 0
+homing_projectiles_modifier_value = false

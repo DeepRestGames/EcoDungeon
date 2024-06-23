@@ -1,6 +1,10 @@
 class_name WeaponPowerup
 
 
+@export var powerup_name: String
+@export_multiline var powerup_description: String
+@export var powerup_icon: Texture2D
+
 @export_group("Fire Cooldown", "fire_cooldown_")
 @export var fire_cooldown_modifier_value: float
 @export var fire_cooldown_modifier_type: WeaponPowerupSystem.PowerupModifierType

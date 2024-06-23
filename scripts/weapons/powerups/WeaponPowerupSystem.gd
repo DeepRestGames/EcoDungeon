@@ -11,13 +11,13 @@ enum PowerupModifierType {
 
 
 @onready var base_weapon: BaseWeapon = $".."
+@onready var powerup_menu_ui = $"../../UI/PowerupMenu"
 var weapon_powerups: Array [WeaponPowerup] = []
 
 
 func _ready():
 	weapon_powerups.clear()
-	
-	$"../../UI".new_powerup.connect(add_powerup)
+	powerup_menu_ui.new_powerup.connect(add_powerup)
 
 
 func add_powerup(powerup: WeaponPowerup):
