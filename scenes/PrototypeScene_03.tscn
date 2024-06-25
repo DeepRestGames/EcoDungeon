@@ -1,0 +1,162 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo1a11i38vuh7"]
+
+[ext_resource type="Texture2D" uid="uid://dbgonf4pso6vy" path="res://assets/background/skybox/240528_Skybox3.png" id="1_5euls"]
+[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="1_ui8tp"]
+[ext_resource type="PackedScene" uid="uid://bjp645qfo1bca" path="res://assets/3d/environment/cargoContainer/CargoContainer2_0.0.1.blend" id="4_a6o8c"]
+[ext_resource type="PackedScene" uid="uid://kkyhkbr4n0yc" path="res://assets/3d/environment/ground/Terrain_0.0.0.blend" id="6_d6dbx"]
+[ext_resource type="PackedScene" uid="uid://bgkncs4c1pyel" path="res://assets/3d/environment/cargoContainer/CargoContainer1_0.0.1.blend" id="9_hq028"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
+panorama = ExtResource("1_5euls")
+
+[sub_resource type="Sky" id="Sky_6pnag"]
+sky_material = SubResource("PanoramaSkyMaterial_dka55")
+
+[sub_resource type="Environment" id="Environment_slfb0"]
+background_mode = 2
+background_color = Color(0.356863, 0.694118, 0.788235, 1)
+background_energy_multiplier = 0.9
+background_canvas_max_layer = 2
+sky = SubResource("Sky_6pnag")
+sky_rotation = Vector3(0, 2.26893, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.72549, 0.576471, 0.494118, 1)
+ambient_light_sky_contribution = 0.25
+ambient_light_energy = 0.3
+reflected_light_source = 1
+tonemap_mode = 2
+tonemap_exposure = 1.1
+tonemap_white = 0.9
+glow_enabled = true
+
+[node name="PrototypeScene01" type="Node3D"]
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
+environment = SubResource("Environment_slfb0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.547093, -0.724926, 0.418534, 1.47562e-08, 0.499998, 0.866027, -0.837072, 0.473797, -0.273545, 0, 0, 0)
+light_color = Color(0.72549, 0.576471, 0.494118, 1)
+light_energy = 2.2
+shadow_enabled = true
+shadow_blur = 1.5
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 200.0
+sky_mode = 1
+
+[node name="EnvironmentAssets" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 1.78814e-07)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="CargoContainer_0_0_1" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.945825, 0, 0.324677, 0, 1, 0, -0.324677, 0, 0.945825, -20.865, 2.61657, 19.4471)
+
+[node name="CargoContainer_0_0_13" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.868882, 0, 0.495019, 0, 1, 0, -0.495019, 0, 0.868882, -12.325, 2.61657, 24.2863)
+
+[node name="CargoContainer_0_0_3" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.949841, 0, -0.312733, 0, 1, 0, 0.312733, 0, 0.949841, -20.9193, 2.61657, -10.9033)
+
+[node name="CargoContainer_0_0_4" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.877874, 0, -0.478891, 0, 1, 0, 0.478891, 0, 0.877874, -5.23713, 2.61657, -25.1241)
+
+[node name="CargoContainer_0_0_5" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.998097, 0, -0.0616583, 0, 1, 0, 0.0616583, 0, 0.998097, -13.4055, 2.61657, -19.0699)
+
+[node name="CargoContainer_0_0_15" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.758851, 0, -0.651264, 0, 1, 0, 0.651264, 0, 0.758851, -8.51042, 7.70281, -21.6839)
+
+[node name="CargoContainer_0_0_6" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.262848, -0.302299, -0.916257, -0.323964, 0.866864, -0.378939, 0.908822, 0.396438, 0.129919, 5.73773, 4.20242, -22.269)
+
+[node name="CargoContainer_0_0_9" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(-0.98542, 0.0720669, 0.154126, 0.0639193, 0.996315, -0.0571871, -0.157679, -0.0465017, -0.986395, 23.6885, 2.22797, -0.998342)
+
+[node name="CargoContainer_0_0_11" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(-0.453649, -0.0686421, 0.888533, -0.031213, 0.997641, 0.061135, -0.890634, -3.01068e-09, -0.454721, 14.9852, 2.18676, 24.4549)
+
+[node name="CargoContainer_0_0_14" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.14097, 0, 0.990014, 0, 1, 0, -0.990014, 0, 0.14097, -11.5949, 7.77191, 25.158)
+
+[node name="CargoContainer_0_0_18" parent="Environment" instance=ExtResource("9_hq028")]
+transform = Transform3D(0.768306, 0, 0.640083, 0, 1, 0, -0.640083, 0, 0.768306, -17.2392, 12.901, 18.9474)
+
+[node name="Terrain_0_0_0" parent="Environment" instance=ExtResource("6_d6dbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0423512, -1.41739, -0.381099)
+
+[node name="CargoContainer2_0_0_1" parent="Environment" instance=ExtResource("4_a6o8c")]
+transform = Transform3D(0.14097, 0, 0.990014, 0, 1, 0, -0.990014, 0, 0.14097, -0.312602, 2.64363, 25.158)
+
+[node name="CargoContainer2_0_0_2" parent="Environment" instance=ExtResource("4_a6o8c")]
+transform = Transform3D(0.989478, 0, 0.144684, 0, 1, 0, -0.144684, 0, 0.989478, -23.9601, 2.61657, 4.43413)
+
+[node name="CargoContainer2_0_0_3" parent="Environment" instance=ExtResource("4_a6o8c")]
+transform = Transform3D(0.996299, 0, 0.085956, 0, 1, 0, -0.085956, 0, 0.996299, -22.2834, 7.77191, 15.4431)
+
+[node name="CargoContainer2_0_0_4" parent="Environment" instance=ExtResource("4_a6o8c")]
+transform = Transform3D(-0.589126, 0, -0.808041, 0, 1, 0, 0.808041, 0, -0.589126, 16.1064, 1.93567, -24.4319)
+
+[node name="CargoContainer2_0_0_5" parent="Environment" instance=ExtResource("4_a6o8c")]
+transform = Transform3D(-0.582403, -0.0732073, -0.809597, -0.112923, 0.993566, -0.00860876, 0.805019, 0.0864083, -0.586923, 19.4448, 1.78893, -15.0949)
+
+[node name="CargoContainer2_0_0_6" parent="Environment" instance=ExtResource("4_a6o8c")]
+transform = Transform3D(-0.929268, 8.19564e-08, 0.369406, 0.0361376, 0.995203, 0.0909066, -0.367634, 0.0978261, -0.924811, 25.5736, 2.36193, 13.0205)
+
+[node name="CargoContainer2_0_0_7" parent="Environment" instance=ExtResource("4_a6o8c")]
+transform = Transform3D(0.963355, 0, -0.26823, 0, 1, 0, 0.26823, 0, 0.963355, -17.7608, 7.70281, -17.4642)
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_ui8tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
+
+[node name="Skeleton3D" parent="Player/PlayerModel/Armature" index="0"]
+bones/1/rotation = Quaternion(0.0284007, 0, 7.29199e-18, 0.999597)
+bones/2/rotation = Quaternion(0.0308202, 0, 7.91321e-18, 0.999525)
+bones/3/rotation = Quaternion(-0.0498521, 0.00946177, 0.0143091, 0.998609)
+bones/4/rotation = Quaternion(-2.78864e-08, 0.0324971, 0.999472, 1.1254e-08)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.0489076, 1.19067e-07, 1.55464e-09, 0.998803)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(4.38017e-08, 0.0324971, 0.999472, -1.16808e-08)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0489076, -1.19067e-07, -1.55463e-09, 0.998803)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(8.42938e-08, 0.707107, 0.707107, 8.42938e-08)
+bones/9/position = Vector3(0.703569, -4.62104, -0.0140713)
+bones/9/rotation = Quaternion(-5.33851e-08, 0.707107, -0.707107, 5.33851e-08)
+bones/10/rotation = Quaternion(-8.42938e-08, 0.707107, 0.707107, -8.42938e-08)
+bones/11/position = Vector3(-0.703569, -4.62104, -0.0140713)
+bones/11/rotation = Quaternion(5.33851e-08, 0.707107, -0.707107, -5.33851e-08)
+bones/12/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="bagflap" parent="Player/PlayerModel/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = null
+
+[node name="bag" parent="Player/PlayerModel/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = null
+
+[node name="face" parent="Player/PlayerModel/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = null
+
+[node name="hood" parent="Player/PlayerModel/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = null
+
+[node name="legs" parent="Player/PlayerModel/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = null
+
+[node name="scarf01" parent="Player/PlayerModel/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = null
+
+[node name="scarf02" parent="Player/PlayerModel/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = null
+
+[node name="tunic" parent="Player/PlayerModel/Armature/Skeleton3D" index="7"]
+surface_material_override/0 = null
+surface_material_override/1 = null
+surface_material_override/2 = null
+
+[editable path="Player"]
