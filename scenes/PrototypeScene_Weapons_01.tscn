@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqb3fgj63yfea"]
+[gd_scene load_steps=17 format=3 uid="uid://bqb3fgj63yfea"]
 
 [ext_resource type="Texture2D" uid="uid://dbgonf4pso6vy" path="res://assets/background/skybox/240528_Skybox3.png" id="1_r6xao"]
 [ext_resource type="PackedScene" uid="uid://bhertfiqp6moh" path="res://assets/3d/environment/bush/bubbly_bushes/bubbly_bush_01/bush_bubbly_01_model.glb" id="2_ugwec"]
 [ext_resource type="PackedScene" uid="uid://bn13icxgrlyod" path="res://assets/3d/environment/rock/240519_rock_formatio_big_01.glb" id="3_qopri"]
 [ext_resource type="PackedScene" uid="uid://dwsdlvxqlwulo" path="res://assets/3d/environment/rock/240519_rock_medium_02.glb" id="4_b2lpd"]
 [ext_resource type="PackedScene" uid="uid://h4601tixrkix" path="res://assets/3d/environment/bush/240519_bush_bubbly_02.glb" id="5_6dgdt"]
-[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="6_qxrcy"]
+[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/player/Player.tscn" id="6_qxrcy"]
 [ext_resource type="Script" path="res://scripts/enemy/EnemySpawner.gd" id="7_oly0a"]
+[ext_resource type="PackedScene" uid="uid://cfikpkwj7l7xs" path="res://scenes/objects/XpPickup.tscn" id="8_dgl7l"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dka55"]
 panorama = ExtResource("1_r6xao")
@@ -150,5 +151,28 @@ wait_time = 2.0
 autostart = true
 
 [node name="Enemies" type="Node3D" parent="."]
+
+[node name="Xps" type="Node" parent="."]
+
+[node name="XpPickup" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5966, 7.931)
+
+[node name="XpPickup2" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20215, 1.5966, 9.931)
+
+[node name="XpPickup3" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5966, 9.52971)
+
+[node name="XpPickup4" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56137, 1.5966, 5.18745)
+
+[node name="XpPickup5" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56137, 1.5966, 6.21651)
+
+[node name="XpPickup6" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94515, 1.5966, 6.21651)
+
+[node name="XpPickup7" parent="Xps" instance=ExtResource("8_dgl7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0735538, 1.5966, 6.21651)
 
 [connection signal="timeout" from="Player/EnemySpawner/EnemySpawnCooldown" to="Player/EnemySpawner" method="_on_enemy_spawn_cooldown_timeout"]

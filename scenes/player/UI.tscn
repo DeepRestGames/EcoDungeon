@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=3 uid="uid://bu5laid0g01qp"]
+
+[ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
+[ext_resource type="Script" path="res://scripts/Player/PowerUpMenu.gd" id="2_tqs0n"]
+
+[sub_resource type="Theme" id="Theme_4cvmb"]
+default_font_size = 36
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
+
+[sub_resource type="Gradient" id="Gradient_ul203"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ptawk"]
+gradient = SubResource("Gradient_ul203")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e7m4a"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
+
+[sub_resource type="Theme" id="Theme_xnxo0"]
+default_font_size = 36
+
+[sub_resource type="Theme" id="Theme_mh1ex"]
+default_font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekq8l"]
+bg_color = Color(0.415686, 0.0666667, 0.596078, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xivap"]
+bg_color = Color(0.65098, 0.121569, 0.654902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 17.0
+offset_right = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sghsl")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+modulate = Color(0, 0.72549, 0.270588, 1)
+layout_mode = 1
+offset_right = 300.0
+offset_bottom = 70.0
+theme = SubResource("Theme_4cvmb")
+max_value = 5.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_e72mo")
+texture_progress = SubResource("GradientTexture1D_ptawk")
+tint_under = Color(0.294118, 0.796078, 0.466667, 0.564706)
+
+[node name="HealthLabel" type="Label" parent="Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Experience" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme = SubResource("Theme_4cvmb")
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_e7m4a")
+texture_progress = SubResource("CanvasTexture_b3tfa")
+tint_under = Color(0.772549, 0.792157, 0.419608, 0.360784)
+tint_progress = Color(0.807843, 0.745098, 0.282353, 1)
+
+[node name="XpLabel" type="Label" parent="Experience"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "XP: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = SubResource("Theme_xnxo0")
+text = "Level 1"
+
+[node name="PowerupMenu" type="PopupMenu" parent="."]
+mode = 3
+title = "PowerUp"
+initial_position = 1
+size = Vector2i(349, 290)
+visible = true
+always_on_top = true
+theme = SubResource("Theme_mh1ex")
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 40
+theme_override_constants/outline_size = 0
+theme_override_constants/item_start_padding = 20
+theme_override_constants/item_end_padding = 52
+theme_override_constants/icon_max_width = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekq8l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xivap")
+script = ExtResource("2_tqs0n")
+
+[connection signal="index_pressed" from="PowerupMenu" to="PowerupMenu" method="_on_powerup_menu_index_pressed"]

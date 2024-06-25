@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkgsosm4qwsbf"]
+[gd_scene load_steps=8 format=3 uid="uid://dkgsosm4qwsbf"]
 
 [ext_resource type="Script" path="res://scripts/weapons/BaseWeapon.gd" id="1_ilb8w"]
 [ext_resource type="Script" path="res://scripts/weapons/WeaponRangeArea.gd" id="2_7qw5b"]
 [ext_resource type="Script" path="res://scripts/weapons/WeaponRangeCollider.gd" id="2_xlqba"]
+[ext_resource type="PackedScene" uid="uid://dcf2kgmbao60" path="res://scenes/weapons/powerups/WeaponPowerupSystem.tscn" id="4_kkbd4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b1t5e"]
 height = 1.0
@@ -21,8 +22,6 @@ outer_radius = 10.0
 
 [node name="BaseWeapon" type="Node3D"]
 script = ExtResource("1_ilb8w")
-bullet_velocity = 30.0
-weapon_range = 5.0
 
 [node name="WeaponRangeArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -43,4 +42,12 @@ wait_time = 0.4
 one_shot = true
 autostart = true
 
-[connection signal="found_enemies" from="WeaponRangeArea" to="." method="_on_weapon_range_area_found_enemies"]
+[node name="WeaponPowerupSystem" parent="." instance=ExtResource("4_kkbd4")]
+
+[node name="ProjectilesOrigins" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ProjectileOrigin01" type="Node3D" parent="ProjectilesOrigins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[connection signal="enemies_found" from="WeaponRangeArea" to="." method="_on_weapon_range_area_enemies_found"]

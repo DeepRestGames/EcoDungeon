@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=2 format=3 uid="uid://bmw6lv5ijvo62"]
+
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="1_0ihbv"]
+
+[resource]
+script = ExtResource("1_0ihbv")
+powerup_name = "Homing"
+powerup_description = ""
+fire_cooldown_modifier_value = 0.0
+fire_cooldown_modifier_type = 0
+projectile_lifetime_modifier_value = 0.0
+projectile_lifetime_modifier_type = 0
+projectile_velocity_modifier_value = 0.0
+projectile_velocity_modifier_type = 0
+range_modifier_value = 0.0
+range_modifier_type = 0
+damage_modifier_value = 0.0
+damage_modifier_type = 0
+projectiles_number_modifier_value = 0
+projectiles_number_modifier_type = 0
+homing_projectiles_modifier_value = true

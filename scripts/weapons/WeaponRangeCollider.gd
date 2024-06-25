@@ -7,6 +7,10 @@ extends CollisionShape3D
 
 
 func _ready():
+	update_range()
+
+
+func update_range():
 	var radius = base_weapon.weapon_range
 	self.shape.radius = radius
 	# -- DEBUG ONLY --
