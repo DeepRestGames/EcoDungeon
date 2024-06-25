@@ -38,8 +38,8 @@ func _physics_process(delta):
 				look_at(enemy_to_follow.global_position, Vector3.UP)
 
 func deal_damage(collider: EnemyBase):
-	var damage_value = current_damage
-	collider.take_damage(damage_value)
+	collider.take_damage(current_damage)
+
 
 func destroy():
 	queue_free()

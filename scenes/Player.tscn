@@ -536,7 +536,8 @@ far = 150.0
 
 [node name="BaseWeapon" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_ls78v")]
 player = NodePath("..")
+base_damage = 1.0
 
 [node name="InvincibilityFramesTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.5
 one_shot = true

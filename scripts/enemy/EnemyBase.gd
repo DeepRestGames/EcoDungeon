@@ -18,6 +18,10 @@ var current_hp: int = max_hp:
 		current_hp = clamp(value, 0, max_hp)
 const DAMAGE: int = 1
 
+# Damage number variables
+@export var dmg_label_height: float = 10
+@export var dmg_label_spread: float = 10
+@onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 
 func _physics_process(_delta):
 	if not player:
@@ -35,11 +39,19 @@ func _physics_process(_delta):
 		player.take_damage(DAMAGE)
 
 func take_damage(damage: int):
-	current_hp -= damage
+	current_hp -= damage	
+	show_damage(damage)
 	
 	if current_hp <= 0:
 		_death()
 
+func show_damage(damage: float):
+	# TODO/NOTE: this is identical in player.
+	var damage_floating_label = damage_number_3d_template.instantiate()
+	var pos = global_position
+	var level_root =  get_tree().get_root()
+	level_root.add_child(damage_floating_label, true)
+	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread)
 
 func _death():
 	queue_free()
