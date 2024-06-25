@@ -23,6 +23,7 @@ const DAMAGE: float = 1
 # Damage number variables
 @export var dmg_label_height: float = 10
 @export var dmg_label_spread: float = 10
+@onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 
 func _physics_process(_delta):
 	if not player:
