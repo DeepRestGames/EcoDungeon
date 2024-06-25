@@ -11,8 +11,8 @@ extends CharacterBody3D
 @onready var player: Player = $"../../Player"
 @export var SPEED: float = 3.0
 
-@onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 @onready var xp_shard_template = preload("res://scenes/objects/XpPickup.tscn")
+
 # Combat variables
 @export var max_hp: float = 5.0
 var current_hp: float = max_hp:
@@ -56,7 +56,6 @@ func show_damage(damage: float):
 	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread)
 
 func _death():
-	print("LEET")
 	var dropped_shard = xp_shard_template.instantiate()
 	var pos = global_position
 	var level_root =  get_tree().get_root()

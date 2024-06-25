@@ -4,9 +4,7 @@ extends Node
 
 enum PowerupModifierType {
 	ADD,
-	SUBTRACT,
-	MULTIPLY,
-	DIVIDE
+	MULTIPLY
 }
 
 
@@ -40,63 +38,41 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 	match powerup.fire_cooldown_modifier_type:
 		PowerupModifierType.ADD:
 			base_weapon.fire_cooldown += powerup.fire_cooldown_modifier_value
-		PowerupModifierType.SUBTRACT:
-			base_weapon.fire_cooldown -= powerup.fire_cooldown_modifier_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.fire_cooldown *= powerup.fire_cooldown_modifier_value
-		PowerupModifierType.DIVIDE:
-			base_weapon.fire_cooldown /= powerup.fire_cooldown_modifier_value
 	
 	# Projectile lifetime
 	match powerup.projectile_lifetime_modifier_type:
 		PowerupModifierType.ADD:
 			base_weapon.projectile_lifetime += powerup.projectile_lifetime_modifier_value
-		PowerupModifierType.SUBTRACT:
-			base_weapon.projectile_lifetime -= powerup.projectile_lifetime_modifier_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.projectile_lifetime *= powerup.projectile_lifetime_modifier_value
-		PowerupModifierType.DIVIDE:
-			base_weapon.projectile_lifetime /= powerup.projectile_lifetime_modifier_value
 	
 	# Projectile velocity
 	match powerup.projectile_velocity_modifier_type:
 		PowerupModifierType.ADD:
 			base_weapon.projectile_velocity += powerup.projectile_velocity_modifier_value
-		PowerupModifierType.SUBTRACT:
-			base_weapon.projectile_velocity -= powerup.projectile_velocity_modifier_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.projectile_velocity *= powerup.projectile_velocity_modifier_value
-		PowerupModifierType.DIVIDE:
-			base_weapon.projectile_velocity /= powerup.projectile_velocity_modifier_value
 	
 	# Range
 	match powerup.range_modifier_type:
 		PowerupModifierType.ADD:
 			base_weapon.weapon_range += powerup.range_modifier_value
-		PowerupModifierType.SUBTRACT:
-			base_weapon.weapon_range -= powerup.range_modifier_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.weapon_range *= powerup.range_modifier_value
-		PowerupModifierType.DIVIDE:
-			base_weapon.weapon_range /= powerup.range_modifier_value
 	
 	# Damage
 	match powerup.damage_modifier_type:
 		PowerupModifierType.ADD:
 			base_weapon.current_damage += powerup.damage_modifier_value
-		PowerupModifierType.SUBTRACT:
-			base_weapon.current_damage -= powerup.damage_modifier_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.current_damage *= powerup.damage_modifier_value
-		PowerupModifierType.DIVIDE:
-			base_weapon.current_damage /= powerup.damage_modifier_value
 	
 	# Projectiles number
 	match powerup.projectiles_number_modifier_type:
 		PowerupModifierType.ADD:
 			base_weapon.current_projectiles_number += powerup.projectiles_number_modifier_value
-		PowerupModifierType.SUBTRACT:
-			base_weapon.current_projectiles_number -= powerup.projectiles_number_modifier_value
 	# If number of projectiles is updated recalculate projectiles origins
 	if powerup.projectiles_number_modifier_value != 0:
 		base_weapon.update_projectiles_origins()
