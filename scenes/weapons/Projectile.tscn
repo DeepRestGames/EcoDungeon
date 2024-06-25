@@ -25,6 +25,7 @@ script = ExtResource("1_xhi56")
 shape = SubResource("SphereShape3D_3uyy1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("SphereMesh_q6bo4")
 
 [node name="Lifetime" type="Timer" parent="."]
