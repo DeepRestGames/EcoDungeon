@@ -76,7 +76,7 @@ func _on_weapon_range_area_enemies_found(enemies: Array):
 			# Create new projectile targeting enemy target
 			var projectile = projectile_instance.instantiate()
 			# Set enemy as target to follow if weapon has homing powerup
-			var target = null if homing_projectiles else enemy
+			var target = null if not homing_projectiles else enemy
 			projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, target, explosion_range, explosion_damage, piercing_amount)
 			
 			# Spawn projectile at its origin and shoot it

@@ -127,7 +127,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.2
 scale_max = 0.6
 
-[node name="Projectile" type="CharacterBody3D"]
+[node name="Projectile" type="Area3D"]
 collision_layer = 16
 collision_mask = 13
 script = ExtResource("1_xhi56")

@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Area3D
 
 
 var bullet_velocity: float
@@ -9,6 +9,7 @@ var explosion_range: float
 var explosion_damage: float 
 var piercing_amount: int
 var pierced_so_far: int = 0
+var enemies_pierced = []
 
 @onready var collision_shape = $CollisionShape3D
 @onready var life_time: Timer = $Lifetime
@@ -30,22 +31,20 @@ func _ready():
 	life_time.start()
 
 
+
 func _physics_process(delta):
 	if life_time.is_stopped():
 		destroy()
 	else:
-		var collision = move_and_collide(-delta * bullet_velocity * transform.basis.z)
+		translate(-delta * bullet_velocity * transform.basis.z)
 
-		if collision:
+		var enemies_in_range: Array[Node3D] = get_overlapping_bodies()
+		if len(enemies_in_range) > 0 :
 			# Get the collider that has triggered collision and perform actions
-			var collider = collision.get_collider()
+			var collider = enemies_in_range.pop_front()
 			if collider is EnemyBase:
 				# Get damage component and round if needed
 				deal_damage(collider)
-			if piercing_amount > 0:
-				pierced_so_far +=1
-				if pierced_so_far > piercing_amount:
-					destroy()
 			else:
 				destroy()
 		else:
@@ -55,7 +54,13 @@ func _physics_process(delta):
 
 
 func deal_damage(collider: EnemyBase):
-	collider.take_damage(current_damage)
+	if collider.get_instance_id() not in enemies_pierced:
+		collider.take_damage(current_damage)
+		enemies_pierced += [collider.get_instance_id()]
+		if piercing_amount > 0:
+			pierced_so_far +=1
+	if pierced_so_far > piercing_amount:
+		destroy()
 
 
 func destroy():
