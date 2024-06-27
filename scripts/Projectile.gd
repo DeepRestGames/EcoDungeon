@@ -36,7 +36,7 @@ func _physics_process(delta):
 	if life_time.is_stopped():
 		destroy()
 	else:
-		translate(-delta * bullet_velocity * transform.basis.z)
+		global_translate(-delta * bullet_velocity * transform.basis.z)
 
 		var enemies_in_range: Array[Node3D] = get_overlapping_bodies()
 		if len(enemies_in_range) > 0 :
