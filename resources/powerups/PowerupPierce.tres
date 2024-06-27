@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://bcxtxc5bdj6o7"]
+
+[ext_resource type="Texture2D" uid="uid://b44kslvsdke5r" path="res://assets/2d/icons/fire.png" id="1_x62b8"]
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="2_kx74d"]
+
+[resource]
+script = ExtResource("2_kx74d")
+powerup_name = "Shotgun"
+powerup_description = ""
+powerup_icon = ExtResource("1_x62b8")
+fire_cooldown_modifier_value = 0.1
+fire_cooldown_modifier_type = 0
+projectile_lifetime_modifier_value = 0.0
+projectile_lifetime_modifier_type = 0
+projectile_velocity_modifier_value = 0.0
+projectile_velocity_modifier_type = 0
+range_modifier_value = 3.0
+range_modifier_type = 3
+damage_modifier_value = 2.5
+damage_modifier_type = 2
+projectiles_number_modifier_value = 0
+projectiles_number_modifier_type = 0
+homing_projectiles_modifier_value = false
+explosion_radius_value = 0.0
+explosion_radius_modifier_type = 0
+explosion_damage_value = 0.0
+explosion_damage_modifier_type = 0
+projectile_pierce_value = 1
+projectile_pierce_modifier_type = 0

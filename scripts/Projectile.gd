@@ -5,16 +5,24 @@ var bullet_velocity: float
 var current_damage: float
 var lifetime_override: float
 var enemy_to_follow: EnemyBase
+var explosion_range: float 
+var explosion_damage: float 
+var piercing_amount: int
+var pierced_so_far: int = 0
 
 @onready var collision_shape = $CollisionShape3D
 @onready var life_time: Timer = $Lifetime
 
 
-func initialize(speed, dmg, lifetime, enemy = null):
+func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce):
 	bullet_velocity = speed
 	current_damage = dmg
 	enemy_to_follow = enemy
 	lifetime_override = lifetime
+	explosion_range = expl_range
+	explosion_damage = expl_damage
+	piercing_amount = pierce
+	
 
 
 func _ready():
@@ -34,7 +42,12 @@ func _physics_process(delta):
 			if collider is EnemyBase:
 				# Get damage component and round if needed
 				deal_damage(collider)
-			destroy()
+			if piercing_amount > 0:
+				pierced_so_far +=1
+				if pierced_so_far > piercing_amount:
+					destroy()
+			else:
+				destroy()
 		else:
 	 		# TODO: less homing?
 			if enemy_to_follow != null:

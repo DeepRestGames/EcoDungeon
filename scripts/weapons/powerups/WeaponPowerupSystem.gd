@@ -81,3 +81,23 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 	if powerup.homing_projectiles_modifier_value == true:
 		base_weapon.homing_projectiles = true
 	
+	# Explosion range
+	match powerup.explosion_radius_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.explosion_range += powerup.explosion_radius_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.explosion_range *= powerup.explosion_radius_value
+	
+	# Explosion damage
+	match powerup.explosion_damage_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.explosion_damage += powerup.explosion_damage_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.explosion_damage *= powerup.explosion_damage_value
+			
+	# Pierce value
+	match powerup.projectile_pierce_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.piercing_amount += powerup.projectile_pierce_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.piercing_amount *= powerup.projectile_pierce_value

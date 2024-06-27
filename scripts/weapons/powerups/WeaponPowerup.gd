@@ -31,3 +31,16 @@ class_name WeaponPowerup
 
 @export_group("Homing projectiles", "homing_projectiles_")
 @export var homing_projectiles_modifier_value: bool
+
+# --- NEW ---
+@export_group("Explosion range", "explosion_radius_")
+@export var explosion_radius_value: float
+@export var explosion_radius_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("Explosion damage", "explosion_damage_")
+@export var explosion_damage_value: float
+@export var explosion_damage_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("Piercing", "projectile_pierce_")
+@export var projectile_pierce_value: int
+@export var projectile_pierce_modifier_type: WeaponPowerupSystem.PowerupModifierType
