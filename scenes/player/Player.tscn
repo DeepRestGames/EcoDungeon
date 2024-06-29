@@ -377,6 +377,9 @@ script = ExtResource("1_pk6wu")
 [node name="PlayerExperience" type="Node3D" parent="."]
 script = ExtResource("8_3yik5")
 
+[node name="PickupAttractPoint" type="Node3D" parent="PlayerExperience"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936002, 0)
+
 [node name="PickupArea" type="Area3D" parent="PlayerExperience"]
 disable_mode = 1
 collision_layer = 2
@@ -429,7 +432,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78706, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1.78706, 0)
-bones/3/rotation = Quaternion(-0.0512385, 0.00963284, 0.0145678, 0.998534)
+bones/3/rotation = Quaternion(0.0191756, 0.00093658, 0.0014164, 0.999815)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "upperleg.L"
 bones/4/parent = 0
