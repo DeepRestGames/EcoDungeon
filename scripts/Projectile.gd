@@ -59,7 +59,7 @@ func deal_damage(collider: EnemyBase):
 		enemies_pierced += [collider.get_instance_id()]
 		if piercing_amount > 0:
 			pierced_so_far +=1
-	if pierced_so_far > piercing_amount:
+	if pierced_so_far > piercing_amount or piercing_amount == 0:
 		destroy()
 
 
