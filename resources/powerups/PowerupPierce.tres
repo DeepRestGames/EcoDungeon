@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_kx74d")
-powerup_name = "Shotgun"
+powerup_name = "Pierce"
 powerup_description = ""
 powerup_icon = ExtResource("1_x62b8")
 fire_cooldown_modifier_value = 0.1

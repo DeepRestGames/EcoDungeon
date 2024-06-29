@@ -93,7 +93,7 @@ func update_projectiles_origins():
 	projectiles_origins = projectiles_origins.slice(0, 1)
 	
 	# Calculate angle between points
-	var radians_step = deg_to_rad(360 / current_projectiles_number)
+	var radians_step = deg_to_rad(360.0 / current_projectiles_number)
 	
 	# Position new projectiles origins
 	for i in range(1, current_projectiles_number):
