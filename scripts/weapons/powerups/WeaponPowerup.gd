@@ -44,3 +44,15 @@ class_name WeaponPowerup
 @export_group("Piercing", "projectile_pierce_")
 @export var projectile_pierce_value: int
 @export var projectile_pierce_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("DOT damage", "dot_dmg")
+@export var dot_dmg_value: float
+@export var dot_dmg_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("DOT duration", "dot_time")
+@export var dot_time_value: float
+@export var dot_time_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("DOT tick frequency", "dot_freq")
+@export var dot_freq_value: float
+@export var dot_freq_modifier_type: WeaponPowerupSystem.PowerupModifierType

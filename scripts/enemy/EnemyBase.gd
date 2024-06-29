@@ -25,6 +25,11 @@ const DAMAGE: float = 1
 @export var dmg_label_spread: float = 10
 @onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 
+# DoT handling
+var dot_damage: float = 0.0
+var dot_duration_timer = Timer.new()
+var dot_tick_timer = Timer.new()
+
 func _physics_process(_delta):
 	if not player:
 		return
@@ -39,6 +44,24 @@ func _physics_process(_delta):
 	var collision = get_last_slide_collision()
 	if collision and collision.get_collider() is Player:
 		player.take_damage(DAMAGE)
+		
+func _process(_delta):
+	if dot_damage > 0:
+		var damage_taken = 0.0
+		# Duration finished, stop damage and zero
+		if dot_duration_timer.is_stopped():
+			dot_damage = 0.0
+		# Apply damage and restart
+		if dot_tick_timer.is_stopped():
+			take_damage(dot_damage)
+			dot_tick_timer.start()
+
+	#if queued_dmg > 0.0:                 # check if damage is queued
+		#var damage = delta * dmg_speed 	  # calculate damage for this frame
+		#if damage > queued_dmg:
+			#damage = queued_dmg          # limit damage to queued_dmg
+		#queued_dmg -= damage             # reduce queued damage
+		#take_damage(DAMAGE)                   # apply damage
 
 func take_damage(damage: float):
 	current_hp -= damage
@@ -46,6 +69,14 @@ func take_damage(damage: float):
 	
 	if current_hp <= 0:
 		_death()
+		
+func gain_dot(dot_dmg, dot_duration, dot_tick_frequency):
+	dot_duration_timer.wait_time = dot_duration
+	dot_tick_timer.wait_time = dot_tick_frequency
+	dot_damage = dot_dmg
+	dot_duration_timer.start()
+	dot_tick_timer.start()
+	
 
 func show_damage(damage: float):
 	# TODO/NOTE: this is identical in player.

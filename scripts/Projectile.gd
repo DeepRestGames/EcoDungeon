@@ -5,11 +5,17 @@ var bullet_velocity: float
 var current_damage: float
 var lifetime_override: float
 var enemy_to_follow: EnemyBase
+# Explosion
 var explosion_area: float 
 var explosion_damage_percentage: float 
+# Pierce
 var piercing_amount: int
 var pierced_so_far: int = 0
 var enemies_pierced = []
+# DOT
+var dot_damage: float
+var dot_duration: float = 5.0
+var dot_tick_frequency: float = 1.0
 
 @onready var collision_shape = $CollisionShape3D
 @onready var life_time: Timer = $Lifetime
@@ -18,7 +24,7 @@ var enemies_pierced = []
 @onready var explosion_range_debug = $ExplosionRadius/ExplosionRangeDEBUG
 
 
-func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce):
+func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce, dot_dmg, dot_dur, dot_fr):
 	bullet_velocity = speed
 	current_damage = dmg
 	enemy_to_follow = enemy
@@ -26,6 +32,10 @@ func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce):
 	explosion_area = expl_range
 	explosion_damage_percentage = expl_damage
 	piercing_amount = pierce
+	dot_damage = dot_dmg
+	# Only replace if specified
+	dot_duration = dot_dur if dot_dur > 0 else dot_duration
+	dot_tick_frequency = dot_fr if dot_fr > 0 else dot_tick_frequency
 	
 
 
@@ -65,6 +75,8 @@ func _physics_process(delta):
 func deal_damage(collider: EnemyBase):
 	if collider.get_instance_id() not in enemies_pierced:
 		collider.take_damage(current_damage)
+		if dot_damage > 0:
+			collider.gain_dot(dot_damage, dot_duration, dot_tick_frequency)
 		enemies_pierced += [collider.get_instance_id()]
 		if piercing_amount > 0:
 			pierced_so_far +=1

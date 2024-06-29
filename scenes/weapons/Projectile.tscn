@@ -202,4 +202,5 @@ collision_mask = 4
 shape = SubResource("CylinderShape3D_csaoj")
 
 [node name="ExplosionRangeDEBUG" type="MeshInstance3D" parent="ExplosionRadius"]
+visible = false
 mesh = SubResource("CylinderMesh_j5fh0")

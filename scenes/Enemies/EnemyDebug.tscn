@@ -22,3 +22,5 @@ shape = SubResource("CapsuleShape3D_hlr77")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_h5kdl")
+
+[node name="Timer" type="Timer" parent="."]

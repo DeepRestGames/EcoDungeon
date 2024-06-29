@@ -103,3 +103,24 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 			base_weapon.piercing_amount += powerup.projectile_pierce_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.piercing_amount *= powerup.projectile_pierce_value
+			
+	# DOT damage
+	match powerup.dot_dmg_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.dot_dmg += powerup.dot_dmg_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.dot_dmg *= powerup.dot_dmg_value
+	
+	# DOT duration
+	match powerup.dot_time_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.dot_duration += powerup.dot_time_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.dot_duration *= powerup.dot_time_value
+			
+	# DOT frequency
+	match powerup.dot_freq_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.dot_frequency += powerup.dot_freq_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.dot_frequency *= powerup.dot_freq_value
