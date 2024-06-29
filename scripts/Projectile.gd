@@ -5,14 +5,17 @@ var bullet_velocity: float
 var current_damage: float
 var lifetime_override: float
 var enemy_to_follow: EnemyBase
-var explosion_range: float 
-var explosion_damage: float 
+var explosion_area: float 
+var explosion_damage_percentage: float 
 var piercing_amount: int
 var pierced_so_far: int = 0
 var enemies_pierced = []
 
 @onready var collision_shape = $CollisionShape3D
 @onready var life_time: Timer = $Lifetime
+@onready var explosion_radius = $ExplosionRadius
+@onready var explosion_collider = $ExplosionRadius/ExplosionCollider
+@onready var explosion_range_debug = $ExplosionRadius/ExplosionRangeDEBUG
 
 
 func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce):
@@ -20,8 +23,8 @@ func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce):
 	current_damage = dmg
 	enemy_to_follow = enemy
 	lifetime_override = lifetime
-	explosion_range = expl_range
-	explosion_damage = expl_damage
+	explosion_area = expl_range
+	explosion_damage_percentage = expl_damage
 	piercing_amount = pierce
 	
 
@@ -29,6 +32,10 @@ func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce):
 func _ready():
 	life_time.wait_time = lifetime_override
 	life_time.start()
+	explosion_collider.shape.radius = explosion_area
+	# DEBUG: view explosion area
+	#explosion_range_debug.mesh.top_radius = explosion_area + 0.01
+	#explosion_range_debug.mesh._radius = explosion_area + 0.01
 
 
 
@@ -45,6 +52,8 @@ func _physics_process(delta):
 			if collider is EnemyBase:
 				# Get damage component and round if needed
 				deal_damage(collider)
+				if explosion_area > 0:
+					explode(collider)
 			else:
 				destroy()
 		else:
@@ -62,6 +71,15 @@ func deal_damage(collider: EnemyBase):
 	if pierced_so_far > piercing_amount or piercing_amount == 0:
 		destroy()
 
+func explode(enemy_hit):
+
+	var enemies_in_explosion_range: Array = explosion_radius.get_overlapping_bodies()#
+	# These should all be enemies because of mask
+	for enemy in enemies_in_explosion_range:
+		# Uncomment if you don't want target to take explosion damage
+		#if enemy_hit.get_instance_id() == enemy.get_instance_id():
+			#continue
+		enemy.take_damage((explosion_damage_percentage/100) * current_damage)
 
 func destroy():
 	queue_free()
