@@ -1,10 +1,6 @@
 extends Node3D
 
 
-# TODO Suit this for multiple enemy scenes
-# Enemy scenes
-var enemy_follow_player_scene = preload("res://scenes/Enemies/EnemyFollowPlayer_02.tscn")
-
 # Node references
 @onready var enemies_node = $"../../Enemies"
 @onready var enemy_spawn_cooldown = $EnemySpawnCooldown
@@ -40,8 +36,9 @@ func _on_enemy_spawn_cooldown_timeout():
 	for enemy_wave_entry in current_wave.wave_enemies:
 		for enemy_index in enemy_wave_entry.enemy_count:
 			
-			# TODO Change with instantiation of actual enemy prefab
-			var enemy_instance = enemy_follow_player_scene.instantiate()
+			# The load method works fine here, since whenever a Resource is loaded once it stays in the cache for future use
+			var enemy_scene = load(enemy_wave_entry.enemy_scene_path)
+			var enemy_instance = enemy_scene.instantiate()
 			
 			# Randomize spawn location around player
 			var enemy_location = get_node("EnemySpawnPath/EnemySpawnLocation")
