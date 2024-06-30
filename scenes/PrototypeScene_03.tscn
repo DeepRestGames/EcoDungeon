@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo1a11i38vuh7"]
+[gd_scene load_steps=10 format=3 uid="uid://bo1a11i38vuh7"]
 
 [ext_resource type="Texture2D" uid="uid://dbgonf4pso6vy" path="res://assets/background/skybox/240528_Skybox3.png" id="1_5euls"]
-[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/Player.tscn" id="1_ui8tp"]
+[ext_resource type="PackedScene" uid="uid://bebiuwit13drx" path="res://scenes/player/Player.tscn" id="1_ui8tp"]
 [ext_resource type="PackedScene" uid="uid://bjp645qfo1bca" path="res://assets/3d/environment/cargoContainer/CargoContainer2_0.0.1.blend" id="4_a6o8c"]
+[ext_resource type="PackedScene" uid="uid://bs7c4ogbmpitr" path="res://assets/3d/environment/trash/TrashBin1_0.0.1.blend" id="6_0bo73"]
 [ext_resource type="PackedScene" uid="uid://kkyhkbr4n0yc" path="res://assets/3d/environment/ground/Terrain_0.0.0.blend" id="6_d6dbx"]
 [ext_resource type="PackedScene" uid="uid://bgkncs4c1pyel" path="res://assets/3d/environment/cargoContainer/CargoContainer1_0.0.1.blend" id="9_hq028"]
 
@@ -38,7 +39,7 @@ environment = SubResource("Environment_slfb0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-0.547093, -0.724926, 0.418534, 1.47562e-08, 0.499998, 0.866027, -0.837072, 0.473797, -0.273545, 0, 0, 0)
-light_color = Color(0.72549, 0.576471, 0.494118, 1)
+light_color = Color(0.729412, 0.627451, 0.568627, 1)
 light_energy = 2.2
 shadow_enabled = true
 shadow_blur = 1.5
@@ -82,7 +83,7 @@ transform = Transform3D(-0.453649, -0.0686421, 0.888533, -0.031213, 0.997641, 0.
 transform = Transform3D(0.14097, 0, 0.990014, 0, 1, 0, -0.990014, 0, 0.14097, -11.5949, 7.77191, 25.158)
 
 [node name="CargoContainer_0_0_18" parent="Environment" instance=ExtResource("9_hq028")]
-transform = Transform3D(0.768306, 0, 0.640083, 0, 1, 0, -0.640083, 0, 0.768306, -17.2392, 12.901, 18.9474)
+transform = Transform3D(0.529623, 0, -0.848233, 0, 1, 0, 0.848233, 0, 0.529623, -12.409, 12.901, -17.8665)
 
 [node name="Terrain_0_0_0" parent="Environment" instance=ExtResource("6_d6dbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0423512, -1.41739, -0.381099)
@@ -113,50 +114,111 @@ transform = Transform3D(0.963355, 0, -0.26823, 0, 1, 0, 0.26823, 0, 0.963355, -1
 [node name="Player" parent="." instance=ExtResource("1_ui8tp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497866, 0)
 
-[node name="Skeleton3D" parent="Player/PlayerModel/Armature" index="0"]
-bones/1/rotation = Quaternion(0.0284007, 0, 7.29199e-18, 0.999597)
-bones/2/rotation = Quaternion(0.0308202, 0, 7.91321e-18, 0.999525)
-bones/3/rotation = Quaternion(-0.0498521, 0.00946177, 0.0143091, 0.998609)
-bones/4/rotation = Quaternion(-2.78864e-08, 0.0324971, 0.999472, 1.1254e-08)
+[node name="Skeleton3D" parent="Player/PlayerModel/Racoon_0_0_8/RacoonBones" index="0"]
+bones/0/position = Vector3(-4.2693e-08, 0.740996, -0.898258)
+bones/0/rotation = Quaternion(0.625742, 2.78961e-07, 2.23782e-07, 0.78003)
+bones/1/position = Vector3(7.38027e-09, -0.0234377, -0.0103183)
+bones/1/rotation = Quaternion(0.990266, 4.97788e-08, 3.54146e-07, -0.139191)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.105638, 8.62664e-14, 5.16092e-15, 0.994405)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.159961, -4.08369e-18, -1.00739e-18, 0.987123)
+bones/3/scale = Vector3(1, 1, 1)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(-0.0489076, 1.19067e-07, 1.55464e-09, 0.998803)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(4.38017e-08, 0.0324971, 0.999472, -1.16808e-08)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.0489076, -1.19067e-07, -1.55463e-09, 0.998803)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(8.42938e-08, 0.707107, 0.707107, 8.42938e-08)
-bones/9/position = Vector3(0.703569, -4.62104, -0.0140713)
-bones/9/rotation = Quaternion(-5.33851e-08, 0.707107, -0.707107, 5.33851e-08)
-bones/10/rotation = Quaternion(-8.42938e-08, 0.707107, 0.707107, -8.42938e-08)
-bones/11/position = Vector3(-0.703569, -4.62104, -0.0140713)
-bones/11/rotation = Quaternion(5.33851e-08, 0.707107, -0.707107, -5.33851e-08)
-bones/12/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/5/scale = Vector3(1.06298, 1.06298, 1.06298)
+bones/6/rotation = Quaternion(0.175743, -1.52561e-06, 2.72355e-07, 0.984436)
+bones/6/scale = Vector3(0.907791, 0.907791, 0.907791)
+bones/7/rotation = Quaternion(0.393033, 2.17474e-07, 1.06223e-07, 0.919524)
+bones/7/scale = Vector3(0.972298, 0.972298, 0.972297)
+bones/8/rotation = Quaternion(-0.160514, 1.29432e-06, -2.87024e-07, 0.987034)
+bones/8/scale = Vector3(1.07097, 1.07097, 1.07097)
+bones/9/rotation = Quaternion(0.317609, -1.23655e-06, 5.42976e-07, 0.948222)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.76367, 0.0715406, 0.105857, 0.632838)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.275036, -0.0722194, 0.169513, 0.943613)
+bones/11/scale = Vector3(1, 1, 0.999999)
+bones/12/rotation = Quaternion(-0.481034, 0.0488716, 0.0194927, 0.875122)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.00984635, 0.993307, -0.114816, -0.00784297)
+bones/13/scale = Vector3(1, 0.999999, 1)
+bones/14/rotation = Quaternion(0.76367, -0.0715406, -0.105857, 0.632838)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.275036, 0.0722194, -0.169513, 0.943613)
+bones/15/scale = Vector3(1, 1, 0.999999)
+bones/16/rotation = Quaternion(-0.481034, -0.0488716, -0.0194927, 0.875122)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.00984635, 0.993307, -0.114816, 0.00784297)
+bones/17/scale = Vector3(1, 0.999999, 1)
+bones/18/rotation = Quaternion(0.547803, -0.0627639, 0.0993362, 0.828314)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.418449, -0.127125, -0.0260277, 0.898923)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.522451, 0.0919164, -0.040316, 0.846741)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.0312119, 0.923792, -0.378931, -0.0452288)
+bones/21/scale = Vector3(0.999999, 1, 1)
+bones/22/rotation = Quaternion(0.547803, 0.0627635, -0.0993358, 0.828315)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(0.418449, 0.127125, 0.0260277, 0.898923)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.522451, -0.0919164, 0.040316, 0.846741)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.0312119, 0.923792, -0.378931, 0.0452288)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(-0.704777, 0.0573529, -0.0573529, 0.704777)
+bones/26/scale = Vector3(1, 1, 1)
+bones/27/position = Vector3(0.0419372, 0.62097, 0.307862)
+bones/27/rotation = Quaternion(-0.706407, 0.0314573, -0.0314573, 0.706407)
+bones/28/rotation = Quaternion(-0.704777, -0.0573529, 0.0573529, 0.704777)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/position = Vector3(-0.0419372, 0.62097, 0.307862)
+bones/29/rotation = Quaternion(-0.706407, -0.0314573, 0.0314573, 0.706407)
 
-[node name="bagflap" parent="Player/PlayerModel/Armature/Skeleton3D" index="0"]
-surface_material_override/0 = null
+[node name="TrashBin1_0_0_1" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.706094, 0, 0.708118, 0, 1, 0, -0.708118, 0, 0.706094, 6.10459, 0.00671947, -1.29474)
 
-[node name="bag" parent="Player/PlayerModel/Armature/Skeleton3D" index="1"]
-surface_material_override/0 = null
+[node name="TrashBin1_0_0_2" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.502296, 0, 0.864696, 0, 1, 0, -0.864696, 0, 0.502296, 3.89651, 0.600025, 1.27893)
 
-[node name="face" parent="Player/PlayerModel/Armature/Skeleton3D" index="2"]
-surface_material_override/0 = null
+[node name="TrashBin1_0_0_10" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.502296, 0, 0.864696, 0, 1, 0, -0.864696, 0, 0.502296, -15.8157, 0.22133, 1.56347)
 
-[node name="hood" parent="Player/PlayerModel/Armature/Skeleton3D" index="3"]
-surface_material_override/0 = null
+[node name="TrashBin1_0_0_11" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.502296, 0, 0.864696, 0, 1, 0, -0.864696, 0, 0.502296, -15.8157, 0.22133, 3.16376)
 
-[node name="legs" parent="Player/PlayerModel/Armature/Skeleton3D" index="4"]
-surface_material_override/0 = null
+[node name="TrashBin1_0_0_12" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.502296, 0, 0.864696, 0, 1, 0, -0.864696, 0, 0.502296, -15.8157, 0.22133, 4.77812)
 
-[node name="scarf01" parent="Player/PlayerModel/Armature/Skeleton3D" index="5"]
-surface_material_override/0 = null
+[node name="TrashBin1_0_0_13" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.502296, 0, 0.864696, 0, 1, 0, -0.864696, 0, 0.502296, -15.8157, 2.31111, 2.31342)
 
-[node name="scarf02" parent="Player/PlayerModel/Armature/Skeleton3D" index="6"]
-surface_material_override/0 = null
+[node name="TrashBin1_0_0_14" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.502296, 0, 0.864696, 0, 1, 0, -0.864696, 0, 0.502296, -15.8157, 2.31111, 3.92778)
 
-[node name="tunic" parent="Player/PlayerModel/Armature/Skeleton3D" index="7"]
-surface_material_override/0 = null
-surface_material_override/1 = null
-surface_material_override/2 = null
+[node name="TrashBin1_0_0_15" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.502296, 0, 0.864696, 0, 1, 0, -0.864696, 0, 0.502296, -15.8206, 4.4178, 3.00227)
+
+[node name="TrashBin1_0_0_3" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.894115, 0, -0.447837, 0, 1, 0, 0.447837, 0, 0.894115, 9.56773, 0.00671947, -0.0998931)
+
+[node name="TrashBin1_0_0_4" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45955, 0.00671947, -1.70039)
+
+[node name="TrashBin1_0_0_5" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(-0.577986, 0, 0.816047, 0, 1, 0, -0.816047, 0, -0.577986, 15.1773, 0.00671947, -7.13057)
+
+[node name="TrashBin1_0_0_6" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(-0.931964, 0, -0.362552, 0, 1, 0, 0.362552, 0, -0.931964, 11.2907, 0.00671947, -9.25126)
+
+[node name="TrashBin1_0_0_7" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.779043, 0, 0.626971, 0, 1, 0, -0.626971, 0, 0.779043, 12.2907, 0.00671947, -5.25126)
+
+[node name="TrashBin1_0_0_8" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(-0.0106812, 0, 0.999943, 0, 1, 0, -0.999943, 0, -0.0106812, 13.2907, 0.00671947, -1.25126)
+
+[node name="TrashBin1_0_0_9" parent="." instance=ExtResource("6_0bo73")]
+transform = Transform3D(0.574463, -0.00344029, 0.818523, 0.00265944, 0.999994, 0.00233655, -0.818526, 0.000834576, 0.574469, 8.87532, 0.00671756, 3.56935)
 
 [editable path="Player"]
+[editable path="Player/PlayerModel/Racoon_0_0_8"]
