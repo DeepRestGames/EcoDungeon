@@ -29,10 +29,6 @@ func _on_enemy_spawn_cooldown_timeout():
 	var current_wave = enemy_waves[current_wave_id]
 	current_wave.print_wave_info()
 	
-	# Just for debugging purposes
-	if current_wave.wave_id != current_wave_id:
-		print("Enemy wave ID mismatch!")
-	
 	for enemy_wave_entry in current_wave.wave_enemies:
 		for enemy_index in enemy_wave_entry.enemy_count:
 			

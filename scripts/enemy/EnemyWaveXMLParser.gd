@@ -3,13 +3,13 @@ class_name EnemyWaveXMLParser
 
 # Class representing a single enemy wave
 class EnemyWave:
-	var wave_id: int
+	var wave_id: String
 	var wave_duration: float
 	var wave_enemies: Array[EnemyWaveEntry]
 	
 	func print_wave_info():
 		print("--------- Wave info ---------")
-		print("Wave ID: " + str(wave_id))
+		print(wave_id)
 		print("Wave duration: " + str(wave_duration))
 		for i in wave_enemies:
 			print("Total of " + str(i.enemy_count) + " of enemy type: " + i.enemy_scene_path)
@@ -28,7 +28,7 @@ func _parse_enemy_wave_xml(level_id: String) -> Array[EnemyWave]:
 	parser.open("res://resources/enemy_waves/" + level_id + ".xml")
 	
 	# Temporary variables to create wave objects
-	var wave_id: int
+	var wave_id: String
 	var wave_duration: float
 	var wave_enemies: Array[EnemyWaveEntry] = []
 	var wave_enemy_scene: String
@@ -38,7 +38,7 @@ func _parse_enemy_wave_xml(level_id: String) -> Array[EnemyWave]:
 		
 		if parser.get_node_type() == XMLParser.NODE_ELEMENT:
 			if parser.get_node_name() == "wave":
-				wave_id = parser.get_attribute_value(0).to_int()
+				wave_id = parser.get_attribute_value(0)
 				#print("Current wave id: " + str(wave_id))
 				continue
 			
