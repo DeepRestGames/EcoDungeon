@@ -62,9 +62,6 @@ func _physics_process(delta):
 			if collider is EnemyBase:
 				# Get damage component and round if needed
 				deal_damage(collider)
-				if explosion_area > 0:
-					# Pass the collider if you want to skip him taking damage
-					explode() # collider)
 			else:
 				destroy()
 		else:
@@ -75,6 +72,9 @@ func _physics_process(delta):
 
 func deal_damage(collider: EnemyBase):
 	if collider.get_instance_id() not in enemies_pierced:
+		if explosion_area > 0:
+			# Pass the collider if you want to skip him taking damage
+			explode() # collider)
 		collider.take_damage(current_damage, collider.NORMAL_DMG_COLOR)
 		if dot_damage > 0:
 			collider.gain_dot(dot_damage, dot_duration, dot_tick_frequency)

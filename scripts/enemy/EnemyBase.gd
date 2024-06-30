@@ -25,14 +25,16 @@ const DAMAGE: float = 1.0
 @export var dmg_label_spread: float = 10
 @onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 
-var NORMAL_DMG_COLOR: Color = Color(255,255,255,255)
-var POISON_DMG_COLOR: Color = Color(58, 201, 97, 255)
-var EXPLOSION_DMG_COLOR = Color(58, 201, 97, 255)
+const NORMAL_DMG_COLOR: Color = Color(255,255,255,255)
+const POISON_DMG_COLOR: Color = Color(6, 141, 54, 255)
+const EXPLOSION_DMG_COLOR = Color(255, 137, 53, 255)
 
 # DoT handling
 var dot_damage: float = 0.0
-var dot_duration_timer = Timer.new()
-var dot_tick_timer = Timer.new()
+var dot_duration: float = 5.0
+var dot_tick: float = 1.0
+var dot_duration_timer: SceneTreeTimer
+var dot_tick_timer: SceneTreeTimer
 
 func _physics_process(_delta):
 	if not player:
@@ -52,19 +54,12 @@ func _physics_process(_delta):
 func _process(_delta):
 	if dot_damage > 0:
 		# Duration finished, stop damage and zero
-		if dot_duration_timer.is_stopped():
+		if dot_duration_timer.time_left == 0:
 			dot_damage = 0.0
 		# Apply damage and restart
-		if dot_tick_timer.is_stopped():
+		if dot_tick_timer.time_left == 0:
 			take_damage(dot_damage, POISON_DMG_COLOR)
-			dot_tick_timer.start()
-
-	#if queued_dmg > 0.0:                 # check if damage is queued
-		#var damage = delta * dmg_speed 	  # calculate damage for this frame
-		#if damage > queued_dmg:
-			#damage = queued_dmg          # limit damage to queued_dmg
-		#queued_dmg -= damage             # reduce queued damage
-		#take_damage(DAMAGE)                   # apply damage
+			dot_tick_timer = get_tree().create_timer(dot_tick)
 
 func take_damage(damage: float, label_color: Color):
 	current_hp -= damage
@@ -73,12 +68,13 @@ func take_damage(damage: float, label_color: Color):
 	if current_hp <= 0:
 		_death()
 		
-func gain_dot(dot_dmg, dot_duration, dot_tick_frequency):
-	dot_duration_timer.wait_time = dot_duration
-	dot_tick_timer.wait_time = dot_tick_frequency
+func gain_dot(dot_dmg, dot_dur, dot_tick_frequency):
 	dot_damage = dot_dmg
-	dot_duration_timer.start()
-	dot_tick_timer.start()
+	dot_duration = dot_dur
+	dot_tick = dot_tick_frequency
+	
+	dot_duration_timer = get_tree().create_timer(dot_duration)
+	dot_tick_timer = get_tree().create_timer(dot_tick)
 	
 
 func show_damage(damage: float, label_color: Color):

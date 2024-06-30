@@ -38,7 +38,7 @@ const MOTION_INTERPOLATE_SPEED = 10
 @export var dmg_label_spread: float = 10
 # Health variables
 @export var max_hp: int = 5
-var current_hp: int = max_hp:
+var current_hp: float = max_hp:
 	set(value):
 		current_hp = clamp(value, 0, max_hp)
 
