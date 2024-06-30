@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=12 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
+[ext_resource type="Theme" uid="uid://c783inf5vpobj" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
 [ext_resource type="Script" path="res://scripts/Player/PowerUpMenu.gd" id="2_tqs0n"]
-
-[sub_resource type="Theme" id="Theme_4cvmb"]
-default_font_size = 36
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
 
 [sub_resource type="Gradient" id="Gradient_ul203"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ptawk"]
 gradient = SubResource("Gradient_ul203")
@@ -16,9 +15,6 @@ gradient = SubResource("Gradient_ul203")
 [sub_resource type="CanvasTexture" id="CanvasTexture_e7m4a"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
-
-[sub_resource type="Theme" id="Theme_xnxo0"]
-default_font_size = 36
 
 [sub_resource type="Theme" id="Theme_mh1ex"]
 default_font_size = 36
@@ -47,89 +43,111 @@ corner_radius_bottom_left = 10
 
 [node name="UI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchor_left = 0.0303819
+anchor_top = 0.0262346
+anchor_right = 0.971354
 anchor_bottom = 1.0
-offset_left = 35.0
-offset_top = 17.0
-offset_right = -33.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sghsl")
+metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="TextureProgressBar" parent="."]
-modulate = Color(0, 0.72549, 0.270588, 1)
 layout_mode = 1
-offset_right = 300.0
-offset_bottom = 70.0
-theme = SubResource("Theme_4cvmb")
+anchors_preset = -1
+anchor_left = 0.361624
+anchor_top = 0.0776545
+anchor_right = 0.638376
+anchor_bottom = 0.103011
+offset_right = 6.10352e-05
+theme = ExtResource("2_0jx3y")
 max_value = 5.0
 value = 5.0
 nine_patch_stretch = true
 texture_under = SubResource("CanvasTexture_e72mo")
 texture_progress = SubResource("GradientTexture1D_ptawk")
-tint_under = Color(0.294118, 0.796078, 0.466667, 0.564706)
+tint_under = Color(0.329412, 0.14902, 0.141176, 1)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0.929412, 0.109804, 0.141176, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="Health"]
+show_behind_parent = true
+layout_mode = 0
+anchor_left = -0.00666667
+anchor_top = -0.0405405
+anchor_right = 1.00667
+anchor_bottom = 1.06757
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthLabel" type="Label" parent="Health"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -25.0
-offset_right = 20.0
-offset_bottom = 25.0
+anchors_preset = -1
+anchor_left = 0.433333
+anchor_top = -0.0320946
+anchor_right = 0.566667
+anchor_bottom = 1.31926
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0jx3y")
 text = "HP: "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Experience" type="TextureProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.000922509
 anchor_right = 1.0
-offset_left = -300.0
-offset_bottom = 70.0
+anchor_bottom = 0.0253566
 grow_horizontal = 0
-theme = SubResource("Theme_4cvmb")
+theme = ExtResource("2_0jx3y")
 nine_patch_stretch = true
 texture_under = SubResource("CanvasTexture_e7m4a")
 texture_progress = SubResource("CanvasTexture_b3tfa")
-tint_under = Color(0.772549, 0.792157, 0.419608, 0.360784)
-tint_progress = Color(0.807843, 0.745098, 0.282353, 1)
+tint_under = Color(0.329412, 0.14902, 0.141176, 1)
+tint_progress = Color(0.984314, 0.690196, 0.231373, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Experience"]
+show_behind_parent = true
+layout_mode = 0
+anchor_left = -0.00277008
+anchor_top = -0.0540541
+anchor_right = 1.00277
+anchor_bottom = 1.05405
+metadata/_edit_use_anchors_ = true
 
 [node name="XpLabel" type="Label" parent="Experience"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -25.0
-offset_right = 20.0
-offset_bottom = 25.0
+anchors_preset = -1
+anchor_left = 0.481533
+anchor_top = -0.0945946
+anchor_right = 0.518467
+anchor_bottom = 1.25676
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0jx3y")
 text = "XP: "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+anchors_preset = -1
+anchor_left = 0.890221
+anchor_top = 0.0522979
+anchor_right = 1.00185
+anchor_bottom = 0.131537
 grow_horizontal = 2
-theme = SubResource("Theme_xnxo0")
-text = "Level 1"
+theme = ExtResource("2_0jx3y")
+theme_override_font_sizes/font_size = 42
+text = "LEVEL 1"
+horizontal_alignment = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PowerupMenu" type="PopupMenu" parent="."]
 mode = 3
