@@ -27,14 +27,21 @@ const DAMAGE: float = 1.0
 
 const NORMAL_DMG_COLOR: Color = Color(1.0,1.0,1.0,1.0)
 const POISON_DMG_COLOR: Color = Color(0.0235, 0.553, 0.218, 1.0)
-const EXPLOSION_DMG_COLOR: Color = Color(1.0, 0.537, 0.208, 1.0)
+const EXPLOSION_DMG_COLOR: Color = Color(1, 0.537, 0.208, 1.0)
 
 # DoT handling
 var dot_damage: float = 0.0
 var dot_duration: float = 5.0
-var dot_tick: float = 1.0
-var dot_duration_timer: SceneTreeTimer
-var dot_tick_timer: SceneTreeTimer
+var dot_tick: float = 0.5
+
+var dot_duration_timer: Timer = Timer.new()
+var dot_tick_timer: Timer = Timer.new()
+
+func _init():
+	dot_duration_timer.one_shot = true
+	dot_tick_timer.one_shot = true
+	add_child(dot_duration_timer)
+	add_child(dot_tick_timer)
 
 func _physics_process(_delta):
 	if not player:
@@ -52,14 +59,16 @@ func _physics_process(_delta):
 		player.take_damage(DAMAGE)
 		
 func _process(_delta):
-	if dot_damage > 0:
-		# Duration finished, stop damage and zero
-		if dot_duration_timer.time_left == 0:
-			dot_damage = 0.0
+	if not dot_duration_timer.is_stopped():
+		#print(dot_duration_timer.time_left)
 		# Apply damage and restart
-		if dot_tick_timer.time_left == 0:
+		#print(dot_tick_timer.is)
+		if dot_tick_timer.is_stopped():
+			#print(dot_tick_timer.time_left)	
 			take_damage(dot_damage, POISON_DMG_COLOR)
-			dot_tick_timer = get_tree().create_timer(dot_tick)
+			dot_tick_timer.start()
+	else:
+		dot_damage = 0.0
 
 func take_damage(damage: float, label_color: Color):
 	current_hp -= damage
@@ -68,14 +77,20 @@ func take_damage(damage: float, label_color: Color):
 	if current_hp <= 0:
 		_death()
 		
-func gain_dot(dot_dmg, dot_dur, dot_tick_frequency):
+func gain_dot(dot_dmg, dot_dur, dot_tick_freq):
 	dot_damage = dot_dmg
 	dot_duration = dot_dur
-	dot_tick = dot_tick_frequency
+	dot_tick = dot_tick_freq
 	
-	dot_duration_timer = get_tree().create_timer(dot_duration)
-	dot_tick_timer = get_tree().create_timer(dot_tick)
-	
+	dot_duration_timer.wait_time = dot_duration
+
+		
+	# Refresh if hit again
+	dot_duration_timer.start()
+	# Refresh ticks only if stopped
+	if dot_tick_timer.is_stopped():
+		dot_tick_timer.wait_time = dot_tick
+		dot_tick_timer.start()	
 
 func show_damage(damage: float, label_color: Color):
 	# TODO/NOTE: this is identical in player.

@@ -161,7 +161,7 @@ func take_damage(damage: float):
 		death()
 	health_change.emit(current_hp)
 
-func show_damage(damage: float, label_color=Color(255,0,0,255)):
+func show_damage(damage: float, label_color=Color(1.0,0.0,0.0,1.0)):
 	# TODO/NOTE: this is identical in enemy_base
 	var damage_floating_label = damage_number_3d_template.instantiate()
 	var pos = global_position
