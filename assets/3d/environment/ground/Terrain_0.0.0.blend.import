@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/3d/environment/ground/materials/DesertGround.tres"
+"use_external/path": "res://assets/3d/environment/ground/materials/Ground1.tres"
 }
 }
 }
