@@ -18,12 +18,16 @@ extends CharacterBody3D
 var current_hp: float = max_hp:
 	set(value):
 		current_hp = clamp(value, 0, max_hp)
-const DAMAGE: float = 1
+const DAMAGE: float = 1.0
 
 # Damage number variables
 @export var dmg_label_height: float = 10
 @export var dmg_label_spread: float = 10
 @onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
+
+var NORMAL_DMG_COLOR: Color = Color(255,255,255,255)
+var POISON_DMG_COLOR: Color = Color(58, 201, 97, 255)
+var EXPLOSION_DMG_COLOR = Color(58, 201, 97, 255)
 
 # DoT handling
 var dot_damage: float = 0.0
@@ -47,13 +51,12 @@ func _physics_process(_delta):
 		
 func _process(_delta):
 	if dot_damage > 0:
-		var damage_taken = 0.0
 		# Duration finished, stop damage and zero
 		if dot_duration_timer.is_stopped():
 			dot_damage = 0.0
 		# Apply damage and restart
 		if dot_tick_timer.is_stopped():
-			take_damage(dot_damage)
+			take_damage(dot_damage, POISON_DMG_COLOR)
 			dot_tick_timer.start()
 
 	#if queued_dmg > 0.0:                 # check if damage is queued
@@ -63,9 +66,9 @@ func _process(_delta):
 		#queued_dmg -= damage             # reduce queued damage
 		#take_damage(DAMAGE)                   # apply damage
 
-func take_damage(damage: float):
+func take_damage(damage: float, label_color: Color):
 	current_hp -= damage
-	show_damage(damage)
+	show_damage(damage, label_color)
 	
 	if current_hp <= 0:
 		_death()
@@ -78,13 +81,13 @@ func gain_dot(dot_dmg, dot_duration, dot_tick_frequency):
 	dot_tick_timer.start()
 	
 
-func show_damage(damage: float):
+func show_damage(damage: float, label_color: Color):
 	# TODO/NOTE: this is identical in player.
 	var damage_floating_label = damage_number_3d_template.instantiate()
 	var pos = global_position
 	var level_root =  get_tree().get_root()
 	level_root.add_child(damage_floating_label, true)
-	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread)
+	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color)
 
 func _death():
 	var dropped_shard = xp_shard_template.instantiate()

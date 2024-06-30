@@ -30,8 +30,11 @@ func add_powerup(powerup: WeaponPowerup):
 	print("Range: " + str(base_weapon.weapon_range))
 	print("Fire cooldown: " + str(base_weapon.fire_cooldown))
 	print("Projectiles number: " + str(base_weapon.current_projectiles_number))
-	print("Explosion range/damage: " + str(base_weapon.explosion_range) + '/'+ str(base_weapon.explosion_damage))
+	print("Explosion (range/damage): " + str(base_weapon.explosion_range) + '/'+ str(base_weapon.explosion_damage))
 	print("Pierce: " + str(base_weapon.piercing_amount))
+	print("DoT (damage/duration/freq): " + str(base_weapon.dot_dmg)  + '/' 
+	+ str(base_weapon.dot_duration)  + '/'
+	+ str(base_weapon.dot_frequency))
 	print("-----------------------------------------------------------")
 
 

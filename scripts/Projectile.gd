@@ -63,7 +63,8 @@ func _physics_process(delta):
 				# Get damage component and round if needed
 				deal_damage(collider)
 				if explosion_area > 0:
-					explode(collider)
+					# Pass the collider if you want to skip him taking damage
+					explode() # collider)
 			else:
 				destroy()
 		else:
@@ -74,7 +75,7 @@ func _physics_process(delta):
 
 func deal_damage(collider: EnemyBase):
 	if collider.get_instance_id() not in enemies_pierced:
-		collider.take_damage(current_damage)
+		collider.take_damage(current_damage, collider.NORMAL_DMG_COLOR)
 		if dot_damage > 0:
 			collider.gain_dot(dot_damage, dot_duration, dot_tick_frequency)
 		enemies_pierced += [collider.get_instance_id()]
@@ -83,15 +84,15 @@ func deal_damage(collider: EnemyBase):
 	if pierced_so_far > piercing_amount or piercing_amount == 0:
 		destroy()
 
-func explode(enemy_hit):
-
+# Uncomment if you want hit enemy to not take damage
+func explode(): # enemy_hit):
 	var enemies_in_explosion_range: Array = explosion_radius.get_overlapping_bodies()#
 	# These should all be enemies because of mask
 	for enemy in enemies_in_explosion_range:
 		# Uncomment if you don't want target to take explosion damage
 		#if enemy_hit.get_instance_id() == enemy.get_instance_id():
 			#continue
-		enemy.take_damage((explosion_damage_percentage/100) * current_damage)
+		enemy.take_damage((explosion_damage_percentage/100) * current_damage, enemy.EXPLOSION_DMG_COLOR)
 
 func destroy():
 	queue_free()
