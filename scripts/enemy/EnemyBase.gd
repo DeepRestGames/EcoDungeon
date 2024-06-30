@@ -25,9 +25,9 @@ const DAMAGE: float = 1.0
 @export var dmg_label_spread: float = 10
 @onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 
-const NORMAL_DMG_COLOR: Color = Color(255,255,255,255)
-const POISON_DMG_COLOR: Color = Color(6, 141, 54, 255)
-const EXPLOSION_DMG_COLOR = Color(255, 137, 53, 255)
+const NORMAL_DMG_COLOR: Color = Color(1.0,1.0,1.0,1.0)
+const POISON_DMG_COLOR: Color = Color(0.0235, 0.553, 0.218, 1.0)
+const EXPLOSION_DMG_COLOR: Color = Color(1.0, 0.537, 0.208, 1.0)
 
 # DoT handling
 var dot_damage: float = 0.0
