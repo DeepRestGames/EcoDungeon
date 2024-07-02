@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave id="0">
+	<wave_duration>5</wave_duration>
+</wave>
+<wave id="1">
+	<wave_duration>5</wave_duration>
+	<enemies_to_spawn>
+		<enemy_wave_entry>
+			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02_FAST.tscn</enemy_scene>
+			<enemy_count>30</enemy_count>
+		</enemy_wave_entry>
+	</enemies_to_spawn>
+</wave>
+<wave id="2">
+	<wave_duration>5</wave_duration>
+	<enemies_to_spawn>
+		<enemy_wave_entry>
+			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02_FAST.tscn</enemy_scene>
+			<enemy_count>40</enemy_count>
+		</enemy_wave_entry>
+	</enemies_to_spawn>
+</wave>
+<wave id="3">
+	<wave_duration>5</wave_duration>
+	<enemies_to_spawn>
+		<enemy_wave_entry>
+			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02_FAST.tscn</enemy_scene>
+			<enemy_count>40</enemy_count>
+		</enemy_wave_entry>
+	</enemies_to_spawn>
+</wave>
+<wave id="4">
+	<wave_duration>10</wave_duration>
+	<enemies_to_spawn>
+		<enemy_wave_entry>
+			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02_TANK.tscn</enemy_scene>
+			<enemy_count>6</enemy_count>
+		</enemy_wave_entry>
+	</enemies_to_spawn>
+</wave>
+<wave id="5">
+	<wave_duration>5</wave_duration>
+	<enemies_to_spawn>
+		<enemy_wave_entry>
+			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02_FAST.tscn</enemy_scene>
+			<enemy_count>40</enemy_count>
+		</enemy_wave_entry>
+	</enemies_to_spawn>
+</wave>

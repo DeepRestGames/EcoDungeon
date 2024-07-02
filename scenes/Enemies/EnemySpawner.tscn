@@ -19,7 +19,5 @@ curve = SubResource("Curve3D_8fc5c")
 transform = Transform3D(-0.316227, 0, -0.948683, 0, 1, 0, 0.948683, 0, -0.316227, 0, 1.5, -20)
 
 [node name="EnemySpawnCooldown" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
 
 [connection signal="timeout" from="EnemySpawnCooldown" to="." method="_on_enemy_spawn_cooldown_timeout"]

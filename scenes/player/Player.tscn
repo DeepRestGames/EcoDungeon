@@ -564,7 +564,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_m2k26")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.669131, 0.743145, 0, -0.743145, 0.669131, 0, 10, 10)
 near = 0.001
 far = 150.0
 
