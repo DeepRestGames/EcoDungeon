@@ -2,6 +2,8 @@ extends Area3D
 
 
 const XP_GRANTED: float = 50
+var pull_speed: float = 5.0
+var pull_accell: float = 0.1
 
 func _physics_process(_delta):
 	rotate_y(deg_to_rad(3))

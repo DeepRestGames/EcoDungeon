@@ -30,6 +30,13 @@ func add_powerup(powerup: WeaponPowerup):
 	print("Range: " + str(base_weapon.weapon_range))
 	print("Fire cooldown: " + str(base_weapon.fire_cooldown))
 	print("Projectiles number: " + str(base_weapon.current_projectiles_number))
+	print("Explosion (range/damage): " + str(base_weapon.explosion_range) + '/'+ str(base_weapon.explosion_damage))
+	print("Pierce: " + str(base_weapon.piercing_amount))
+	print("DoT (damage/duration/freq): " + str(base_weapon.dot_dmg)  + '/' 
+	+ str(base_weapon.dot_duration)  + '/'
+	+ str(base_weapon.dot_frequency))
+	print("Crit (chance/damage): " + str(base_weapon.crit_chance)  + '/' 
+	+ str(base_weapon.crit_damage))
 	print("-----------------------------------------------------------")
 
 
@@ -81,3 +88,59 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 	if powerup.homing_projectiles_modifier_value == true:
 		base_weapon.homing_projectiles = true
 	
+	# Explosion range
+	match powerup.explosion_radius_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.explosion_range += powerup.explosion_radius_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.explosion_range *= powerup.explosion_radius_value
+	
+	# Explosion damage
+	match powerup.explosion_damage_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.explosion_damage += powerup.explosion_damage_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.explosion_damage *= powerup.explosion_damage_value
+			
+	# Pierce value
+	match powerup.projectile_pierce_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.piercing_amount += powerup.projectile_pierce_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.piercing_amount *= powerup.projectile_pierce_value
+			
+	# DOT damage
+	match powerup.dot_dmg_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.dot_dmg += powerup.dot_dmg_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.dot_dmg *= powerup.dot_dmg_value
+	
+	# DOT duration
+	match powerup.dot_time_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.dot_duration += powerup.dot_time_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.dot_duration *= powerup.dot_time_value
+			
+	# DOT frequency
+	match powerup.dot_freq_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.dot_frequency += powerup.dot_freq_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.dot_frequency *= powerup.dot_freq_value
+			
+	# CRIT CH
+	match powerup.crit_chance_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.crit_chance += powerup.crit_chance_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.crit_chance *= powerup.crit_chance_value
+
+	# CRIT DMG
+	match powerup.crit_dmg_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.crit_damage += powerup.crit_dmg_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.crit_damage *= powerup.crit_dmg_value
+

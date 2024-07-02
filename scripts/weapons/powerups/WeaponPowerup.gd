@@ -31,3 +31,36 @@ class_name WeaponPowerup
 
 @export_group("Homing projectiles", "homing_projectiles_")
 @export var homing_projectiles_modifier_value: bool
+
+# --- NEW ---
+@export_group("Explosion range", "explosion_radius_")
+@export var explosion_radius_value: float
+@export var explosion_radius_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("Explosion damage", "explosion_damage_")
+@export var explosion_damage_value: float
+@export var explosion_damage_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("Piercing", "projectile_pierce_")
+@export var projectile_pierce_value: int
+@export var projectile_pierce_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("DOT damage", "dot_dmg_")
+@export var dot_dmg_value: float
+@export var dot_dmg_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("DOT duration", "dot_time_")
+@export var dot_time_value: float
+@export var dot_time_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("DOT tick frequency", "dot_freq_")
+@export var dot_freq_value: float
+@export var dot_freq_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("CRIT Chance", "crit_chance_")
+@export var crit_chance_value: float
+@export var crit_chance_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("CRIT Damage", "crit_dmg_")
+@export var crit_dmg_value: float
+@export var crit_dmg_modifier_type: WeaponPowerupSystem.PowerupModifierType

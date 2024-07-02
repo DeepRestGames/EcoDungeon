@@ -31,6 +31,25 @@ var current_hp: float = max_hp:
 @export var dmg_label_spread: float = 10
 @onready var damage_number_3d_template = preload("res://scenes/weapons/DamageNumber3D.tscn")
 
+const NORMAL_DMG_COLOR: Color = Color(1.0,1.0,1.0,1.0)
+const POISON_DMG_COLOR: Color = Color(0.0235, 0.553, 0.218, 1.0)
+const EXPLOSION_DMG_COLOR: Color = Color(1, 0.537, 0.208, 1.0)
+@export var CRIT_DMG_COLOR: Color = Color(0.749, 0.6, 0.271, 1.0)
+
+# DoT handling
+var dot_damage: float = 0.0
+var dot_duration: float = 5.0
+var dot_tick: float = 0.5
+
+var dot_duration_timer: Timer = Timer.new()
+var dot_tick_timer: Timer = Timer.new()
+
+func _init():
+	dot_duration_timer.one_shot = true
+	dot_tick_timer.one_shot = true
+	add_child(dot_duration_timer)
+	add_child(dot_tick_timer)
+
 
 func _ready():
 	var navigation_cooldown_modifier = randf_range(-NAVIGATION_COOLDOWN_MODIFIER_BASE, NAVIGATION_COOLDOWN_MODIFIER_BASE)
@@ -56,21 +75,48 @@ func _physics_process(delta):
 	var collision = get_last_slide_collision()
 	if collision and collision.get_collider() is Player:
 		player.take_damage(damage)
+		
+func _process(_delta):
+	if not dot_duration_timer.is_stopped():
+		#print(dot_duration_timer.time_left)
+		# Apply damage and restart
+		#print(dot_tick_timer.is)
+		if dot_tick_timer.is_stopped():
+			#print(dot_tick_timer.time_left)	
+			take_damage(dot_damage, POISON_DMG_COLOR, false)
+			dot_tick_timer.start()
+	else:
+		dot_damage = 0.0
 
-func take_damage(damage: float):
+func take_damage(damage: float, label_color: Color, is_crit: bool):
 	current_hp -= damage
-	show_damage(damage)
+	show_damage(damage, label_color, is_crit)
 	
 	if current_hp <= 0:
 		_death()
+		
+func gain_dot(dot_dmg, dot_dur, dot_tick_freq):
+	dot_damage = dot_dmg
+	dot_duration = dot_dur
+	dot_tick = dot_tick_freq
+	
+	dot_duration_timer.wait_time = dot_duration
 
-func show_damage(damage: float):
+		
+	# Refresh if hit again
+	dot_duration_timer.start()
+	# Refresh ticks only if stopped
+	if dot_tick_timer.is_stopped():
+		dot_tick_timer.wait_time = dot_tick
+		dot_tick_timer.start()	
+
+func show_damage(damage: float, label_color: Color, is_crit: bool):
 	# TODO/NOTE: this is identical in player.
 	var damage_floating_label = damage_number_3d_template.instantiate()
 	var pos = global_position
 	var level_root =  get_tree().get_root()
 	level_root.add_child(damage_floating_label, true)
-	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread)
+	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color, is_crit)
 
 func _death():
 	var dropped_shard = xp_shard_template.instantiate()

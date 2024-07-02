@@ -38,7 +38,7 @@ const MOTION_INTERPOLATE_SPEED = 10
 @export var dmg_label_spread: float = 10
 # Health variables
 @export var max_hp: int = 5
-var current_hp: int = max_hp:
+var current_hp: float = max_hp:
 	set(value):
 		current_hp = clamp(value, 0, max_hp)
 
@@ -151,7 +151,7 @@ func _zoom(delta: float) -> void:
 
 signal health_change(hp)
 
-func take_damage(damage: int):
+func take_damage(damage: float):
 	# Prevent damage if a hit was just taken
 	if invincibility_frames_timer.is_stopped():
 		show_damage(damage)
@@ -161,13 +161,13 @@ func take_damage(damage: int):
 		death()
 	health_change.emit(current_hp)
 
-func show_damage(damage: float):
+func show_damage(damage: float, label_color=Color(1.0,0.0,0.0,1.0)):
 	# TODO/NOTE: this is identical in enemy_base
 	var damage_floating_label = damage_number_3d_template.instantiate()
 	var pos = global_position
 	var level_root =  get_tree().get_root()
 	level_root.add_child(damage_floating_label, true)
-	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, Color(255,0,0,255))
+	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color, false)
 
 
 func death():

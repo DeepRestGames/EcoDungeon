@@ -52,7 +52,16 @@ var current_projectiles_number: int:
 		current_projectiles_number = clamp(value, MIN_PROJECTILES_NUMBER, MAX_PROJECTILE_NUMBER)
 
 # --- Powerups ---
-var homing_projectiles = false
+var homing_projectiles: bool = false
+var explosion_range: float = .0
+var explosion_damage: float = .0
+var piercing_amount: int = 0
+var dot_dmg: float = 0.0
+var dot_duration: float = -1.0 
+var dot_frequency: float = -1.0
+var crit_chance: float = 0.1
+var crit_damage: float = 1.5
+
 
 
 func _ready():
@@ -72,10 +81,10 @@ func _on_weapon_range_area_enemies_found(enemies: Array):
 			# Create new projectile targeting enemy target
 			var projectile = projectile_instance.instantiate()
 			# Set enemy as target to follow if weapon has homing powerup
-			if homing_projectiles:
-				projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, enemy)
-			else:
-				projectile.initialize(projectile_velocity, current_damage, projectile_lifetime)
+			var target = null if not homing_projectiles else enemy
+			projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, 
+			target, explosion_range, explosion_damage, piercing_amount,
+			dot_dmg,dot_duration,dot_frequency, crit_chance, crit_damage)
 			
 			# Spawn projectile at its origin and shoot it
 			var shoot_origin = projectiles_origins[projectile_origin_index].global_transform.origin
@@ -91,7 +100,7 @@ func update_projectiles_origins():
 	projectiles_origins = projectiles_origins.slice(0, 1)
 	
 	# Calculate angle between points
-	var radians_step = deg_to_rad(360 / current_projectiles_number)
+	var radians_step = deg_to_rad(360.0 / current_projectiles_number)
 	
 	# Position new projectiles origins
 	for i in range(1, current_projectiles_number):

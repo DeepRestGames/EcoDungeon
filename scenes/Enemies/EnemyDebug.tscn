@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjllg4u5dcdhq"]
+
+[ext_resource type="Script" path="res://scripts/enemy/EnemyBase.gd" id="1_hwfwt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlr77"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw5pp"]
+albedo_color = Color(0.952941, 0.0588235, 0.537255, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h5kdl"]
+material = SubResource("StandardMaterial3D_rw5pp")
+
+[node name="EnemyDebug" type="CharacterBody3D" groups=["EnemyHorde"]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_hwfwt")
+max_hp = 2000.0
+CRIT_DMG_COLOR = Color(0.74902, 0.6, 0.270588, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hlr77")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_h5kdl")
+
+[node name="Timer" type="Timer" parent="."]

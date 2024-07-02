@@ -42,12 +42,12 @@ func _populate_powerups_menu():
 		add_icon_item(current_powerup.powerup_icon, current_powerup.powerup_name)
 
 
-func _choose_next_powerup_to_show(powerups_to_show: Array):
+func _choose_next_powerup_to_show(_powerups_to_show: Array):
 	var current_powerup = powerup_resources.pick_random() as WeaponPowerup
 	
 	# Don't show same powerup in same menu, pick again
-	if powerups_to_show.has(current_powerup):
-		return _choose_next_powerup_to_show(powerups_to_show)
+	if _powerups_to_show.has(current_powerup):
+		return _choose_next_powerup_to_show(_powerups_to_show)
 	# Picked unique powerup
 	return current_powerup
 
