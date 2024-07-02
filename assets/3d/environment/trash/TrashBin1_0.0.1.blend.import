@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kkyhkbr4n0yc"
-path="res://.godot/imported/Terrain_0.0.0.blend-a4c0e43ce7e1662a9d6b5106799256c8.scn"
+uid="uid://bs7c4ogbmpitr"
+path="res://.godot/imported/TrashBin1_0.0.1.blend-345244df6ff270512efb5a06dd525215.scn"
 
 [deps]
 
-source_file="res://assets/3d/environment/ground/Terrain_0.0.0.blend"
-dest_files=["res://.godot/imported/Terrain_0.0.0.blend-a4c0e43ce7e1662a9d6b5106799256c8.scn"]
+source_file="res://assets/3d/environment/trash/TrashBin1_0.0.1.blend"
+dest_files=["res://.godot/imported/TrashBin1_0.0.1.blend-345244df6ff270512efb5a06dd525215.scn"]
 
 [params]
 
@@ -31,9 +31,18 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material": {
+"TrashBin": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/3d/environment/ground/materials/Ground1.tres"
+"use_external/path": "res://assets/3d/environment/trash/materials/TrashMetal.tres"
+}
+},
+"nodes": {
+"PATH:TrashBin1": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/layer": 8,
+"physics/mask": 15,
+"physics/shape_type": 1
 }
 }
 }

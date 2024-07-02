@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cv7i6bjphunjt"]
+
+[ext_resource type="Shader" path="res://assets/shaders/CelShader.gdshader" id="1_u42j4"]
+
+[resource]
+resource_name = "purple worm"
+render_priority = 0
+shader = ExtResource("1_u42j4")
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/color = Color(0.317647, 0.317647, 0.317647, 1)
+shader_parameter/specular = Color(0.101961, 0.0862745, 0.101961, 0.501961)
+shader_parameter/fresnel = Color(0, 0, 0, 0.301961)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

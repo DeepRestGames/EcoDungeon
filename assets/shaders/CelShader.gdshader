@@ -1,7 +1,6 @@
 shader_type spatial;
 
 #define USE_ALPHA 0
-
 #define USE_ALPHA_CUTOFF 0
 #define USE_EMISSION 0
 #define USE_REFLECTIONS 1
@@ -11,8 +10,10 @@ shader_type spatial;
 #define USE_BACKLIGHT 0
 #define USE_REFRACTION 0
 
-#if USE_ALPHA
 render_mode depth_draw_always, cull_disabled; // to turn on if some meshes must be visible from both directions (if possible fix on blender)
+
+#if USE_ALPHA
+render_mode depth_draw_always, 
 #endif
 
 #include "includes/CelShader.gdshaderinc"

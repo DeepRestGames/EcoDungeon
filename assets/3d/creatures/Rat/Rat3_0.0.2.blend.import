@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kkyhkbr4n0yc"
-path="res://.godot/imported/Terrain_0.0.0.blend-a4c0e43ce7e1662a9d6b5106799256c8.scn"
+uid="uid://fgnvfm4qd05t"
+path="res://.godot/imported/Rat3_0.0.2.blend-84701ba15e084422963edd60f793e1b4.scn"
 
 [deps]
 
-source_file="res://assets/3d/environment/ground/Terrain_0.0.0.blend"
-dest_files=["res://.godot/imported/Terrain_0.0.0.blend-a4c0e43ce7e1662a9d6b5106799256c8.scn"]
+source_file="res://assets/3d/creatures/Rat/Rat3_0.0.2.blend"
+dest_files=["res://.godot/imported/Rat3_0.0.2.blend-84701ba15e084422963edd60f793e1b4.scn"]
 
 [params]
 
@@ -31,9 +31,21 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material": {
+"RatFur": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/3d/environment/ground/materials/Ground1.tres"
+"use_external/path": "res://assets/3d/creatures/Rat/materials/RatFur3.tres"
+},
+"RatNose": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/3d/creatures/Rat/materials/RatNose3.tres"
+},
+"RatTail": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/3d/creatures/Rat/materials/RatTail.tres"
+},
+"RatTooth": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/3d/creatures/Rat/materials/RatTooth.tres"
 }
 }
 }

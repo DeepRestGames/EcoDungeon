@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kkyhkbr4n0yc"
-path="res://.godot/imported/Terrain_0.0.0.blend-a4c0e43ce7e1662a9d6b5106799256c8.scn"
+uid="uid://qyayydq5k3ev"
+path="res://.godot/imported/TrashLid1_0.0.3.blend-58ed38270a3f8a00a068346941c526cd.scn"
 
 [deps]
 
-source_file="res://assets/3d/environment/ground/Terrain_0.0.0.blend"
-dest_files=["res://.godot/imported/Terrain_0.0.0.blend-a4c0e43ce7e1662a9d6b5106799256c8.scn"]
+source_file="res://assets/3d/environment/trash/TrashLid1_0.0.3.blend"
+dest_files=["res://.godot/imported/TrashLid1_0.0.3.blend-58ed38270a3f8a00a068346941c526cd.scn"]
 
 [params]
 
@@ -31,9 +31,30 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material": {
+"TrashBin.002": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/3d/environment/ground/materials/Ground1.tres"
+"use_external/path": "res://assets/3d/environment/trash/materials/TrashMetal.tres"
+}
+},
+"meshes": {
+"TrashLid1_0_0_3_Cube_002": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": false,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://assets/3d/environment/trash/TrashLidMesh_0.0.3.res"
+}
+},
+"nodes": {
+"PATH:TrashBinLid1": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/layer": 8,
+"physics/mask": 15,
+"physics/physics_material_override": null
 }
 }
 }
