@@ -75,7 +75,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "method"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -109,7 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.260322, 0)
 billboard = 1
 no_depth_test = true
 modulate = Color(1, 0, 0, 1)
-outline_modulate = Color(0.631373, 0.635294, 0.27451, 1)
+outline_modulate = Color(0.490196, 0.160784, 0.960784, 1)
 text = "123"
 font_size = 128
 outline_size = 13

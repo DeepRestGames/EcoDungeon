@@ -34,7 +34,7 @@ var current_hp: float = max_hp:
 const NORMAL_DMG_COLOR: Color = Color(1.0,1.0,1.0,1.0)
 const POISON_DMG_COLOR: Color = Color(0.0235, 0.553, 0.218, 1.0)
 const EXPLOSION_DMG_COLOR: Color = Color(1, 0.537, 0.208, 1.0)
-@export var CRIT_DMG_COLOR: Color = Color(0.78, 0.122, 1.0, 1.0)
+@export var CRIT_DMG_COLOR: Color = Color(0.749, 0.6, 0.271, 1.0)
 
 # DoT handling
 var dot_damage: float = 0.0
@@ -50,7 +50,6 @@ func _init():
 	add_child(dot_duration_timer)
 	add_child(dot_tick_timer)
 
-func _physics_process(_delta):
 
 func _ready():
 	var navigation_cooldown_modifier = randf_range(-NAVIGATION_COOLDOWN_MODIFIER_BASE, NAVIGATION_COOLDOWN_MODIFIER_BASE)

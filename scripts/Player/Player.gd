@@ -167,7 +167,7 @@ func show_damage(damage: float, label_color=Color(1.0,0.0,0.0,1.0)):
 	var pos = global_position
 	var level_root =  get_tree().get_root()
 	level_root.add_child(damage_floating_label, true)
-	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color)
+	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color, false)
 
 
 func death():
