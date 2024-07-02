@@ -16,15 +16,20 @@ var enemies_pierced = []
 var dot_damage: float
 var dot_duration: float = 5.0
 var dot_tick_frequency: float = 1.0
+# CRIT
+var crit_chance: float
+var crit_damage: float
+var rng = RandomNumberGenerator.new()
 
 @onready var collision_shape = $CollisionShape3D
 @onready var life_time: Timer = $Lifetime
 @onready var explosion_radius = $ExplosionRadius
 @onready var explosion_collider = $ExplosionRadius/ExplosionCollider
-@onready var explosion_range_debug = $ExplosionRadius/ExplosionRangeDEBUG
+#@onready var explosion_range_debug = $ExplosionRadius/ExplosionRangeDEBUG
 
 
-func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce, dot_dmg, dot_dur, dot_fr):
+func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce, 
+				dot_dmg, dot_dur, dot_fr, crit_ch, crit_dmg):
 	bullet_velocity = speed
 	current_damage = dmg
 	enemy_to_follow = enemy
@@ -36,6 +41,8 @@ func initialize(speed, dmg, lifetime, enemy, expl_range, expl_damage, pierce, do
 	# Only replace if specified
 	dot_duration = dot_dur if dot_dur > 0 else dot_duration
 	dot_tick_frequency = dot_fr if dot_fr > 0 else dot_tick_frequency
+	crit_chance = crit_ch
+	crit_damage = crit_dmg
 	
 
 
@@ -65,7 +72,6 @@ func _physics_process(delta):
 			else:
 				destroy()
 		else:
-	 		# TODO: less homing?
 			if enemy_to_follow != null:
 				look_at(enemy_to_follow.global_position, Vector3.UP)
 
@@ -75,7 +81,19 @@ func deal_damage(collider: EnemyBase):
 		if explosion_area > 0:
 			# Pass the collider if you want to skip him taking damage
 			explode() # collider)
-		collider.take_damage(current_damage, collider.NORMAL_DMG_COLOR)
+
+		var roll = rng.randf()
+		var on_hit_damage: float
+		var on_hit_color: Color
+		var is_crit: bool = false
+		if roll < crit_chance:
+			on_hit_damage = current_damage * crit_damage
+			on_hit_color = collider.CRIT_DMG_COLOR
+			is_crit = true
+		else:
+			on_hit_damage = current_damage
+			on_hit_color = collider.NORMAL_DMG_COLOR
+		collider.take_damage(on_hit_damage, on_hit_color, is_crit)
 		if dot_damage > 0:
 			collider.gain_dot(dot_damage, dot_duration, dot_tick_frequency)
 		enemies_pierced += [collider.get_instance_id()]
@@ -83,6 +101,7 @@ func deal_damage(collider: EnemyBase):
 			pierced_so_far +=1
 	if pierced_so_far > piercing_amount or piercing_amount == 0:
 		destroy()
+
 
 # Uncomment if you want hit enemy to not take damage
 func explode(): # enemy_hit):
@@ -92,7 +111,7 @@ func explode(): # enemy_hit):
 		# Uncomment if you don't want target to take explosion damage
 		#if enemy_hit.get_instance_id() == enemy.get_instance_id():
 			#continue
-		enemy.take_damage((explosion_damage_percentage/100) * current_damage, enemy.EXPLOSION_DMG_COLOR)
+		enemy.take_damage((explosion_damage_percentage/100) * current_damage, enemy.EXPLOSION_DMG_COLOR, false)
 
 func destroy():
 	queue_free()

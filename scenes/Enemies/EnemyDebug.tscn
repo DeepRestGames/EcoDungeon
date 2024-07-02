@@ -16,6 +16,7 @@ collision_mask = 7
 script = ExtResource("1_hwfwt")
 SPEED = 0.0
 max_hp = 2000.0
+CRIT_DMG_COLOR = Color(0.780392, 0.121569, 1, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_hlr77")

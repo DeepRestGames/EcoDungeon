@@ -35,6 +35,8 @@ func add_powerup(powerup: WeaponPowerup):
 	print("DoT (damage/duration/freq): " + str(base_weapon.dot_dmg)  + '/' 
 	+ str(base_weapon.dot_duration)  + '/'
 	+ str(base_weapon.dot_frequency))
+	print("Crit (chance/damage): " + str(base_weapon.crit_chance)  + '/' 
+	+ str(base_weapon.crit_damage))
 	print("-----------------------------------------------------------")
 
 
@@ -127,3 +129,18 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 			base_weapon.dot_frequency += powerup.dot_freq_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.dot_frequency *= powerup.dot_freq_value
+			
+	# CRIT CH
+	match powerup.crit_chance_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.crit_chance += powerup.crit_chance_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.crit_chance *= powerup.crit_chance_value
+
+	# CRIT DMG
+	match powerup.crit_dmg_modifier_type:
+		PowerupModifierType.ADD:
+			base_weapon.crit_damage += powerup.crit_dmg_value
+		PowerupModifierType.MULTIPLY:
+			base_weapon.crit_damage *= powerup.crit_dmg_value
+

@@ -6,11 +6,15 @@ extends Node3D
 @onready var animation_player = $AnimationPlayer
 
 
-func set_values_and_animate(value: String, start_pos: Vector3, height: float, spread: float, color: Color) -> void:
+func set_values_and_animate(value: String, start_pos: Vector3, height: float, spread: float, color: Color, is_crit: bool) -> void:
 	label_3d.text = value
 	
 	label_3d.modulate = color
 	
+	if is_crit:
+		label_3d.outline_size = 10
+	else:
+		label_3d.outline_size = 0
 	animation_player.play("Rise and Fade")
 	global_position = start_pos
 	

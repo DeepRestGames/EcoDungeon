@@ -59,6 +59,8 @@ var piercing_amount: int = 0
 var dot_dmg: float = 0.0
 var dot_duration: float = -1.0 
 var dot_frequency: float = -1.0
+var crit_chance: float = 0.1
+var crit_damage: float = 1.5
 
 
 
@@ -81,7 +83,8 @@ func _on_weapon_range_area_enemies_found(enemies: Array):
 			# Set enemy as target to follow if weapon has homing powerup
 			var target = null if not homing_projectiles else enemy
 			projectile.initialize(projectile_velocity, current_damage, projectile_lifetime, 
-			target, explosion_range, explosion_damage, piercing_amount,dot_dmg,dot_duration,dot_frequency)
+			target, explosion_range, explosion_damage, piercing_amount,
+			dot_dmg,dot_duration,dot_frequency, crit_chance, crit_damage)
 			
 			# Spawn projectile at its origin and shoot it
 			var shoot_origin = projectiles_origins[projectile_origin_index].global_transform.origin

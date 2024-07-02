@@ -28,6 +28,7 @@ const DAMAGE: float = 1.0
 const NORMAL_DMG_COLOR: Color = Color(1.0,1.0,1.0,1.0)
 const POISON_DMG_COLOR: Color = Color(0.0235, 0.553, 0.218, 1.0)
 const EXPLOSION_DMG_COLOR: Color = Color(1, 0.537, 0.208, 1.0)
+@export var CRIT_DMG_COLOR: Color = Color(0.78, 0.122, 1.0, 1.0)
 
 # DoT handling
 var dot_damage: float = 0.0
@@ -65,14 +66,14 @@ func _process(_delta):
 		#print(dot_tick_timer.is)
 		if dot_tick_timer.is_stopped():
 			#print(dot_tick_timer.time_left)	
-			take_damage(dot_damage, POISON_DMG_COLOR)
+			take_damage(dot_damage, POISON_DMG_COLOR, false)
 			dot_tick_timer.start()
 	else:
 		dot_damage = 0.0
 
-func take_damage(damage: float, label_color: Color):
+func take_damage(damage: float, label_color: Color, is_crit: bool):
 	current_hp -= damage
-	show_damage(damage, label_color)
+	show_damage(damage, label_color, is_crit)
 	
 	if current_hp <= 0:
 		_death()
@@ -92,13 +93,13 @@ func gain_dot(dot_dmg, dot_dur, dot_tick_freq):
 		dot_tick_timer.wait_time = dot_tick
 		dot_tick_timer.start()	
 
-func show_damage(damage: float, label_color: Color):
+func show_damage(damage: float, label_color: Color, is_crit: bool):
 	# TODO/NOTE: this is identical in player.
 	var damage_floating_label = damage_number_3d_template.instantiate()
 	var pos = global_position
 	var level_root =  get_tree().get_root()
 	level_root.add_child(damage_floating_label, true)
-	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color)
+	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color, is_crit)
 
 func _death():
 	var dropped_shard = xp_shard_template.instantiate()
