@@ -51,6 +51,10 @@
 			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02.tscn</enemy_scene>
 			<enemy_count>2</enemy_count>
 		</enemy_wave_entry>
+		<enemy_wave_entry>
+			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02_ANNOYING.tscn</enemy_scene>
+			<enemy_count>2</enemy_count>
+		</enemy_wave_entry>
 	</enemies_to_spawn>
 </wave>
 <wave id="Wave 4 - 00:25">
@@ -135,6 +139,10 @@
 		<enemy_wave_entry>
 			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02.tscn</enemy_scene>
 			<enemy_count>4</enemy_count>
+		</enemy_wave_entry>
+		<enemy_wave_entry>
+			<enemy_scene>res://scenes/enemies/EnemyFollowPlayer_02_ANNOYING.tscn</enemy_scene>
+			<enemy_count>1</enemy_count>
 		</enemy_wave_entry>
 	</enemies_to_spawn>
 </wave>
