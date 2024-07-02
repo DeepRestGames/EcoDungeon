@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_h8tje")
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_qpnv5")
-SPEED = 5.0
+speed = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_hlr77")

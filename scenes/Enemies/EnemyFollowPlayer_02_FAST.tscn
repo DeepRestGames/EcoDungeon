@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_ms6ck")
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_xm6sp")
-SPEED = 8.0
+speed = 8.0
 max_hp = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

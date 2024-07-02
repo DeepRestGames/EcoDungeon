@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_rw5pp")
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_aevhe")
-SPEED = 6.0
+speed = 6.0
 max_hp = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
