@@ -35,7 +35,7 @@ var current_damage: float:
 @export var projectile_lifetime: float = 2.0:
 	set(value):
 		projectile_lifetime = clamp(value, MIN_LIFETIME, MAX_LIFETIME)
-@export var projectile_velocity: float = 20.0:
+@export var projectile_velocity: float = 10.0:
 	set(value):
 		projectile_velocity = clamp(value, MIN_VELOCITY, MAX_VELOCITY)
 @export var weapon_range: float = 15.0:
