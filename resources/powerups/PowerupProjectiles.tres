@@ -1,23 +1,23 @@
 [gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://c1bbt2beq5qgf"]
 
-[ext_resource type="Texture2D" uid="uid://dbp1v1uln8ymc" path="res://assets/2d/icons/earth.png" id="1_7xcoe"]
-[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="1_a02b8"]
+[ext_resource type="Texture2D" uid="uid://dbp1v1uln8ymc" path="res://assets/2d/icons/earth.png" id="1_k250c"]
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="2_ect76"]
 
 [resource]
-script = ExtResource("1_a02b8")
-powerup_name = "Damage + projectiles"
+script = ExtResource("2_ect76")
+powerup_name = "More projectiles"
 powerup_description = ""
-powerup_icon = ExtResource("1_7xcoe")
-fire_cooldown_modifier_value = 0.0
-fire_cooldown_modifier_type = 0
+powerup_icon = ExtResource("1_k250c")
+fire_cooldown_modifier_value = 1.2
+fire_cooldown_modifier_type = 1
 projectile_lifetime_modifier_value = 0.0
 projectile_lifetime_modifier_type = 0
 projectile_velocity_modifier_value = 0.0
 projectile_velocity_modifier_type = 0
 range_modifier_value = 0.0
 range_modifier_type = 0
-damage_modifier_value = 0.5
-damage_modifier_type = 2
+damage_modifier_value = 0.0
+damage_modifier_type = 0
 projectiles_number_modifier_value = 1
 projectiles_number_modifier_type = 0
 homing_projectiles_modifier_value = false

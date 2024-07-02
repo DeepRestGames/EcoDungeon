@@ -1,21 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://ewl60flurrur"]
+[gd_scene load_steps=5 format=3 uid="uid://dogdngtve3u42"]
 
-[ext_resource type="Script" path="res://scripts/enemy/EnemyBase.gd" id="1_aevhe"]
+[ext_resource type="Script" path="res://scripts/enemy/EnemyBase.gd" id="1_qpnv5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlr77"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rw5pp"]
-albedo_color = Color(0.52549, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8tje"]
+albedo_color = Color(0.52549, 0, 0.635294, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_h5kdl"]
-material = SubResource("StandardMaterial3D_rw5pp")
+material = SubResource("StandardMaterial3D_h8tje")
 
 [node name="EnemyFollowPlayer" type="CharacterBody3D" groups=["EnemySingle"]]
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_aevhe")
-speed = 6.0
-max_hp = 2.0
+script = ExtResource("1_qpnv5")
+speed = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_hlr77")
