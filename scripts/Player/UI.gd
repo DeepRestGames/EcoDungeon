@@ -38,7 +38,7 @@ func _on_player_health_change(hp):
 
 
 func set_player_hp_label(current_value, max_value, regen):
-	health_label.text = "HP: %.0f/%.0f (+%.2f)" % [current_value, max_value, regen]
+	health_label.text = "HP: %.0f/%.0f (+%.2f /5s)" % [current_value, max_value, regen]
 
 
 func set_xp_label(current_value, max_value):

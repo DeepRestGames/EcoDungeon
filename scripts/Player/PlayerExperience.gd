@@ -10,6 +10,7 @@ const base_multiplier: float = 1.1
 signal xp_change(xp)
 signal level_up(level, overflow_xp)
 
+
 var current_xp: float = 0:
 	set(value):
 		current_xp = value

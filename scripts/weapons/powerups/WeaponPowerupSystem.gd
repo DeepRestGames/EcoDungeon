@@ -13,7 +13,8 @@ var weapon_powerups: Array [WeaponPowerup] = []
 
 signal add_hp(value, type)
 signal add_regen(value, type)
-
+signal add_movespeed(value, type)
+signal add_pickup_range(value, type)
 func _ready():
 	weapon_powerups.clear()
 	powerup_menu_ui.new_powerup.connect(add_powerup)
@@ -145,17 +146,29 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 		PowerupModifierType.MULTIPLY:
 			base_weapon.crit_damage *= powerup.crit_dmg_value
 			
-		# CRIT CH
+	# HP
 	match powerup.hp_modifier_type:
 		PowerupModifierType.ADD:
 			add_hp.emit(powerup.hp_value, "+")
 		PowerupModifierType.MULTIPLY:
 			add_hp.emit(powerup.hp_value, "*")
 
-	# CRIT DMG
+	# REGEN
 	match powerup.hp_regen_modifier_type:
 		PowerupModifierType.ADD:
 			add_regen.emit(powerup.hp_regen_value, "+")
 		PowerupModifierType.MULTIPLY:
 			add_regen.emit(powerup.hp_regen_value, "*")
+			
+	match powerup.move_speed_modifier_type:
+		PowerupModifierType.ADD:
+			add_movespeed.emit(powerup.move_speed_value, "+")
+		PowerupModifierType.MULTIPLY:
+			add_movespeed.emit(powerup.move_speed_value, "*")
+		
+	match powerup.pickup_area_modifier_type:
+		PowerupModifierType.ADD:
+			add_pickup_range.emit(powerup.pickup_area_value, "+")
+		PowerupModifierType.MULTIPLY:
+			add_pickup_range.emit(powerup.pickup_area_value, "*")
 

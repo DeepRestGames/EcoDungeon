@@ -54,12 +54,9 @@ var hp_regen: float = 0.0
 # ---------------------------------------------
 # ---------------- ENVIRONMENT ----------------
 # ---------------------------------------------
-var SPEED: float = 10.0
+var move_speed: float = 10.0
 const JUMP_VELOCITY: float = 5.0 # TODO: should probably remove jump
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-# TODO Delete
-# @onready var bullet_origin = $BulletOrigin
 
 # ****************************************************************************
 # ****************************************************************************
@@ -96,11 +93,11 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * move_speed
+		velocity.z = direction.z * move_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
 
 	# --- Animations ---
 	# Rotation
@@ -199,3 +196,10 @@ func _on_weapon_powerup_system_add_regen(value, type):
 	elif type == "*":
 		hp_regen *= value
 		health_change.emit(current_hp)
+
+
+func _on_weapon_powerup_system_add_movespeed(value, type):
+	if type == "+":
+		move_speed += value
+	elif type == "*":
+		move_speed *= value

@@ -41,3 +41,5 @@ hp_value = 5.0
 hp_modifier_type = 0
 hp_regen_value = 0.0
 hp_regen_modifier_type = 0
+move_speed_value = 0.0
+move_speed_modifier_type = 0
