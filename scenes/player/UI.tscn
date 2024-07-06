@@ -83,10 +83,10 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthLabel" type="Label" parent="Health"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.433333
-anchor_top = -0.0320946
-anchor_right = 0.566667
-anchor_bottom = 1.31926
+anchor_left = 0.41
+anchor_top = -0.731422
+anchor_right = 0.59
+anchor_bottom = 1.76859
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0jx3y")
@@ -144,9 +144,8 @@ anchor_bottom = 0.131537
 grow_horizontal = 2
 theme = ExtResource("2_0jx3y")
 theme_override_font_sizes/font_size = 42
-text = "LEVEL 1"
+text = "Level 1"
 horizontal_alignment = 2
-uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="PowerupMenu" type="PopupMenu" parent="."]
