@@ -42,6 +42,9 @@ var current_hp: float = max_hp:
 	set(value):
 		current_hp = clamp(value, 0, max_hp)
 
+var hp_regen: float = 0.0
+@onready var hp_regen_timer = $HpRegenTimer
+
 # --- Experience / level up ---
 @onready var player_experience = $PlayerExperience
 
@@ -51,12 +54,9 @@ var current_hp: float = max_hp:
 # ---------------------------------------------
 # ---------------- ENVIRONMENT ----------------
 # ---------------------------------------------
-var SPEED: float = 10.0
+var move_speed: float = 10.0
 const JUMP_VELOCITY: float = 5.0 # TODO: should probably remove jump
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-# TODO Delete
-# @onready var bullet_origin = $BulletOrigin
 
 # ****************************************************************************
 # ****************************************************************************
@@ -73,6 +73,11 @@ func _unhandled_input(event):
 func _process(delta):
 	if zoom_direction != 0:
 		_zoom(delta)
+		
+	if hp_regen_timer.is_stopped() and hp_regen != 0:
+		current_hp += hp_regen
+		show_damage(hp_regen, Color(0.0,1.0,0.0,1.0))
+		hp_regen_timer.start()
 	
 
 func _physics_process(delta):
@@ -88,11 +93,11 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * move_speed
+		velocity.z = direction.z * move_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
 
 	# --- Animations ---
 	# Rotation
@@ -172,3 +177,29 @@ func show_damage(damage: float, label_color=Color(1.0,0.0,0.0,1.0)):
 
 func death():
 	queue_free()
+
+
+func _on_weapon_powerup_system_add_hp(value, type):
+	if type == "+":
+		max_hp += value
+		current_hp += value
+		health_change.emit(current_hp)
+	elif type == "*":
+		max_hp *= value
+		health_change.emit(current_hp)
+
+
+func _on_weapon_powerup_system_add_regen(value, type):
+	if type == "+":
+		hp_regen += value
+		health_change.emit(current_hp)
+	elif type == "*":
+		hp_regen *= value
+		health_change.emit(current_hp)
+
+
+func _on_weapon_powerup_system_add_movespeed(value, type):
+	if type == "+":
+		move_speed += value
+	elif type == "*":
+		move_speed *= value

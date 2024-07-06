@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=13 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
-[ext_resource type="Theme" uid="uid://c783inf5vpobj" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
+[ext_resource type="Theme" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
 [ext_resource type="Script" path="res://scripts/Player/PowerUpMenu.gd" id="2_tqs0n"]
+[ext_resource type="FontFile" uid="uid://8a8ovsk187ni" path="res://assets/2d/fonts/Zantung-2OYg3.ttf" id="3_24ave"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
 
@@ -17,7 +18,8 @@ gradient = SubResource("Gradient_ul203")
 [sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
 
 [sub_resource type="Theme" id="Theme_mh1ex"]
-default_font_size = 36
+default_font = ExtResource("3_24ave")
+default_font_size = 72
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekq8l"]
 bg_color = Color(0.415686, 0.0666667, 0.596078, 1)

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://cov7cb2kk38xn"]
+
+[ext_resource type="Texture2D" uid="uid://difpdkbqoprp8" path="res://assets/2d/sprites/items/rarity2/Rarity2_TetraPack.png" id="1_vicdv"]
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="2_m348w"]
+
+[resource]
+script = ExtResource("2_m348w")
+powerup_name = "Tetra pack"
+powerup_description = "Dark side of the trash"
+powerup_icon = ExtResource("1_vicdv")
+fire_cooldown_modifier_value = 0.7
+fire_cooldown_modifier_type = 1
+projectile_lifetime_modifier_value = 0.0
+projectile_lifetime_modifier_type = 0
+projectile_velocity_modifier_value = 0.0
+projectile_velocity_modifier_type = 0
+range_modifier_value = 0.0
+range_modifier_type = 0
+damage_modifier_value = 0.0
+damage_modifier_type = 0
+projectiles_number_modifier_value = 3
+projectiles_number_modifier_type = 0
+homing_projectiles_modifier_value = false
+explosion_radius_value = 0.0
+explosion_radius_modifier_type = 0
+explosion_damage_value = 0.0
+explosion_damage_modifier_type = 0
+projectile_pierce_value = 0
+projectile_pierce_modifier_type = 0
+dot_dmg_value = 0.0
+dot_dmg_modifier_type = 0
+dot_time_value = 0.0
+dot_time_modifier_type = 0
+dot_freq_value = 0.0
+dot_freq_modifier_type = 0
+crit_chance_value = 0.0
+crit_chance_modifier_type = 0
+crit_dmg_value = 0.0
+crit_dmg_modifier_type = 0
+hp_value = 0.0
+hp_modifier_type = 0
+hp_regen_value = 0.0
+hp_regen_modifier_type = 0
+move_speed_value = 0.0
+move_speed_modifier_type = 0
