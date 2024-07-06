@@ -64,3 +64,11 @@ class_name WeaponPowerup
 @export_group("CRIT Damage", "crit_dmg_")
 @export var crit_dmg_value: float
 @export var crit_dmg_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("HP", "hp_")
+@export var hp_value: float
+@export var hp_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+@export_group("HP regen", "hp_regen_")
+@export var hp_regen_value: float
+@export var hp_regen_modifier_type: WeaponPowerupSystem.PowerupModifierType

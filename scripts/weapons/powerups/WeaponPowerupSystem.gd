@@ -7,11 +7,12 @@ enum PowerupModifierType {
 	MULTIPLY
 }
 
-
 @onready var base_weapon: BaseWeapon = $".."
 @onready var powerup_menu_ui = $"../../UI/PowerupMenu"
 var weapon_powerups: Array [WeaponPowerup] = []
 
+signal add_hp(value, type)
+signal add_regen(value, type)
 
 func _ready():
 	weapon_powerups.clear()
@@ -143,4 +144,18 @@ func _apply_powerup_modifiers(powerup: WeaponPowerup):
 			base_weapon.crit_damage += powerup.crit_dmg_value
 		PowerupModifierType.MULTIPLY:
 			base_weapon.crit_damage *= powerup.crit_dmg_value
+			
+		# CRIT CH
+	match powerup.hp_modifier_type:
+		PowerupModifierType.ADD:
+			add_hp.emit(powerup.hp_value, "+")
+		PowerupModifierType.MULTIPLY:
+			add_hp.emit(powerup.hp_value, "*")
+
+	# CRIT DMG
+	match powerup.hp_regen_modifier_type:
+		PowerupModifierType.ADD:
+			add_regen.emit(powerup.hp_regen_value, "+")
+		PowerupModifierType.MULTIPLY:
+			add_regen.emit(powerup.hp_regen_value, "*")
 

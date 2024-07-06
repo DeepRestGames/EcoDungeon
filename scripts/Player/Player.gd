@@ -172,3 +172,11 @@ func show_damage(damage: float, label_color=Color(1.0,0.0,0.0,1.0)):
 
 func death():
 	queue_free()
+
+
+func _on_weapon_powerup_system_add_hp(value, type):
+	pass # Replace with function body.
+
+
+func _on_weapon_powerup_system_add_regen(value, type):
+	pass # Replace with function body.

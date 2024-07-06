@@ -37,3 +37,7 @@ crit_chance_value = 0.0
 crit_chance_modifier_type = 0
 crit_dmg_value = 0.0
 crit_dmg_modifier_type = 0
+hp_value = 0.0
+hp_modifier_type = 0
+hp_regen_value = 0.0
+hp_regen_modifier_type = 0
