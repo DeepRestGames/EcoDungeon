@@ -42,6 +42,9 @@ var current_hp: float = max_hp:
 	set(value):
 		current_hp = clamp(value, 0, max_hp)
 
+var hp_regen: float = 0.0
+@onready var hp_regen_timer = $HpRegenTimer
+
 # --- Experience / level up ---
 @onready var player_experience = $PlayerExperience
 
@@ -73,6 +76,11 @@ func _unhandled_input(event):
 func _process(delta):
 	if zoom_direction != 0:
 		_zoom(delta)
+		
+	if hp_regen_timer.is_stopped() and hp_regen != 0:
+		current_hp += hp_regen
+		show_damage(hp_regen, Color(0.0,1.0,0.0,1.0))
+		hp_regen_timer.start()
 	
 
 func _physics_process(delta):
@@ -175,8 +183,19 @@ func death():
 
 
 func _on_weapon_powerup_system_add_hp(value, type):
-	pass # Replace with function body.
+	if type == "+":
+		max_hp += value
+		current_hp += value
+		health_change.emit(current_hp)
+	elif type == "*":
+		max_hp *= value
+		health_change.emit(current_hp)
 
 
 func _on_weapon_powerup_system_add_regen(value, type):
-	pass # Replace with function body.
+	if type == "+":
+		hp_regen += value
+		health_change.emit(current_hp)
+	elif type == "*":
+		hp_regen *= value
+		health_change.emit(current_hp)

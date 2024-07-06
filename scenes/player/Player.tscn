@@ -638,45 +638,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188389, 0, 0.0103669)
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="Skeleton3D" parent="PlayerModel/Racoon_0_1_2/RacoonBones" index="0"]
-bones/0/position = Vector3(-3.13941e-08, 0.742183, -0.897225)
-bones/1/position = Vector3(7.81155e-09, -0.0233037, -0.0109213)
-bones/1/rotation = Quaternion(0.98989, 5.07253e-08, 3.54012e-07, -0.141838)
-bones/2/rotation = Quaternion(0.103692, 8.43951e-14, -1.78224e-15, 0.994609)
-bones/3/rotation = Quaternion(0.16074, 1.67431e-15, 6.00178e-15, 0.986997)
+bones/0/position = Vector3(-2.63428e-09, 0.669876, -0.960138)
+bones/1/position = Vector3(-1.60338e-08, -0.030711, 0.0224169)
+bones/1/rotation = Quaternion(0.999773, -7.62846e-09, 3.57547e-07, 0.0213308)
+bones/2/rotation = Quaternion(0.221522, 8.62764e-14, -4.99107e-15, 0.975155)
+bones/3/rotation = Quaternion(0.101267, -4.01654e-18, -1.24694e-18, 0.994859)
 bones/4/rotation = Quaternion(-0.323651, -2.03029e-06, 4.62992e-07, 0.946177)
 bones/5/rotation = Quaternion(0.0340821, 3.33595e-06, -8.12599e-09, 0.999419)
-bones/5/scale = Vector3(1.06397, 1.06397, 1.06397)
-bones/6/rotation = Quaternion(0.175365, -1.52572e-06, 2.71769e-07, 0.984503)
-bones/6/scale = Vector3(0.906347, 0.906347, 0.906347)
-bones/7/rotation = Quaternion(0.393002, 2.17681e-07, 1.04767e-07, 0.919537)
-bones/7/scale = Vector3(0.972136, 0.972136, 0.972135)
-bones/8/rotation = Quaternion(-0.159608, 1.29452e-06, -2.85404e-07, 0.987181)
-bones/8/scale = Vector3(1.07208, 1.07208, 1.07208)
-bones/9/rotation = Quaternion(0.317909, -1.23758e-06, 5.4774e-07, 0.948121)
+bones/5/scale = Vector3(1.00388, 1.00388, 1.00388)
+bones/6/rotation = Quaternion(0.192012, -1.5209e-06, 2.97567e-07, 0.981393)
+bones/6/scale = Vector3(0.99431, 0.99431, 0.99431)
+bones/7/rotation = Quaternion(0.41668, 2.16628e-07, 1.00117e-07, 0.909053)
+bones/7/scale = Vector3(0.998291, 0.998291, 0.998291)
+bones/8/rotation = Quaternion(-0.228134, 1.27675e-06, -4.07941e-07, 0.97363)
+bones/8/scale = Vector3(1.00438, 1.00438, 1.00438)
+bones/9/rotation = Quaternion(0.268882, -1.26261e-06, 4.79265e-07, 0.963173)
 bones/10/position = Vector3(0.19494, 0.330291, 0.211063)
-bones/10/rotation = Quaternion(0.763856, 0.0714915, 0.105901, 0.632612)
-bones/11/rotation = Quaternion(-0.273539, -0.0722737, 0.169203, 0.944099)
-bones/12/rotation = Quaternion(-0.480349, 0.0488369, 0.0193628, 0.875502)
+bones/10/rotation = Quaternion(0.719728, 0.0741825, 0.101164, 0.682828)
+bones/11/rotation = Quaternion(-0.338743, -0.0714247, 0.174953, 0.921707)
+bones/12/rotation = Quaternion(-0.506416, 0.0501059, 0.0237242, 0.860505)
 bones/13/rotation = Quaternion(0.00984633, 0.993307, -0.114816, -0.00784298)
 bones/14/position = Vector3(-0.19494, 0.330291, 0.211063)
-bones/14/rotation = Quaternion(0.763856, -0.0714915, -0.105901, 0.632612)
-bones/15/rotation = Quaternion(-0.273539, 0.0722737, -0.169203, 0.944099)
-bones/16/rotation = Quaternion(-0.480349, -0.0488369, -0.0193628, 0.875502)
+bones/14/rotation = Quaternion(0.719728, -0.0741825, -0.101164, 0.682828)
+bones/15/rotation = Quaternion(-0.338743, 0.0714247, -0.174953, 0.921707)
+bones/16/rotation = Quaternion(-0.506416, -0.0501058, -0.0237242, 0.860505)
 bones/18/position = Vector3(-0.1249, 0.25637, 0.0305231)
-bones/18/rotation = Quaternion(0.549326, -0.062485, 0.099422, 0.827316)
-bones/19/rotation = Quaternion(0.416343, -0.127166, -0.025783, 0.899902)
-bones/20/rotation = Quaternion(-0.520926, 0.0920993, -0.0400568, 0.847673)
-bones/21/rotation = Quaternion(-0.0311899, 0.922967, -0.380928, -0.0453063)
+bones/18/rotation = Quaternion(0.46069, -0.077841, 0.0941836, 0.87911)
+bones/19/rotation = Quaternion(0.518405, -0.124346, -0.0377294, 0.845205)
+bones/20/rotation = Quaternion(-0.594563, 0.0825991, -0.0531597, 0.798026)
+bones/21/rotation = Quaternion(-0.032259, 0.965318, -0.255941, -0.0401928)
 bones/22/position = Vector3(0.1249, 0.256369, 0.0305232)
-bones/22/rotation = Quaternion(0.549326, 0.0624846, -0.0994217, 0.827316)
-bones/23/rotation = Quaternion(0.416343, 0.127166, 0.0257831, 0.899902)
-bones/24/rotation = Quaternion(-0.520927, -0.0920992, 0.0400568, 0.847672)
-bones/25/rotation = Quaternion(0.0311899, 0.922967, -0.380928, 0.0453063)
+bones/22/rotation = Quaternion(0.46069, 0.0778404, -0.0941833, 0.87911)
+bones/23/rotation = Quaternion(0.518405, 0.124346, 0.0377293, 0.845204)
+bones/24/rotation = Quaternion(-0.594563, -0.082599, 0.0531597, 0.798026)
+bones/25/rotation = Quaternion(0.032259, 0.965318, -0.255941, 0.0401928)
 bones/26/position = Vector3(-0.295574, 0.0394324, -0.4138)
-bones/27/position = Vector3(0.0419372, 0.620995, 0.307859)
+bones/27/position = Vector3(0.0419372, 0.601864, 0.310208)
 bones/27/scale = Vector3(0.220631, 1, 0.996205)
 bones/28/position = Vector3(0.295574, 0.0394324, -0.4138)
-bones/29/position = Vector3(-0.0419372, 0.620995, 0.307859)
+bones/29/position = Vector3(-0.0419372, 0.601864, 0.310208)
 bones/29/scale = Vector3(0.220631, 1, 0.996205)
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerModel"]
@@ -704,6 +704,11 @@ player = NodePath("..")
 wait_time = 0.5
 one_shot = true
 
+[node name="HpRegenTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="UI" parent="." node_paths=PackedStringArray("player", "player_xp") instance=ExtResource("2_tip52")]
 player = NodePath("..")
 player_xp = NodePath("../PlayerExperience")
@@ -711,5 +716,8 @@ player_xp = NodePath("../PlayerExperience")
 [connection signal="health_change" from="." to="UI" method="_on_player_health_change"]
 [connection signal="level_up" from="PlayerExperience" to="UI" method="_on_player_experience_level_up"]
 [connection signal="xp_change" from="PlayerExperience" to="UI" method="_on_player_experience_xp_change"]
+[connection signal="add_hp" from="BaseWeapon/WeaponPowerupSystem" to="." method="_on_weapon_powerup_system_add_hp"]
+[connection signal="add_regen" from="BaseWeapon/WeaponPowerupSystem" to="." method="_on_weapon_powerup_system_add_regen"]
 
 [editable path="PlayerModel/Racoon_0_1_2"]
+[editable path="BaseWeapon"]

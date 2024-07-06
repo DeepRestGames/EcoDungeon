@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
-[ext_resource type="Theme" uid="uid://c783inf5vpobj" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
+[ext_resource type="Theme" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
 [ext_resource type="Script" path="res://scripts/Player/PowerUpMenu.gd" id="2_tqs0n"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
