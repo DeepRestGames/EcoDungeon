@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://bg7wwjs1hc0wp"]
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://do3sdd2ba8vus"]
 
-[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="1_1q5tw"]
-[ext_resource type="Texture2D" uid="uid://byl8l5qs0ovnt" path="res://assets/2d/icons/water.png" id="1_g0gdj"]
+[ext_resource type="Texture2D" uid="uid://ce73xht4lr0oh" path="res://assets/2d/sprites/items/rarity0/base_BrokenBottle_001.png" id="1_d2n65"]
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="2_ntman"]
 
 [resource]
-script = ExtResource("1_1q5tw")
-powerup_name = "Cooldown"
-powerup_description = ""
-powerup_icon = ExtResource("1_g0gdj")
+script = ExtResource("2_ntman")
+powerup_name = "Broken bottle"
+powerup_description = "Spaco botilia"
+powerup_icon = ExtResource("1_d2n65")
 fire_cooldown_modifier_value = 0.7
 fire_cooldown_modifier_type = 1
 projectile_lifetime_modifier_value = 0.0

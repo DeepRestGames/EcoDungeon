@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://cimon2cq0lfj4"]
+
+[ext_resource type="Texture2D" uid="uid://bamvgv3nuif5y" path="res://assets/2d/sprites/items/rarity0/base_EmptyCan_001.png" id="1_oc1tx"]
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="2_lj7ur"]
+
+[resource]
+script = ExtResource("2_lj7ur")
+powerup_name = "Empty can"
+powerup_description = "Watch out for the sharp edges"
+powerup_icon = ExtResource("1_oc1tx")
+fire_cooldown_modifier_value = 0.7
+fire_cooldown_modifier_type = 1
+projectile_lifetime_modifier_value = 0.0
+projectile_lifetime_modifier_type = 0
+projectile_velocity_modifier_value = 0.0
+projectile_velocity_modifier_type = 0
+range_modifier_value = 0.0
+range_modifier_type = 0
+damage_modifier_value = 0.9
+damage_modifier_type = 1
+projectiles_number_modifier_value = 0
+projectiles_number_modifier_type = 0
+homing_projectiles_modifier_value = false
+explosion_radius_value = 0.0
+explosion_radius_modifier_type = 0
+explosion_damage_value = 0.0
+explosion_damage_modifier_type = 0
+projectile_pierce_value = 0
+projectile_pierce_modifier_type = 0
+dot_dmg_value = 0.0
+dot_dmg_modifier_type = 0
+dot_time_value = 0.0
+dot_time_modifier_type = 0
+dot_freq_value = 0.0
+dot_freq_modifier_type = 0
+crit_chance_value = 0.0
+crit_chance_modifier_type = 0
+crit_dmg_value = 0.0
+crit_dmg_modifier_type = 0

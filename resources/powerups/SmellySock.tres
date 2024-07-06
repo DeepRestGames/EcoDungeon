@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://dxvuea80gdtdr"]
+
+[ext_resource type="Texture2D" uid="uid://gbk85d85m538" path="res://assets/2d/sprites/items/rarity0/base_SmellySock_001.png" id="1_lcsmg"]
+[ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="2_kf222"]
+
+[resource]
+script = ExtResource("2_kf222")
+powerup_name = "Smelly sock"
+powerup_description = "Lasts so long you don't know where it's coming from"
+powerup_icon = ExtResource("1_lcsmg")
+fire_cooldown_modifier_value = 0.7
+fire_cooldown_modifier_type = 1
+projectile_lifetime_modifier_value = 0.0
+projectile_lifetime_modifier_type = 0
+projectile_velocity_modifier_value = 0.0
+projectile_velocity_modifier_type = 0
+range_modifier_value = 0.0
+range_modifier_type = 0
+damage_modifier_value = 0.9
+damage_modifier_type = 1
+projectiles_number_modifier_value = 0
+projectiles_number_modifier_type = 0
+homing_projectiles_modifier_value = false
+explosion_radius_value = 0.0
+explosion_radius_modifier_type = 0
+explosion_damage_value = 0.0
+explosion_damage_modifier_type = 0
+projectile_pierce_value = 0
+projectile_pierce_modifier_type = 0
+dot_dmg_value = 0.0
+dot_dmg_modifier_type = 0
+dot_time_value = 0.0
+dot_time_modifier_type = 0
+dot_freq_value = 0.0
+dot_freq_modifier_type = 0
+crit_chance_value = 0.0
+crit_chance_modifier_type = 0
+crit_dmg_value = 0.0
+crit_dmg_modifier_type = 0
