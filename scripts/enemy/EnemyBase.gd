@@ -88,9 +88,9 @@ func _process(_delta):
 	else:
 		dot_damage = 0.0
 
-func take_damage(damage: float, label_color: Color, is_crit: bool):
-	current_hp -= damage
-	show_damage(damage, label_color, is_crit)
+func take_damage(DMG: float, label_color: Color, is_crit: bool):
+	current_hp -= DMG
+	show_damage(DMG, label_color, is_crit)
 	
 	if current_hp <= 0:
 		_death()
