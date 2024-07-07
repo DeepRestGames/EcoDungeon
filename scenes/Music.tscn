@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc74r5hb0domw"]
+
+[ext_resource type="Script" path="res://scripts/Music.gd" id="1_k4q2v"]
+[ext_resource type="AudioStream" uid="uid://dhfvih0kotu6o" path="res://audio/music/TrashWizard_MainLoop_v0.0.1.wav" id="2_mmnsg"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_k4q2v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mmnsg")
+autoplay = true

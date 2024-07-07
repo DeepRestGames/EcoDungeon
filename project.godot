@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="EcoDungeon"
-run/main_scene="res://scenes/PrototypeScene_Weapons_01.tscn"
+run/main_scene="res://scenes/PrototypeScene_03.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
+[autoload]
 
-window/size/viewport_width=2160
-window/size/viewport_height=1440
+Music="*res://scenes/Music.tscn"
 
 [input]
 
