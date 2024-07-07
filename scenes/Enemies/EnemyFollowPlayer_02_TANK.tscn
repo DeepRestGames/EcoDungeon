@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dogdngtve3u42"]
+[gd_scene load_steps=7 format=3 uid="uid://dogdngtve3u42"]
 
 [ext_resource type="Script" path="res://scripts/enemy/EnemyBase.gd" id="1_qpnv5"]
+[ext_resource type="AudioStream" uid="uid://b0bglfak8agwp" path="res://audio/sfx/EnemyHit.wav" id="2_5dy6h"]
+[ext_resource type="AudioStream" uid="uid://42382mdkwtjr" path="res://audio/sfx/EnemyDeath.wav" id="3_dbok1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hlr77"]
 
@@ -14,6 +16,8 @@ material = SubResource("StandardMaterial3D_h8tje")
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_qpnv5")
+enemy_hit_sfx = ExtResource("2_5dy6h")
+enemy_death_sfx = ExtResource("3_dbok1")
 speed = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -23,3 +27,7 @@ shape = SubResource("CapsuleShape3D_hlr77")
 mesh = SubResource("CapsuleMesh_h5kdl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+bus = &"SFX"

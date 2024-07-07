@@ -1,6 +1,11 @@
 class_name Player
 extends CharacterBody3D
 
+# Audio
+@onready var audio_stream_player = $AudioStreamPlayer
+@export var player_hit_sfx: AudioStreamWAV
+@export var player_death_sfx: AudioStreamWAV
+
 # ------------------------------------------
 # ------------ Camera variables ------------
 # ------------------------------------------
@@ -157,6 +162,9 @@ func _zoom(delta: float) -> void:
 signal health_change(hp)
 
 func take_damage(damage: float):
+	audio_stream_player.stream = player_hit_sfx
+	audio_stream_player.play()
+	
 	# Prevent damage if a hit was just taken
 	if invincibility_frames_timer.is_stopped():
 		show_damage(damage)
@@ -176,6 +184,8 @@ func show_damage(damage: float, label_color=Color(1.0,0.0,0.0,1.0)):
 
 
 func death():
+	audio_stream_player.stream = player_hit_sfx
+	audio_stream_player.play()
 	queue_free()
 
 

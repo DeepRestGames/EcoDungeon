@@ -6,6 +6,11 @@ extends CharacterBody3D
 ## It is meant to be overridden, to extend the different AI behaviours.
 ##
 
+# Audio
+@onready var audio_stream_player = $AudioStreamPlayer
+@export var enemy_hit_sfx: AudioStreamWAV
+@export var enemy_death_sfx: AudioStreamWAV
+
 # Movement variables
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var player: Player = $"../../Player"
@@ -92,9 +97,16 @@ func take_damage(DMG: float, label_color: Color, is_crit: bool):
 	current_hp -= DMG
 	show_damage(DMG, label_color, is_crit)
 	
+	audio_stream_player.stream = enemy_hit_sfx
+	audio_stream_player.play()
+	
 	if current_hp <= 0:
+		# TODO Death SFX not working
+		audio_stream_player.stream = enemy_death_sfx
+		audio_stream_player.play()
 		_death()
-		
+
+
 func gain_dot(dot_dmg, dot_dur, dot_tick_freq):
 	dot_damage = dot_dmg
 	dot_duration = dot_dur
@@ -124,4 +136,5 @@ func _death():
 	var level_root =  get_tree().get_root()
 	level_root.add_child(dropped_shard, true)
 	dropped_shard.set_values(pos)
+	
 	queue_free()

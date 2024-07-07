@@ -8,4 +8,6 @@ script = ExtResource("1_k4q2v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_mmnsg")
+volume_db = -3.0
 autoplay = true
+bus = &"Music"

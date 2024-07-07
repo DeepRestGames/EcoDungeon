@@ -16,6 +16,10 @@ const MAX_PROJECTILE_NUMBER: int = 10
 
 @export var player: Player
 
+# Audio
+@onready var audio_stream_player = $"../AudioStreamPlayer"
+@export var projectile_shot_sfx: AudioStreamWAV
+
 # --- Shooting variables ---
 @onready var fire_cooldown_timer = $FireCooldown
 @onready var weapon_range_collider = $WeaponRangeArea/WeaponRangeCollider
@@ -91,6 +95,9 @@ func _on_weapon_range_area_enemies_found(enemies: Array):
 			level_root.add_child(projectile, true)
 			projectile.global_transform.origin = shoot_origin
 			projectile.look_at(enemy.global_position, Vector3.UP)
+			
+			audio_stream_player.stream = projectile_shot_sfx
+			audio_stream_player.play()
 		
 		fire_cooldown_timer.start()
 
