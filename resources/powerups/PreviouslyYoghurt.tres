@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="WeaponPowerup" load_steps=3 format=3 uid="uid://6eggb6cit5bx"]
 
-[ext_resource type="Texture2D" uid="uid://c0gjmvjwclux3" path="res://assets/2d/sprites/items/rarity1/Rarity1_PeachStone.png" id="1_7pgba"]
+[ext_resource type="Texture2D" uid="uid://cdv17tpjoarco" path="res://assets/2d/sprites/items/rarity2/Rarity2_PreviouslyYoghurt.png" id="1_5l0i6"]
 [ext_resource type="Script" path="res://scripts/weapons/powerups/WeaponPowerup.gd" id="2_ymske"]
 
 [resource]
 script = ExtResource("2_ymske")
 powerup_name = "Previously yoghurt"
 powerup_description = "Was it greek?"
-powerup_icon = ExtResource("1_7pgba")
+powerup_icon = ExtResource("1_5l0i6")
 fire_cooldown_modifier_value = 0.0
 fire_cooldown_modifier_type = 0
 projectile_lifetime_modifier_value = 0.0
@@ -43,3 +43,5 @@ hp_regen_value = 0.0
 hp_regen_modifier_type = 0
 move_speed_value = 0.0
 move_speed_modifier_type = 0
+pickup_area_value = 0.0
+pickup_area_modifier_type = 0

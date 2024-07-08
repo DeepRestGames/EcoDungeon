@@ -7,7 +7,7 @@ extends Control
 @onready var level_label = $LevelLabel
 @onready var health_label = $Health/HealthLabel
 @onready var xp_label = $Experience/XpLabel
-@onready var powerup_menu = $PowerupMenu
+@onready var powerup_menu = $PowerUpMenu
 
 # TODO: max HP change
 

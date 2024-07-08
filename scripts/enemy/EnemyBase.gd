@@ -110,13 +110,13 @@ func gain_dot(dot_dmg, dot_dur, dot_tick_freq):
 		dot_tick_timer.wait_time = dot_tick
 		dot_tick_timer.start()	
 
-func show_damage(damage: float, label_color: Color, is_crit: bool):
+func show_damage(dmg: float, label_color: Color, is_crit: bool):
 	# TODO/NOTE: this is identical in player.
 	var damage_floating_label = damage_number_3d_template.instantiate()
 	var pos = global_position
 	var level_root =  get_tree().get_root()
 	level_root.add_child(damage_floating_label, true)
-	damage_floating_label.set_values_and_animate(str(damage), pos, dmg_label_height, dmg_label_spread, label_color, is_crit)
+	damage_floating_label.set_values_and_animate(str(dmg), pos, dmg_label_height, dmg_label_spread, label_color, is_crit)
 
 func _death():
 	var dropped_shard = xp_shard_template.instantiate()

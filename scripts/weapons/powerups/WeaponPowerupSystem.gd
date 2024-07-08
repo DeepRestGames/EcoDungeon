@@ -7,8 +7,10 @@ enum PowerupModifierType {
 	MULTIPLY
 }
 
+
 @onready var base_weapon: BaseWeapon = $".."
-@onready var powerup_menu_ui = $"../../UI/PowerupMenu"
+
+@onready var powerup_menu_ui = $"../../UI/PowerUpMenu"
 var weapon_powerups: Array [WeaponPowerup] = []
 
 signal add_hp(value, type)

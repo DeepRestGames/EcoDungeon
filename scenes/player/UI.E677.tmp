@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=15 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
 [ext_resource type="Theme" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
+[ext_resource type="Script" path="res://scripts/Player/PowerUpMenu.gd" id="2_tqs0n"]
 [ext_resource type="FontFile" uid="uid://8a8ovsk187ni" path="res://assets/2d/fonts/Zantung-2OYg3.ttf" id="3_24ave"]
-[ext_resource type="Texture2D" uid="uid://c3pbvmo84mgrt" path="res://assets/2d/sprites/items/rarity2/Rarity2_MoffetVertebra.png" id="5_2xfpb"]
 [ext_resource type="Script" path="res://scripts/weapons/PowerUpMenu.gd" id="5_k8nie"]
+[ext_resource type="Texture2D" uid="uid://b44kslvsdke5r" path="res://assets/2d/icons/fire.png" id="6_iu6c4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
 
@@ -18,9 +19,31 @@ gradient = SubResource("Gradient_ul203")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
 
-[sub_resource type="Theme" id="Theme_fh8xa"]
+[sub_resource type="Theme" id="Theme_mh1ex"]
 default_font = ExtResource("3_24ave")
-default_font_size = 64
+default_font_size = 72
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekq8l"]
+bg_color = Color(0.415686, 0.0666667, 0.596078, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
+anti_aliasing_size = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xivap"]
+bg_color = Color(0.65098, 0.121569, 0.654902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -30,7 +53,6 @@ anchor_right = 0.971354
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.001, 1)
 script = ExtResource("1_sghsl")
 metadata/_edit_use_anchors_ = true
 
@@ -131,6 +153,23 @@ horizontal_alignment = 2
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
+[node name="PowerupMenu" type="PopupMenu" parent="."]
+mode = 3
+title = "PowerUp"
+initial_position = 1
+size = Vector2i(349, 290)
+always_on_top = true
+theme = SubResource("Theme_mh1ex")
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 40
+theme_override_constants/outline_size = 0
+theme_override_constants/item_start_padding = 20
+theme_override_constants/item_end_padding = 52
+theme_override_constants/icon_max_width = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_ekq8l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xivap")
+script = ExtResource("2_tqs0n")
+
 [node name="PowerUpMenu" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -138,92 +177,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.5
-offset_top = -69.0
-offset_right = 119.5
-offset_bottom = 81.0
+offset_left = -22.0
+offset_top = -20.0
+offset_right = 22.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.00271, 0.977061)
-theme = SubResource("Theme_fh8xa")
-theme_override_constants/separation = 15
 alignment = 1
 script = ExtResource("5_k8nie")
 
 [node name="MenuButton" type="MenuButton" parent="PowerUpMenu"]
-visible = false
 layout_mode = 2
-text = "Moffet vertebra"
-icon = ExtResource("5_2xfpb")
-flat = false
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
+text = "sesea"
+icon = ExtResource("6_iu6c4")
 
-[node name="ColorRect" type="ColorRect" parent="PowerUpMenu/MenuButton"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.203922, 0.576471, 0.662745, 0.360784)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PowerUpMenu/MenuButton"]
-clip_contents = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-scale = Vector2(0.995319, 1.00016)
-pivot_offset = Vector2(0, 180)
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "[color=green]test[/color]"
-fit_content = true
-text_direction = 1
-
-[node name="MenuButton2" type="MenuButton" parent="PowerUpMenu"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.188235, 0.529412, 0.607843, 1)
-theme_override_colors/font_outline_color = Color(0.317647, 0.168627, 0.345098, 1)
-theme_override_constants/h_separation = 10
-theme_override_constants/outline_size = 2
-text = "Moffet vertebra"
-icon = ExtResource("5_2xfpb")
-flat = false
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="ColorRect" type="ColorRect" parent="PowerUpMenu/MenuButton2"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.203922, 0.576471, 0.662745, 0.360784)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PowerUpMenu/MenuButton2"]
-clip_contents = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-scale = Vector2(0.995319, 1.00016)
-pivot_offset = Vector2(0, 180)
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "[color=green]test[/color]"
-fit_content = true
-text_direction = 1
+[connection signal="index_pressed" from="PowerupMenu" to="PowerupMenu" method="_on_powerup_menu_index_pressed"]
