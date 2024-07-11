@@ -91,7 +91,7 @@ func get_powerups():
 		"RANGE": range_modifier_value,
 		"DMG": damage_modifier_value,
 		"PROJ NUMBER": projectiles_number_modifier_value,
-		"HOMING": homing_projectiles_modifier_value,
+		"HOMING PROJECTILES": homing_projectiles_modifier_value,
 		"EXPL RAD": explosion_radius_value,
 		"EXPL DMG": explosion_damage_value,
 		"PIERCE": projectile_pierce_value ,

@@ -9,10 +9,16 @@ extends Control
 @onready var xp_label = $Experience/XpLabel
 @onready var powerup_menu = $PowerUpMenu
 
-# TODO: max HP change
+var ui_scale: float
 
+func _auto_regulate_ui():
+	# Values for which it was designed
+	var viewport_width = get_viewport().size[0]
+	var viewport_height = get_viewport().size[1]
+	ui_scale = (viewport_width + viewport_height )/ (2160.0 + 1440.0)
 
 func _ready():
+	_auto_regulate_ui()
 	health.value = player.current_hp
 	health.max_value = player.max_hp
 	set_player_hp_label(player.current_hp, player.max_hp, player.hp_regen)

@@ -43,3 +43,5 @@ hp_regen_value = 0.0
 hp_regen_modifier_type = 0
 move_speed_value = 0.0
 move_speed_modifier_type = 0
+pickup_area_value = 0.0
+pickup_area_modifier_type = 0
