@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
 [ext_resource type="Theme" uid="uid://c6tfjw4jqafx6" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
-[ext_resource type="Theme" uid="uid://cwmn1dq4m40kh" path="res://scenes/player/PowerUpThemeBold.tres" id="3_a4mwe"]
+[ext_resource type="Theme" uid="uid://b0vmn7yuyp7u1" path="res://scenes/player/MainMenuTheme.tres" id="3_ivopo"]
 [ext_resource type="Texture2D" uid="uid://c3pbvmo84mgrt" path="res://assets/2d/sprites/items/rarity2/Rarity2_MoffetVertebra.png" id="5_2xfpb"]
 [ext_resource type="Script" path="res://scripts/weapons/PowerUpMenu.gd" id="5_k8nie"]
 
@@ -140,7 +140,7 @@ offset_right = 333.75
 offset_bottom = 150.001
 grow_horizontal = 2
 scale = Vector2(1.00271, 0.977061)
-theme = ExtResource("3_a4mwe")
+theme = ExtResource("3_ivopo")
 theme_override_constants/separation = 15
 alignment = 1
 script = ExtResource("5_k8nie")

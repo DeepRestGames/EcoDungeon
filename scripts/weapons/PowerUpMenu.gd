@@ -8,6 +8,8 @@ var powerup_resources: Array
 signal button_pressed(buttonName)
 @export var buttonArray:Array[String]  
 
+signal is_in_powerup_state(flag)
+
 @onready var ui = $".."
 var power
 const POWER_UP_THEME = preload("res://scenes/player/PowerUpTheme.tres")
@@ -26,6 +28,7 @@ func _ready():
 
 func show_powerups_options():
 	get_tree().paused = true
+	is_in_powerup_state.emit(true)
 	_populate_powerups_menu()
 	
 	show()
@@ -102,7 +105,7 @@ func _define_button(current_powerup, index):
 	vals.custom_minimum_size.y = 10
 	vals.layout_mode = 1 # anchors (it-s not exported idk)
 	vals.anchors_preset = PRESET_BOTTOM_WIDE 
-	vals.position.y = desc.position.y + 200 * ui.ui_scale
+	vals.position.y = desc.position.y + 220 * ui.ui_scale
 	vals.grow_vertical = Control.GROW_DIRECTION_END
 	
 	#var block = ColorRect.new()
@@ -135,6 +138,7 @@ func _on_powerup_menu_index_pressed(index):
 	new_powerup.emit(powerups_to_show[index])
 	hide()
 	get_tree().paused = false
+	is_in_powerup_state.emit(false)
 	for n in get_children():
 		remove_child(n)
 		n.queue_free()
@@ -151,7 +155,7 @@ func _on_powerup_menu_index_pressed(index):
 # 		add_child(button)
 
 
-func _on_menu_button_pressed():
-	print("bro...")
-	new_powerup.emit(powerups_to_show[0])
-	get_tree().paused = false
+#func _on_menu_button_pressed():
+	#print("bro...")
+	#new_powerup.emit(powerups_to_show[0])
+	#get_tree().paused = false

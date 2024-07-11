@@ -70,7 +70,8 @@ func _unhandled_input(event):
 		zoom_direction = -1
 
 
-func _process(delta):
+func _process(delta):		
+		
 	if zoom_direction != 0:
 		_zoom(delta)
 		

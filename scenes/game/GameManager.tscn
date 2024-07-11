@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkqcv3cu1v6hs"]
+
+[ext_resource type="Script" path="res://scripts/game/GameManager.gd" id="1_2nis0"]
+[ext_resource type="Theme" uid="uid://b0vmn7yuyp7u1" path="res://scenes/player/MainMenuTheme.tres" id="2_xubss"]
+[ext_resource type="Script" path="res://scripts/game/PauseMenu.gd" id="3_wfbjy"]
+[ext_resource type="FontFile" uid="uid://tri42202maqq" path="res://assets/2d/fonts/Grandstander-Italic-VariableFont_wght.ttf" id="4_ip6tm"]
+
+[sub_resource type="FontVariation" id="FontVariation_wv0y5"]
+base_font = ExtResource("4_ip6tm")
+variation_embolden = 1.0
+
+[sub_resource type="Theme" id="Theme_fk1r0"]
+default_font = SubResource("FontVariation_wv0y5")
+default_font_size = 42
+
+[node name="GameManager" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00356, 1.00555)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_2nis0")
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xubss")
+script = ExtResource("3_wfbjy")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenuMarginContainer" type="MarginContainer" parent="PauseMenu"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseMenuMarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="PauseMenu/PauseMenuMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Quit" type="Button" parent="PauseMenu/PauseMenuMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="PowerUps" type="RichTextLabel" parent="PauseMenu"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -12.5
+anchor_top = -3.75
+anchor_right = -2.5183
+anchor_bottom = 11.55
+offset_top = -100.0
+offset_right = 0.732056
+offset_bottom = -100.0
+grow_vertical = 2
+scale = Vector2(0.99817, 0.99487)
+theme = SubResource("Theme_fk1r0")
+bbcode_enabled = true
+text = "SAMPLE PWUP
+OWO
+OWO
+OWO
+OWO"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="unpause" from="PauseMenu" to="." method="_on_pause_menu_unpause"]
+[connection signal="pressed" from="PauseMenu/PauseMenuMarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/PauseMenuMarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]

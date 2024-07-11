@@ -17,6 +17,8 @@ signal add_hp(value, type)
 signal add_regen(value, type)
 signal add_movespeed(value, type)
 signal add_pickup_range(value, type)
+signal powered_up(weapon)
+
 func _ready():
 	weapon_powerups.clear()
 	powerup_menu_ui.new_powerup.connect(add_powerup)
@@ -27,21 +29,7 @@ func add_powerup(powerup: WeaponPowerup):
 	
 	_apply_powerup_modifiers(powerup)
 	
-	#print("Added new powerup! New stats:\n")
-	#print("Damage: " + str(base_weapon.current_damage))
-	#print("Projectile lifetime: " + str(base_weapon.projectile_lifetime))
-	#print("Projectile velocity: " + str(base_weapon.projectile_velocity))
-	#print("Range: " + str(base_weapon.weapon_range))
-	#print("Fire cooldown: " + str(base_weapon.fire_cooldown))
-	#print("Projectiles number: " + str(base_weapon.current_projectiles_number))
-	#print("Explosion (range/damage): " + str(base_weapon.explosion_range) + '/'+ str(base_weapon.explosion_damage))
-	#print("Pierce: " + str(base_weapon.piercing_amount))
-	#print("DoT (damage/duration/freq): " + str(base_weapon.dot_dmg)  + '/' 
-	#+ str(base_weapon.dot_duration)  + '/'
-	#+ str(base_weapon.dot_frequency))
-	#print("Crit (chance/damage): " + str(base_weapon.crit_chance)  + '/' 
-	#+ str(base_weapon.crit_damage))
-	#print("-----------------------------------------------------------")
+	powered_up.emit(base_weapon)
 
 
 func _apply_powerup_modifiers(powerup: WeaponPowerup):

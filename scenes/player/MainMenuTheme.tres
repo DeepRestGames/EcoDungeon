@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b0vmn7yuyp7u1"]
+
+[ext_resource type="FontFile" uid="uid://ctg4q2xkdqsn4" path="res://assets/2d/fonts/Grandstander-VariableFont_wght.ttf" id="1_x08ui"]
+
+[sub_resource type="FontVariation" id="FontVariation_1fmpl"]
+base_font = ExtResource("1_x08ui")
+variation_embolden = 1.0
+
+[resource]
+default_font = SubResource("FontVariation_1fmpl")
+default_font_size = 50
