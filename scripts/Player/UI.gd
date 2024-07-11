@@ -23,6 +23,10 @@ func _ready():
 	health.max_value = player.max_hp
 	set_player_hp_label(player.current_hp, player.max_hp, player.hp_regen)
 	set_xp_label(player_xp.current_xp, player_xp.xp_to_level)
+	
+	level_label.theme.default_font_size = 60 * ui_scale
+	health_label.theme.default_font_size = 60 * ui_scale
+	xp_label.theme.default_font_size = 60 * ui_scale
 
 
 func _on_player_experience_level_up(level, xp_overflow):
