@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=11 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
-[ext_resource type="Theme" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
-[ext_resource type="FontFile" uid="uid://8a8ovsk187ni" path="res://assets/2d/fonts/Zantung-2OYg3.ttf" id="3_24ave"]
+[ext_resource type="Theme" uid="uid://c6tfjw4jqafx6" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
+[ext_resource type="Theme" uid="uid://cwmn1dq4m40kh" path="res://scenes/player/PowerUpThemeBold.tres" id="3_a4mwe"]
 [ext_resource type="Texture2D" uid="uid://c3pbvmo84mgrt" path="res://assets/2d/sprites/items/rarity2/Rarity2_MoffetVertebra.png" id="5_2xfpb"]
 [ext_resource type="Script" path="res://scripts/weapons/PowerUpMenu.gd" id="5_k8nie"]
 
@@ -17,10 +17,6 @@ gradient = SubResource("Gradient_ul203")
 [sub_resource type="CanvasTexture" id="CanvasTexture_e7m4a"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
-
-[sub_resource type="Theme" id="Theme_fh8xa"]
-default_font = ExtResource("3_24ave")
-default_font_size = 64
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -65,10 +61,10 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthLabel" type="Label" parent="Health"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.41
-anchor_top = -0.731422
-anchor_right = 0.59
-anchor_bottom = 1.76859
+anchor_left = 0.433333
+anchor_top = -0.0320946
+anchor_right = 0.566667
+anchor_bottom = 1.31926
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0jx3y")
@@ -126,8 +122,9 @@ anchor_bottom = 0.131537
 grow_horizontal = 2
 theme = ExtResource("2_0jx3y")
 theme_override_font_sizes/font_size = 42
-text = "Level 1"
+text = "LEVEL 1"
 horizontal_alignment = 2
+uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="PowerUpMenu" type="HBoxContainer" parent="."]
@@ -143,7 +140,7 @@ offset_right = 333.75
 offset_bottom = 150.001
 grow_horizontal = 2
 scale = Vector2(1.00271, 0.977061)
-theme = SubResource("Theme_fh8xa")
+theme = ExtResource("3_a4mwe")
 theme_override_constants/separation = 15
 alignment = 1
 script = ExtResource("5_k8nie")

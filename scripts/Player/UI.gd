@@ -10,6 +10,7 @@ extends Control
 @onready var powerup_menu = $PowerUpMenu
 
 var ui_scale: float
+# TODO: floating damage number scale
 
 func _auto_regulate_ui():
 	# Values for which it was designed

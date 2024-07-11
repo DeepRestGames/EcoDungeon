@@ -9,6 +9,9 @@ signal button_pressed(buttonName)
 @export var buttonArray:Array[String]  
 
 @onready var ui = $".."
+var power
+const POWER_UP_THEME = preload("res://scenes/player/PowerUpTheme.tres")
+const POWER_UP_THEME_BOLD = preload("res://scenes/player/PowerUpThemeBold.tres")
 
 func _get_powerups_resources_from_folder():
 	var powerups_file_names = DirAccess.get_files_at(powerups_directory)
@@ -60,26 +63,33 @@ func _define_button(current_powerup, index):
 	
 	# Description
 	var desc = RichTextLabel.new()
+	desc.theme = POWER_UP_THEME
 	desc.bbcode_enabled = true
-	desc["theme_override_font_sizes/normal_font_size"] = 56 * ui.ui_scale
+	desc["theme_override_font_sizes/normal_font_size"] = 40 * ui.ui_scale
 	desc.text_direction = TEXT_DIRECTION_LTR
 	desc.fit_content = true
-	desc.text = "[b]Description[/b]\n" + current_powerup.powerup_description + "\n\n"
+	desc.text = '"' + current_powerup.powerup_description + '"\n'
 	
 	# Values
 	var vals = RichTextLabel.new()
+	vals.theme = POWER_UP_THEME
 	vals.bbcode_enabled = true
-	vals["theme_override_font_sizes/normal_font_size"] = 46 * ui.ui_scale
+	vals["theme_override_font_sizes/normal_font_size"] = 36 * ui.ui_scale
 	vals.text_direction = TEXT_DIRECTION_LTR
 	vals.fit_content = true
 	var powerups: Dictionary = current_powerup.get_powerups()
 	for key in powerups:
 		var value = powerups[key]
 		# Brutto ma VA BENE LO STESSOOOO
-		if key == "HOMING PROJECTILES" and value:
-			vals.text =  "[color=green]" + key + "[/color]"
-		if key != "HOMING PROJECTILES" and value != 0:
-			vals.text +=  "[color=green]" + key + "[/color]" + ": +" + str(value) + "\n"
+		if key == "HOMING PROJECTILES":
+			if value:
+				vals.text +=  "[color=green]" + key + "[/color]"
+		else:
+			var actual_value = value[0]
+			var modifier = value[1]
+			if actual_value != 0:
+				var str_modifier = "+" if modifier == 0 else "X"
+				vals.text +=  ("[color=green]" + key + "[/color]" + ": " + str_modifier + " " + str(actual_value) + "\n")
 
 	desc.clip_contents = false
 	desc.custom_minimum_size.y = 10
@@ -92,7 +102,7 @@ func _define_button(current_powerup, index):
 	vals.custom_minimum_size.y = 10
 	vals.layout_mode = 1 # anchors (it-s not exported idk)
 	vals.anchors_preset = PRESET_BOTTOM_WIDE 
-	vals.position.y = desc.position.y + 250 * ui.ui_scale
+	vals.position.y = desc.position.y + 200 * ui.ui_scale
 	vals.grow_vertical = Control.GROW_DIRECTION_END
 	
 	#var block = ColorRect.new()
