@@ -54,22 +54,44 @@ func _define_button(current_powerup):
 	button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 	button.expand_icon = true
-	button.custom_minimum_size.x = 200
+	button.custom_minimum_size.x = 300
 	button.custom_minimum_size.y = 400
 	
 	# Description
 	var desc = RichTextLabel.new()
 	desc.bbcode_enabled = true
-	desc["theme_override_font_sizes/normal_font_size"] = 48
+	desc["theme_override_font_sizes/normal_font_size"] = 56
 	desc.text_direction = TEXT_DIRECTION_LTR
 	desc.fit_content = true
-	desc.text = "[b]Description[/b]\n" + current_powerup.powerup_description
+	desc.text = "[b]Description[/b]\n" + current_powerup.powerup_description + "\n\n"
+	
+	# Values
+	var vals = RichTextLabel.new()
+	vals.bbcode_enabled = true
+	vals["theme_override_font_sizes/normal_font_size"] = 32
+	vals.text_direction = TEXT_DIRECTION_LTR
+	vals.fit_content = true
+	var powerups: Dictionary = current_powerup.get_powerups()
+	for key in powerups:
+		var value = powerups[key]
+		if key == "HOMING":
+			vals.text =  "[color=green]" + key + "[/color]"
+		elif value != 0:
+			vals.text =  "[color=green]" + key + "[/color]" + " " + str(value) + "\n"
+
 	desc.clip_contents = false
 	desc.custom_minimum_size.y = 10
 	desc.layout_mode = 1 # anchors (it-s not exported idk)
 	desc.anchors_preset = PRESET_BOTTOM_WIDE 
 	desc.position.y = button.size.y + 20
 	desc.grow_vertical = Control.GROW_DIRECTION_END
+	
+	vals.clip_contents = false
+	vals.custom_minimum_size.y = 10
+	vals.layout_mode = 1 # anchors (it-s not exported idk)
+	vals.anchors_preset = PRESET_BOTTOM_WIDE 
+	vals.position.y = desc.position.y + 250
+	vals.grow_vertical = Control.GROW_DIRECTION_END
 	
 	#var block = ColorRect.new()
 	#block.layout_mode = 1
@@ -82,6 +104,7 @@ func _define_button(current_powerup):
 	
 	add_child(button)
 	button.add_child(desc)
+	button.add_child(vals)
 	#button.add_child(block)
 
 func _choose_next_powerup_to_show(_powerups_to_show: Array):

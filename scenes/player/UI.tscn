@@ -133,17 +133,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PowerUpMenu" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.25
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.5
-offset_top = -69.0
-offset_right = 119.5
-offset_bottom = 81.0
+anchor_bottom = 0.38
+offset_left = -366.25
+offset_top = 0.000457764
+offset_right = 333.75
+offset_bottom = 150.001
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(1.00271, 0.977061)
 theme = SubResource("Theme_fh8xa")
 theme_override_constants/separation = 15
@@ -213,6 +212,47 @@ grow_vertical = 2
 color = Color(0.203922, 0.576471, 0.662745, 0.360784)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PowerUpMenu/MenuButton2"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+scale = Vector2(0.995319, 1.00016)
+pivot_offset = Vector2(0, 180)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[color=green]test[/color]"
+fit_content = true
+text_direction = 1
+
+[node name="MenuButton3" type="MenuButton" parent="PowerUpMenu"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.188235, 0.529412, 0.607843, 1)
+theme_override_colors/font_outline_color = Color(0.317647, 0.168627, 0.345098, 1)
+theme_override_constants/h_separation = 10
+theme_override_constants/outline_size = 2
+text = "Moffet vertebra"
+icon = ExtResource("5_2xfpb")
+flat = false
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="ColorRect" type="ColorRect" parent="PowerUpMenu/MenuButton3"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.203922, 0.576471, 0.662745, 0.360784)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PowerUpMenu/MenuButton3"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = -1

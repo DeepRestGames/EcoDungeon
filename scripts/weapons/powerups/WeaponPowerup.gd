@@ -1,6 +1,7 @@
 class_name WeaponPowerup
 
 
+var powerup_dict: Dictionary = {}
 @export var powerup_name: String
 @export_multiline var powerup_description: String
 @export var powerup_icon: Texture2D
@@ -8,6 +9,7 @@ class_name WeaponPowerup
 @export_group("Fire Cooldown", "fire_cooldown_")
 @export var fire_cooldown_modifier_value: float
 @export var fire_cooldown_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
 
 @export_group("Projectile Lifetime", "projectile_lifetime_")
 @export var projectile_lifetime_modifier_value: float
@@ -80,3 +82,28 @@ class_name WeaponPowerup
 @export_group("Pickup area", "pickup_area_")
 @export var pickup_area_value: float
 @export var pickup_area_modifier_type: WeaponPowerupSystem.PowerupModifierType
+
+func get_powerups():
+	powerup_dict = {
+		"ATK SPD": fire_cooldown_modifier_value,
+		"PROJ LIFETIME": projectile_lifetime_modifier_value,
+		"PROJ SPD": projectile_velocity_modifier_value,
+		"RANGE": range_modifier_value,
+		"DMG": damage_modifier_value,
+		"PROJ NUMBER": projectiles_number_modifier_value,
+		"HOMING": homing_projectiles_modifier_value,
+		"EXPL RAD": explosion_radius_value,
+		"EXPL DMG": explosion_damage_value,
+		"PIERCE": projectile_pierce_value ,
+		"DOT DMG": dot_dmg_value,
+		"DOT DUR": dot_time_value,
+		"DOT FREQ": dot_freq_value,
+		"CRIT CHANCE": crit_chance_value,
+		"CRIT DMG": crit_dmg_value,
+		"MAX HP": hp_value,
+		"HP REGEN": hp_regen_value,
+		"MOVE SPEED": move_speed_value,
+		"PICKUP AREA": pickup_area_value,
+	}
+
+	return powerup_dict
