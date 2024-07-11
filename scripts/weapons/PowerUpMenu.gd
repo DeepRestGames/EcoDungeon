@@ -25,11 +25,8 @@ func show_powerups_options():
 	
 	show()
 
-func _clear():
-	pass
 
 func _populate_powerups_menu():
-	_clear()
 	powerups_to_show.clear()
 	
 	# Pick which powerups to show in the choice menu
@@ -38,17 +35,19 @@ func _populate_powerups_menu():
 		powerups_to_show.append(_choose_next_powerup_to_show(powerups_to_show))
 	
 	# Populate choice menu with chosen pickups
-	for current_powerup in powerups_to_show:
-		_define_button(current_powerup)
 
-func _define_button(current_powerup):
-	var button = MenuButton.new()  
+	for index in powerups_to_show.size():
+		_define_button(powerups_to_show[index], index)
+
+
+func _define_button(current_powerup, index):
+	var button: MenuButton = MenuButton.new()  
 	
 	# Name
 	button.text = current_powerup.powerup_name   
 	# Background
 	button.flat = false
-	
+	button.process_mode = Node.PROCESS_MODE_ALWAYS
 	# Icon and positioning
 	button.icon = current_powerup.powerup_icon
 	button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -68,7 +67,7 @@ func _define_button(current_powerup):
 	# Values
 	var vals = RichTextLabel.new()
 	vals.bbcode_enabled = true
-	vals["theme_override_font_sizes/normal_font_size"] = 32
+	vals["theme_override_font_sizes/normal_font_size"] = 46
 	vals.text_direction = TEXT_DIRECTION_LTR
 	vals.fit_content = true
 	var powerups: Dictionary = current_powerup.get_powerups()
@@ -77,7 +76,7 @@ func _define_button(current_powerup):
 		if key == "HOMING":
 			vals.text =  "[color=green]" + key + "[/color]"
 		elif value != 0:
-			vals.text =  "[color=green]" + key + "[/color]" + " " + str(value) + "\n"
+			vals.text =  "[color=green]" + key + "[/color]" + ": +" + str(value) + "\n"
 
 	desc.clip_contents = false
 	desc.custom_minimum_size.y = 10
@@ -105,6 +104,8 @@ func _define_button(current_powerup):
 	add_child(button)
 	button.add_child(desc)
 	button.add_child(vals)
+	
+	button.connect("pressed", self._on_powerup_menu_index_pressed.bind(index))
 	#button.add_child(block)
 
 func _choose_next_powerup_to_show(_powerups_to_show: Array):
@@ -119,7 +120,9 @@ func _choose_next_powerup_to_show(_powerups_to_show: Array):
 
 func _on_powerup_menu_index_pressed(index):
 	new_powerup.emit(powerups_to_show[index])
+	hide()
 	get_tree().paused = false
+
 
 # signal button_pressed(buttonName)
 # @export var buttonArray:Array[String]  
@@ -130,3 +133,9 @@ func _on_powerup_menu_index_pressed(index):
 # 		button.text = name    
 # 		button.pressed.connect("button_pressed", name)#When pressed, this menu will anounce it along with the button's name
 # 		add_child(button)
+
+
+func _on_menu_button_pressed():
+	print("bro...")
+	new_powerup.emit(powerups_to_show[0])
+	get_tree().paused = false

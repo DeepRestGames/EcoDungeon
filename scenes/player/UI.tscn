@@ -150,6 +150,7 @@ alignment = 1
 script = ExtResource("5_k8nie")
 
 [node name="MenuButton" type="MenuButton" parent="PowerUpMenu"]
+process_mode = 3
 visible = false
 layout_mode = 2
 text = "Moffet vertebra"
@@ -158,17 +159,6 @@ flat = false
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
-
-[node name="ColorRect" type="ColorRect" parent="PowerUpMenu/MenuButton"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.203922, 0.576471, 0.662745, 0.360784)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PowerUpMenu/MenuButton"]
 clip_contents = false
@@ -267,3 +257,5 @@ bbcode_enabled = true
 text = "[color=green]test[/color]"
 fit_content = true
 text_direction = 1
+
+[connection signal="pressed" from="PowerUpMenu/MenuButton" to="PowerUpMenu" method="_on_menu_button_pressed"]
