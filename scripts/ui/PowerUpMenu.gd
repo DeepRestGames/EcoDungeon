@@ -39,7 +39,7 @@ func show_powerups_options():
 
 
 func _populate_powerups_menu():
-	powerups_to_show.clear()
+	_clean_powerup_menu()
 	
 	# Pick which powerups to show in the choice menu
 	# TODO Make number of powerups to show dynamic - maybe linked to a powerup
@@ -74,7 +74,16 @@ func on_powerup_button_pressed(chosen_powerup: WeaponPowerup):
 	get_tree().paused = false
 	is_in_powerup_state.emit(false)
 	
-	# Clean powerup menu
+	_clean_powerup_menu()
+
+
+func _clean_powerup_menu():
 	for powerup_choice in powerups_choices_list:
 		powerup_choice.queue_free()
 
+	powerups_choices_list.clear()
+	powerups_to_show.clear()
+
+func _on_reroll_powerups_button_pressed():
+	_clean_powerup_menu()
+	_populate_powerups_menu()

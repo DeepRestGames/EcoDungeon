@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=11 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/ui/UI.gd" id="1_aaqql"]
 [ext_resource type="Theme" uid="uid://c6tfjw4jqafx6" path="res://scenes/player/UITheme.tres" id="2_1bevo"]
 [ext_resource type="Script" path="res://scripts/ui/PowerUpMenu.gd" id="3_t2ewd"]
+[ext_resource type="Texture2D" uid="uid://d3g7i18q8vi3b" path="res://assets/2d/ui_elements/RefreshIcon.png" id="5_c3ct1"]
 [ext_resource type="Texture2D" uid="uid://c4dpoo4j8anxu" path="res://assets/2d/ui_elements/2024-09-11 21_07_16-Deep Rest Games - Miro.jpg" id="6_efljc"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
@@ -136,7 +137,6 @@ grow_vertical = 2
 script = ExtResource("3_t2ewd")
 
 [node name="DumpsterDelightsTrashCanTexture" type="TextureRect" parent="PowerUpMenu"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.190959
@@ -158,3 +158,15 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="RerollPowerupsButton" type="Button" parent="PowerUpMenu"]
+layout_mode = 0
+anchor_left = 0.152984
+anchor_top = 0.29794
+anchor_right = 0.221249
+anchor_bottom = 0.415214
+icon = ExtResource("5_c3ct1")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="PowerUpMenu/RerollPowerupsButton" to="PowerUpMenu" method="_on_reroll_powerups_button_pressed"]
