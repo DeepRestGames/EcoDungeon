@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://f3plmwrku2ts"]
+
+[ext_resource type="Texture2D" uid="uid://b05clye62kgxk" path="res://assets/2d/ui_elements/2024-09-11 21_07_16-Deep Rest Games - Miro - Powerup Choice Background.jpg" id="1_ekrru"]
+[ext_resource type="Script" path="res://scripts/ui/PowerupChoiceButton.gd" id="1_lppeo"]
+[ext_resource type="Texture2D" uid="uid://ce73xht4lr0oh" path="res://assets/2d/sprites/items/rarity0/base_BrokenBottle_001.png" id="3_6jgq6"]
+
+[node name="PowerupChoice" type="Control"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 3
+anchor_left = 0.282986
+anchor_top = 0.384259
+anchor_right = 0.717014
+anchor_bottom = 0.615741
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lppeo")
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupBackgroundTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ekrru")
+expand_mode = 5
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupNameLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.1
+anchor_top = 0.233333
+anchor_right = 0.626
+anchor_bottom = 0.426667
+text = "POWERUP NAME"
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupDescriptionLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.078
+anchor_top = 0.426667
+anchor_right = 0.72
+anchor_bottom = 0.58
+text = "Powerup Description"
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupEffectLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.078
+anchor_top = 0.566667
+anchor_right = 0.532
+anchor_bottom = 0.72
+text = "Powerup Effect:"
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupEffectValueLabel" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.572
+anchor_top = 0.566667
+anchor_right = 0.72
+anchor_bottom = 0.72
+text = "+20%"
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupIconTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.736
+anchor_top = 0.113333
+anchor_right = 0.956
+anchor_bottom = 0.846667
+texture = ExtResource("3_6jgq6")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="PowerupButton" to="." method="_on_powerup_button_button_down"]
+[connection signal="pressed" from="PowerupButton" to="." method="_on_powerup_button_pressed"]

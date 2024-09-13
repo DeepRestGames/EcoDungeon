@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/game/GameManager.gd" id="1_2nis0"]
 [ext_resource type="Theme" uid="uid://b0vmn7yuyp7u1" path="res://scenes/player/MainMenuTheme.tres" id="2_xubss"]
-[ext_resource type="Script" path="res://scripts/game/PauseMenu.gd" id="3_wfbjy"]
+[ext_resource type="Script" path="res://scripts/ui/PauseMenu.gd" id="3_wfbjy"]
 [ext_resource type="FontFile" uid="uid://tri42202maqq" path="res://assets/2d/fonts/Grandstander-Italic-VariableFont_wght.ttf" id="4_ip6tm"]
 
 [sub_resource type="FontVariation" id="FontVariation_wv0y5"]
@@ -46,6 +46,7 @@ script = ExtResource("3_wfbjy")
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenuMarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 

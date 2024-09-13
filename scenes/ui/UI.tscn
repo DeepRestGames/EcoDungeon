@@ -1,0 +1,160 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu5laid0g01qp"]
+
+[ext_resource type="Script" path="res://scripts/ui/UI.gd" id="1_aaqql"]
+[ext_resource type="Theme" uid="uid://c6tfjw4jqafx6" path="res://scenes/player/UITheme.tres" id="2_1bevo"]
+[ext_resource type="Script" path="res://scripts/ui/PowerUpMenu.gd" id="3_t2ewd"]
+[ext_resource type="Texture2D" uid="uid://c4dpoo4j8anxu" path="res://assets/2d/ui_elements/2024-09-11 21_07_16-Deep Rest Games - Miro.jpg" id="6_efljc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
+
+[sub_resource type="Gradient" id="Gradient_ul203"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ptawk"]
+gradient = SubResource("Gradient_ul203")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e7m4a"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_b3tfa"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchor_left = 0.0303819
+anchor_top = 0.0262346
+anchor_right = 0.972295
+anchor_bottom = 1.0
+offset_right = -1.08411
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.001, 1)
+script = ExtResource("1_aaqql")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361624
+anchor_top = 0.0776545
+anchor_right = 0.638376
+anchor_bottom = 0.103011
+theme = ExtResource("2_1bevo")
+max_value = 5.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_e72mo")
+texture_progress = SubResource("GradientTexture1D_ptawk")
+tint_under = Color(0.329412, 0.14902, 0.141176, 1)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(0.929412, 0.109804, 0.141176, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="Health"]
+show_behind_parent = true
+layout_mode = 0
+anchor_left = -0.00666667
+anchor_top = -0.0405405
+anchor_right = 1.00667
+anchor_bottom = 1.06757
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthLabel" type="Label" parent="Health"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.433333
+anchor_top = -0.0320946
+anchor_right = 0.566667
+anchor_bottom = 1.31926
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1bevo")
+text = "HP: "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Experience" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.000922509
+anchor_right = 1.0
+anchor_bottom = 0.0253566
+grow_horizontal = 0
+theme = ExtResource("2_1bevo")
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_e7m4a")
+texture_progress = SubResource("CanvasTexture_b3tfa")
+tint_under = Color(0.329412, 0.14902, 0.141176, 1)
+tint_progress = Color(0.984314, 0.690196, 0.231373, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Experience"]
+show_behind_parent = true
+layout_mode = 0
+anchor_left = -0.00277008
+anchor_top = -0.0540541
+anchor_right = 1.00277
+anchor_bottom = 1.05405
+metadata/_edit_use_anchors_ = true
+
+[node name="XpLabel" type="Label" parent="Experience"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.481533
+anchor_top = -0.0945946
+anchor_right = 0.518467
+anchor_bottom = 1.25676
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1bevo")
+text = "XP: "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.890221
+anchor_top = 0.0522979
+anchor_right = 1.00185
+anchor_bottom = 0.131537
+grow_horizontal = 2
+theme = ExtResource("2_1bevo")
+theme_override_font_sizes/font_size = 42
+text = "LEVEL 1"
+horizontal_alignment = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerUpMenu" type="Control" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_t2ewd")
+
+[node name="DumpsterDelightsTrashCanTexture" type="TextureRect" parent="PowerUpMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.190959
+anchor_right = 0.809963
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_efljc")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupChoicesContainer" type="VBoxContainer" parent="PowerUpMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2869
+anchor_right = 0.7131
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
