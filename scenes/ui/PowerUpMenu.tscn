@@ -1,0 +1,199 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxbfo68uiixj5"]
+
+[ext_resource type="Script" path="res://scripts/ui/PowerUpMenu/PowerUpMenu.gd" id="1_vnrpb"]
+[ext_resource type="Texture2D" uid="uid://c4dpoo4j8anxu" path="res://assets/2d/ui_elements/2024-09-11 21_07_16-Deep Rest Games - Miro.jpg" id="2_axwns"]
+[ext_resource type="Texture2D" uid="uid://d3g7i18q8vi3b" path="res://assets/2d/ui_elements/RefreshIcon.png" id="3_5tbnt"]
+[ext_resource type="Script" path="res://scripts/ui/PowerUpMenu/StaffSelectionControl.gd" id="4_g7gj3"]
+[ext_resource type="Texture2D" uid="uid://bvrbs8bysnegt" path="res://assets/2d/ui_elements/staff.png" id="4_yeaat"]
+[ext_resource type="Script" path="res://scripts/ui/PowerUpMenu/StaffPowerupSlot.gd" id="6_0pqbw"]
+[ext_resource type="Texture2D" uid="uid://mpyobhhbtt3j" path="res://assets/2d/ui_elements/left_arrow.png" id="7_nnmis"]
+[ext_resource type="Texture2D" uid="uid://nrwkbet68ut8" path="res://assets/2d/ui_elements/right_arrow.png" id="8_dfpfl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e8mp"]
+bg_color = Color(0.329412, 0, 0.152941, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="PowerUpMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vnrpb")
+
+[node name="DumpsterDelightsTrashCanTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.190959
+anchor_right = 0.809963
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_axwns")
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupChoicesContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2869
+anchor_right = 0.7131
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RerollPowerupsButton" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.152984
+anchor_top = 0.29794
+anchor_right = 0.221249
+anchor_bottom = 0.415214
+icon = ExtResource("3_5tbnt")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="StaffSelectionControl" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchor_left = 0.815972
+anchor_top = 0.037037
+anchor_right = 0.989583
+anchor_bottom = 0.962963
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("4_g7gj3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="StaffSelectionControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1e8mp")
+
+[node name="StaffControl" type="Control" parent="StaffSelectionControl"]
+layout_mode = 1
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 0.9
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StaffTexture" type="TextureRect" parent="StaffSelectionControl/StaffControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yeaat")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StaffSelectionControl/StaffControl"]
+custom_minimum_size = Vector2(120, 430)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.0520833
+anchor_right = 0.875
+anchor_bottom = 0.947917
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+metadata/_edit_use_anchors_ = true
+
+[node name="StaffPowerupSlot1" type="Control" parent="StaffSelectionControl/StaffControl/VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+script = ExtResource("6_0pqbw")
+
+[node name="Panel" type="Panel" parent="StaffSelectionControl/StaffControl/VBoxContainer/StaffPowerupSlot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StaffPowerupSlot2" type="Control" parent="StaffSelectionControl/StaffControl/VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+script = ExtResource("6_0pqbw")
+
+[node name="Panel" type="Panel" parent="StaffSelectionControl/StaffControl/VBoxContainer/StaffPowerupSlot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StaffPowerupSlot3" type="Control" parent="StaffSelectionControl/StaffControl/VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+script = ExtResource("6_0pqbw")
+
+[node name="Panel" type="Panel" parent="StaffSelectionControl/StaffControl/VBoxContainer/StaffPowerupSlot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="StaffSelectionArrowsControl" type="HBoxContainer" parent="StaffSelectionControl"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.025
+anchor_right = 0.9
+anchor_bottom = 0.133333
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PreviousStaffButton" type="Button" parent="StaffSelectionControl/StaffSelectionArrowsControl"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("7_nnmis")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="StaffIndexLabel" type="Label" parent="StaffSelectionControl/StaffSelectionArrowsControl"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1 / 6"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NextStaffButton" type="Button" parent="StaffSelectionControl/StaffSelectionArrowsControl"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+icon = ExtResource("8_dfpfl")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="RerollPowerupsButton" to="." method="_on_reroll_powerups_button_pressed"]

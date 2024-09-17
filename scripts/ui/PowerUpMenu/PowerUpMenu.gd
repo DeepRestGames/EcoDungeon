@@ -84,6 +84,7 @@ func _clean_powerup_menu():
 	powerups_choices_list.clear()
 	powerups_to_show.clear()
 
+
 func _on_reroll_powerups_button_pressed():
 	_clean_powerup_menu()
 	_populate_powerups_menu()

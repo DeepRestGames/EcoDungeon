@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=9 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/ui/UI.gd" id="1_aaqql"]
 [ext_resource type="Theme" uid="uid://c6tfjw4jqafx6" path="res://scenes/player/UITheme.tres" id="2_1bevo"]
-[ext_resource type="Script" path="res://scripts/ui/PowerUpMenu.gd" id="3_t2ewd"]
-[ext_resource type="Texture2D" uid="uid://d3g7i18q8vi3b" path="res://assets/2d/ui_elements/RefreshIcon.png" id="5_c3ct1"]
-[ext_resource type="Texture2D" uid="uid://c4dpoo4j8anxu" path="res://assets/2d/ui_elements/2024-09-11 21_07_16-Deep Rest Games - Miro.jpg" id="6_efljc"]
+[ext_resource type="PackedScene" uid="uid://cxbfo68uiixj5" path="res://scenes/ui/PowerUpMenu.tscn" id="3_56a65"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
 
@@ -126,47 +124,5 @@ horizontal_alignment = 2
 uppercase = true
 metadata/_edit_use_anchors_ = true
 
-[node name="PowerUpMenu" type="Control" parent="."]
-process_mode = 2
+[node name="PowerUpMenu" parent="." instance=ExtResource("3_56a65")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_t2ewd")
-
-[node name="DumpsterDelightsTrashCanTexture" type="TextureRect" parent="PowerUpMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.190959
-anchor_right = 0.809963
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_efljc")
-expand_mode = 5
-metadata/_edit_use_anchors_ = true
-
-[node name="PowerupChoicesContainer" type="VBoxContainer" parent="PowerUpMenu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2869
-anchor_right = 0.7131
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="RerollPowerupsButton" type="Button" parent="PowerUpMenu"]
-layout_mode = 0
-anchor_left = 0.152984
-anchor_top = 0.29794
-anchor_right = 0.221249
-anchor_bottom = 0.415214
-icon = ExtResource("5_c3ct1")
-expand_icon = true
-metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="PowerUpMenu/RerollPowerupsButton" to="PowerUpMenu" method="_on_reroll_powerups_button_pressed"]
