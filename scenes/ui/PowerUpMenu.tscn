@@ -46,9 +46,10 @@ metadata/_edit_use_anchors_ = true
 [node name="PowerupChoicesContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2869
-anchor_right = 0.7131
-anchor_bottom = 1.0
+anchor_left = 0.286979
+anchor_top = 0.253704
+anchor_right = 0.713021
+anchor_bottom = 0.82037
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
