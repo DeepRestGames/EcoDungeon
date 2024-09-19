@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://f3plmwrku2ts"]
+[gd_scene load_steps=6 format=3 uid="uid://f3plmwrku2ts"]
 
 [ext_resource type="Texture2D" uid="uid://b05clye62kgxk" path="res://assets/2d/ui_elements/2024-09-11 21_07_16-Deep Rest Games - Miro - Powerup Choice Background.jpg" id="1_ekrru"]
 [ext_resource type="Script" path="res://scripts/ui/PowerUpMenu/PowerupChoiceButton.gd" id="1_lppeo"]
 [ext_resource type="Texture2D" uid="uid://ce73xht4lr0oh" path="res://assets/2d/sprites/items/rarity0/base_BrokenBottle_001.png" id="3_6jgq6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpfk0"]
+bg_color = Color(0.886275, 0.913725, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_accm4"]
 bg_color = Color(0.203922, 0.329412, 0.854902, 1)
@@ -42,11 +49,26 @@ expand_mode = 5
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="FocusHighlightPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00500028
+anchor_top = 0.0200013
+anchor_right = 0.995
+anchor_bottom = 0.979999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tpfk0")
+metadata/_edit_use_anchors_ = true
+
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.0108
+anchor_top = 0.0399999
+anchor_right = 0.988799
+anchor_bottom = 0.959997
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_accm4")
@@ -113,4 +135,6 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [connection signal="button_down" from="PowerupButton" to="." method="_on_powerup_button_button_down"]
+[connection signal="focus_entered" from="PowerupButton" to="." method="_on_powerup_button_focus_entered"]
+[connection signal="focus_exited" from="PowerupButton" to="." method="_on_powerup_button_focus_exited"]
 [connection signal="pressed" from="PowerupButton" to="." method="_on_powerup_button_pressed"]

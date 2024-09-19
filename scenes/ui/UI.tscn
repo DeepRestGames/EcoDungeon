@@ -18,11 +18,9 @@ gradient = SubResource("Gradient_ul203")
 
 [node name="UI" type="Control"]
 layout_mode = 3
-anchor_left = 0.0303819
-anchor_top = 0.0262346
-anchor_right = 0.972295
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1.08411
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.001, 1)
@@ -73,10 +71,11 @@ metadata/_edit_use_anchors_ = true
 [node name="Experience" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.000922509
-anchor_right = 1.0
-anchor_bottom = 0.0253566
-grow_horizontal = 0
+anchor_left = 0.0572917
+anchor_top = 0.0231481
+anchor_right = 0.942708
+anchor_bottom = 0.0509259
+grow_horizontal = 2
 theme = ExtResource("2_1bevo")
 nine_patch_stretch = true
 texture_under = SubResource("CanvasTexture_e7m4a")
@@ -112,10 +111,10 @@ metadata/_edit_use_anchors_ = true
 [node name="LevelLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.890221
-anchor_top = 0.0522979
-anchor_right = 1.00185
-anchor_bottom = 0.131537
+anchor_left = 0.84375
+anchor_top = 0.0555556
+anchor_right = 0.947917
+anchor_bottom = 0.111111
 grow_horizontal = 2
 theme = ExtResource("2_1bevo")
 theme_override_font_sizes/font_size = 42

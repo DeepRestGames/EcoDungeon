@@ -1,20 +1,29 @@
 extends Control
 
 signal is_in_powerup_state(flag)
+signal new_powerup(powerup)
 
+# Powerups retrieval
 var powerups_directory = "res://resources/powerups/"
 var powerup_resources: Array
 
+# Random powerups to show in current screen
 var powerups_to_show: Array
 
+# Actual powerup buttons, nodes of the scene
 @onready var powerup_choices_container = $PowerupChoicesContainer
 var powerup_choice_scene = preload("res://scenes/ui/PowerupChoice.tscn")
-var powerups_choices_list: Array
+var powerups_choices_instances: Array
 
-signal new_powerup(powerup)
+# Powerup equipment elements
+@onready var powerup_equipment_panel_control = $PowerupEquipmentPanelControl
 
-const POWER_UP_THEME = preload("res://scenes/player/PowerUpTheme.tres")
-const POWER_UP_THEME_BOLD = preload("res://scenes/player/PowerUpThemeBold.tres")
+# Powerup reroll elements
+@onready var reroll_panel_control = $RerollPanelControl
+
+
+# Staffs UIs
+@onready var staff_ui = $LeftStaffsContainer/StaffUI
 
 
 func _get_powerups_resources_from_folder():
@@ -49,13 +58,15 @@ func _populate_powerups_menu():
 		
 		# Populate choice menu with chosen pickups
 		_instantiate_powerup_choice_button(current_powerup)
+	
+	powerups_choices_instances[0].manual_focus()
 
 
 func _instantiate_powerup_choice_button(current_powerup: WeaponPowerup):
 	var powerup_choice_button = powerup_choice_scene.instantiate()
 	powerup_choices_container.add_child(powerup_choice_button)
 	powerup_choice_button.initialize(current_powerup, self)
-	powerups_choices_list.append(powerup_choice_button)
+	powerups_choices_instances.append(powerup_choice_button)
 
 
 func _choose_next_powerup_to_show(_powerups_to_show: Array):
@@ -68,23 +79,33 @@ func _choose_next_powerup_to_show(_powerups_to_show: Array):
 	return current_powerup
 
 
-func on_powerup_button_pressed(chosen_powerup: WeaponPowerup):
-	new_powerup.emit(chosen_powerup)
-	hide()
-	get_tree().paused = false
-	is_in_powerup_state.emit(false)
+func on_powerup_button_pressed(powerup_button, chosen_powerup: WeaponPowerup):
+	powerup_equipment_panel_control.show()
 	
-	_clean_powerup_menu()
+	for powerup_choice in powerups_choices_instances:
+		powerup_choice.z_index = 0
+	powerup_button.z_index = 1
+	
+	# Highlight staff slots
+	staff_ui.manual_focus()
+	
+	#new_powerup.emit(chosen_powerup)
+	#hide()
+	#get_tree().paused = false
+	#is_in_powerup_state.emit(false)
+	#
+	#_clean_powerup_menu()
 
 
 func _clean_powerup_menu():
-	for powerup_choice in powerups_choices_list:
+	for powerup_choice in powerups_choices_instances:
 		powerup_choice.queue_free()
 
-	powerups_choices_list.clear()
+	powerups_choices_instances.clear()
 	powerups_to_show.clear()
 
 
 func _on_reroll_powerups_button_pressed():
-	_clean_powerup_menu()
-	_populate_powerups_menu()
+	reroll_panel_control.show()
+	#_clean_powerup_menu()
+	#_populate_powerups_menu()
