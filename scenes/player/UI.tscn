@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=14 format=3 uid="uid://bmpf05pc0hynq"]
 
 [ext_resource type="Script" path="res://scripts/Player/UI.gd" id="1_sghsl"]
-[ext_resource type="Theme" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
+[ext_resource type="Theme" uid="uid://c6tfjw4jqafx6" path="res://scenes/player/UITheme.tres" id="2_0jx3y"]
 [ext_resource type="Script" path="res://scripts/Player/PowerUpMenu.gd" id="2_tqs0n"]
 [ext_resource type="FontFile" uid="uid://8a8ovsk187ni" path="res://assets/2d/fonts/Zantung-2OYg3.ttf" id="3_24ave"]
+[ext_resource type="PackedScene" uid="uid://do78ycipw1mvn" path="res://scenes/utils/PowerupDebugger.tscn" id="5_ukui7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
 
@@ -168,5 +169,8 @@ theme_override_constants/icon_max_width = 32
 theme_override_styles/panel = SubResource("StyleBoxFlat_ekq8l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xivap")
 script = ExtResource("2_tqs0n")
+
+[node name="PowerupDebugger" parent="." instance=ExtResource("5_ukui7")]
+layout_mode = 1
 
 [connection signal="index_pressed" from="PowerupMenu" to="PowerupMenu" method="_on_powerup_menu_index_pressed"]
