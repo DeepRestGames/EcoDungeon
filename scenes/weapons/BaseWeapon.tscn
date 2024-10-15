@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkgsosm4qwsbf"]
+[gd_scene load_steps=7 format=3 uid="uid://dkgsosm4qwsbf"]
 
 [ext_resource type="Script" path="res://scripts/weapons/BaseWeapon.gd" id="1_ilb8w"]
 [ext_resource type="Script" path="res://scripts/weapons/WeaponRangeArea.gd" id="2_7qw5b"]
 [ext_resource type="Script" path="res://scripts/weapons/WeaponRangeCollider.gd" id="2_xlqba"]
-[ext_resource type="PackedScene" uid="uid://dcf2kgmbao60" path="res://scenes/weapons/powerups/WeaponPowerupSystem.tscn" id="4_kkbd4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b1t5e"]
 height = 1.0
@@ -42,8 +41,6 @@ mesh = SubResource("TorusMesh_ghhmf")
 wait_time = 0.4
 one_shot = true
 autostart = true
-
-[node name="WeaponPowerupSystem" parent="." instance=ExtResource("4_kkbd4")]
 
 [node name="ProjectilesOrigins" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

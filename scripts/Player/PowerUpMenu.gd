@@ -1,7 +1,6 @@
 extends PopupMenu
 
 
-signal new_powerup(powerup)
 var powerups_directory = "res://resources/powerups/"
 var powerups_to_show: Array
 var powerup_resources: Array
@@ -53,5 +52,8 @@ func _choose_next_powerup_to_show(_powerups_to_show: Array):
 
 
 func _on_powerup_menu_index_pressed(index):
-	new_powerup.emit(powerups_to_show[index])
+
+	# TODO Change with dynamic choice of weapon to add powerup to
+	WeaponPowerupSystem.add_powerup($"../../BaseWeapon", powerups_to_show[index])
+
 	get_tree().paused = false
