@@ -145,4 +145,7 @@ rotation = 1.5708
 theme_override_font_sizes/font_size = 20
 text = "POWERUP DEBUGGER"
 
+[connection signal="pressed" from="DebuggerPanel/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="DebuggerPanel/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="DebuggerPanel/AddPowerupButton" to="." method="_on_add_powerup_button_pressed"]
 [connection signal="pressed" from="OpenPowerupButton" to="." method="_on_open_powerup_button_pressed"]
