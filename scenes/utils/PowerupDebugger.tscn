@@ -20,15 +20,12 @@ metadata/_edit_use_anchors_ = true
 [node name="DebuggerPanel" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.723
-offset_top = 0.343643
-offset_right = -40.723
-offset_bottom = 0.343628
+anchor_left = -0.146432
+anchor_right = 0.853591
+anchor_bottom = 1.39597
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Panel" parent="DebuggerPanel"]
 layout_mode = 1
@@ -46,11 +43,12 @@ anchor_left = 0.033133
 anchor_top = 0.413922
 anchor_right = 0.211708
 anchor_bottom = 0.593352
+offset_top = -27.8156
+offset_bottom = -27.8156
 grow_vertical = 2
 pivot_offset = Vector2(0, 65)
 icon = ExtResource("1_3gt8o")
 expand_icon = true
-metadata/_edit_use_anchors_ = true
 
 [node name="RightButton" type="Button" parent="DebuggerPanel"]
 custom_minimum_size = Vector2(50, 50)
@@ -61,9 +59,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -60.7166
-offset_top = -23.9864
+offset_top = -51.802
 offset_right = -10.7166
-offset_bottom = 26.0136
+offset_bottom = -1.80196
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(130, 65)
@@ -79,9 +77,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -35.0
-offset_top = -40.3408
+offset_top = -68.1564
 offset_right = 35.0
-offset_bottom = 40.3408
+offset_bottom = 12.5253
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_18hfx")
@@ -98,35 +96,46 @@ theme_override_font_sizes/font_size = 25
 text = "Toilet Paper"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="PowerupDescription" type="Label" parent="DebuggerPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.068826
-anchor_top = 0.109453
-anchor_right = 0.9332
-anchor_bottom = 0.359868
-offset_left = -2.28882e-05
-offset_right = -3.05176e-05
+anchor_left = 0.0678571
+anchor_top = 0.11054
+anchor_right = 0.932143
+anchor_bottom = 0.298201
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 18
-text = "Toilet Paper"
+theme_override_font_sizes/font_size = 16
+text = "Description"
 vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupValues" type="RichTextLabel" parent="DebuggerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0678571
+anchor_top = 0.575835
+anchor_right = 0.932143
+anchor_bottom = 0.794344
+grow_horizontal = 2
+bbcode_enabled = true
+text = "Values"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="AddPowerupButton" type="Button" parent="DebuggerPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.215232
-anchor_top = 0.80185
-anchor_right = 0.784768
-anchor_bottom = 0.903587
-offset_left = -6.10352e-05
-offset_right = -6.10352e-05
+anchor_left = 0.0964283
+anchor_top = 0.823506
+anchor_right = 0.903571
+anchor_bottom = 0.95204
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "ADD POWERUP"
+metadata/_edit_use_anchors_ = true
 
 [node name="OpenPowerupButton" type="Button" parent="."]
 layout_mode = 1

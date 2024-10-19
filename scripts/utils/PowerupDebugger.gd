@@ -4,6 +4,7 @@ extends Control
 @onready var powerup_icon = $DebuggerPanel/PowerupIcon
 @onready var powerup_name = $DebuggerPanel/PowerupName
 @onready var powerup_description = $DebuggerPanel/PowerupDescription
+@onready var powerup_values = $DebuggerPanel/PowerupValues
 
 var powerups_directory = "res://resources/powerups/"
 var powerup_resources: Array
@@ -16,6 +17,19 @@ var current_powerup: WeaponPowerup:
 		powerup_icon.texture = current_powerup.powerup_icon
 		powerup_name.text = current_powerup.powerup_name
 		powerup_description.text = current_powerup.powerup_description
+		
+		powerup_values.text = ""
+		for stat_name in current_powerup.values:
+			var stat_value = current_powerup.values[stat_name]
+			# Brutto ma VA BENE LO STESSOOOO
+			if stat_name == "HOMING PROJECTILES":
+				if stat_value:
+					powerup_values.text +=  "[color=green]" + stat_name + "[/color]"
+			else:
+				if stat_value[0] != 0:
+					var str_modifier = "+" if stat_value[1] == 0 else "X"
+					powerup_values.text +=  ("[color=green]" + stat_name + "[/color]" + ": " + str_modifier + " " + str(stat_value[0]) + "\n")
+		
 var current_powerup_index = 0
 
 
@@ -29,6 +43,7 @@ func _get_powerups_resources_from_folder():
 	
 	for current_powerup_file_name in powerups_file_names:
 		var current_powerup = load(powerups_directory + current_powerup_file_name)
+		current_powerup.initialize_values()
 		powerup_resources.append(current_powerup)
 
 
