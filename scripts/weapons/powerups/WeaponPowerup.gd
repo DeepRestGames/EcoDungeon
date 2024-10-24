@@ -1,7 +1,8 @@
 class_name WeaponPowerup
 
 
-var powerup_dict: Dictionary = {}
+var values: Dictionary = {}
+
 @export var powerup_name: String
 @export_multiline var powerup_description: String
 @export var powerup_icon: Texture2D
@@ -83,8 +84,9 @@ var powerup_dict: Dictionary = {}
 @export var pickup_area_value: float
 @export var pickup_area_modifier_type: WeaponPowerupSystem.PowerupModifierType
 
-func get_powerups():
-	powerup_dict = {
+
+func initialize_values():
+	values = {
 		"ATK SPD": [fire_cooldown_modifier_value, fire_cooldown_modifier_type],
 		"PROJ LIFETIME": [projectile_lifetime_modifier_value, projectile_lifetime_modifier_type],
 		"PROJ SPD": [projectile_velocity_modifier_value, projectile_velocity_modifier_type],
@@ -105,5 +107,3 @@ func get_powerups():
 		"MOVE SPEED": [move_speed_value, move_speed_modifier_type],
 		"PICKUP AREA": [pickup_area_value, pickup_area_modifier_type ],
 	}
-
-	return powerup_dict

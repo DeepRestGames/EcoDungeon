@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu5laid0g01qp"]
+[gd_scene load_steps=10 format=3 uid="uid://bu5laid0g01qp"]
 
 [ext_resource type="Script" path="res://scripts/ui/UI.gd" id="1_aaqql"]
-[ext_resource type="Theme" uid="uid://c6tfjw4jqafx6" path="res://scenes/player/UITheme.tres" id="2_1bevo"]
+[ext_resource type="Theme" uid="uid://c783inf5vpobj" path="res://scenes/player/UITheme.tres" id="2_1bevo"]
 [ext_resource type="PackedScene" uid="uid://cxbfo68uiixj5" path="res://scenes/ui/PowerUpMenu.tscn" id="3_56a65"]
+[ext_resource type="PackedScene" uid="uid://do78ycipw1mvn" path="res://scenes/utils/PowerupDebugger.tscn" id="4_uvysw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e72mo"]
 
@@ -124,4 +125,7 @@ uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="PowerUpMenu" parent="." instance=ExtResource("3_56a65")]
+layout_mode = 1
+
+[node name="PowerupDebugger" parent="." instance=ExtResource("4_uvysw")]
 layout_mode = 1

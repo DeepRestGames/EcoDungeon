@@ -1,0 +1,160 @@
+[gd_scene load_steps=5 format=3 uid="uid://do78ycipw1mvn"]
+
+[ext_resource type="Texture2D" uid="uid://mpyobhhbtt3j" path="res://assets/2d/ui_elements/left_arrow.png" id="1_3gt8o"]
+[ext_resource type="Script" path="res://scripts/utils/PowerupDebugger.gd" id="1_5mox1"]
+[ext_resource type="Texture2D" uid="uid://nrwkbet68ut8" path="res://assets/2d/ui_elements/right_arrow.png" id="2_kbmny"]
+[ext_resource type="Texture2D" uid="uid://dhoj87iyg805i" path="res://assets/2d/sprites/items/rarity0/base_ToiletPaper_001.png" id="3_18hfx"]
+
+[node name="PowerupDebugger" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchor_left = 0.756704
+anchor_top = 0.112124
+anchor_right = 0.999754
+anchor_bottom = 0.542155
+offset_bottom = 6.10352e-05
+grow_horizontal = 0
+script = ExtResource("1_5mox1")
+metadata/_edit_use_anchors_ = true
+
+[node name="DebuggerPanel" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = -0.146432
+anchor_right = 0.853591
+anchor_bottom = 1.39597
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="DebuggerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftButton" type="Button" parent="DebuggerPanel"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 19.2771
+offset_top = -52.157
+offset_right = 69.2771
+offset_bottom = -2.15697
+grow_vertical = 2
+pivot_offset = Vector2(0, 65)
+icon = ExtResource("1_3gt8o")
+expand_icon = true
+
+[node name="RightButton" type="Button" parent="DebuggerPanel"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -67.7231
+offset_top = -51.802
+offset_right = -17.7231
+offset_bottom = -1.80196
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(130, 65)
+icon = ExtResource("2_kbmny")
+expand_icon = true
+
+[node name="PowerupIcon" type="TextureRect" parent="DebuggerPanel"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -68.1564
+offset_right = 35.0
+offset_bottom = 12.5253
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_18hfx")
+expand_mode = 1
+
+[node name="PowerupName" type="Label" parent="DebuggerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.241066
+anchor_right = 0.758934
+anchor_bottom = 0.125601
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Toilet Paper"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PowerupDescription" type="Label" parent="DebuggerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0678571
+anchor_top = 0.11054
+anchor_right = 0.932143
+anchor_bottom = 0.298201
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 16
+text = "Description"
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerupValues" type="RichTextLabel" parent="DebuggerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0678571
+anchor_top = 0.575835
+anchor_right = 0.932143
+anchor_bottom = 0.794344
+grow_horizontal = 2
+bbcode_enabled = true
+text = "Values"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AddPowerupButton" type="Button" parent="DebuggerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0964283
+anchor_top = 0.823506
+anchor_right = 0.903571
+anchor_bottom = 0.95204
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "ADD POWERUP"
+metadata/_edit_use_anchors_ = true
+
+[node name="OpenPowerupButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 0.283386
+offset_top = -115.986
+offset_right = 233.283
+offset_bottom = -79.9864
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+theme_override_font_sizes/font_size = 20
+text = "POWERUP DEBUGGER"
+
+[connection signal="pressed" from="DebuggerPanel/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="DebuggerPanel/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="DebuggerPanel/AddPowerupButton" to="." method="_on_add_powerup_button_pressed"]
+[connection signal="pressed" from="OpenPowerupButton" to="." method="_on_open_powerup_button_pressed"]

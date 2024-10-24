@@ -15,12 +15,13 @@ run/main_scene="res://scenes/PrototypeScene_Weapons_01.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+WeaponPowerupSystem="*res://scripts/weapons/powerups/WeaponPowerupSystem.gd"
+
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/size/mode=2
 
 [input]
 

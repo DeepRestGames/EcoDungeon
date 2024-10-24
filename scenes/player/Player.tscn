@@ -719,11 +719,6 @@ player_xp = NodePath("../PlayerExperience")
 [connection signal="health_change" from="." to="UI" method="_on_player_health_change"]
 [connection signal="level_up" from="PlayerExperience" to="UI" method="_on_player_experience_level_up"]
 [connection signal="xp_change" from="PlayerExperience" to="UI" method="_on_player_experience_xp_change"]
-[connection signal="add_hp" from="BaseWeapon/WeaponPowerupSystem" to="." method="_on_weapon_powerup_system_add_hp"]
-[connection signal="add_movespeed" from="BaseWeapon/WeaponPowerupSystem" to="." method="_on_weapon_powerup_system_add_movespeed"]
-[connection signal="add_pickup_range" from="BaseWeapon/WeaponPowerupSystem" to="PlayerExperience/PickupArea" method="_on_weapon_powerup_system_add_pickup_range"]
-[connection signal="add_regen" from="BaseWeapon/WeaponPowerupSystem" to="." method="_on_weapon_powerup_system_add_regen"]
-[connection signal="powered_up" from="BaseWeapon/WeaponPowerupSystem" to="GameManager" method="_on_weapon_powerup_system_powered_up"]
 [connection signal="is_in_powerup_state" from="UI/PowerUpMenu" to="GameManager" method="_on_power_up_menu_is_in_powerup_state"]
 
 [editable path="PlayerModel/Racoon_0_1_2"]
