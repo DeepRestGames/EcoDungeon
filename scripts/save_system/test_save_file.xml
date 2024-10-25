@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save_file id="Save File 1">
+	<current_game>
+        <location>
+            <stage>3</stage>
+            <room>7</room>
+        </location>
+        <staffs>
+            <staff>
+                <!--
+                <starting_staff>Metal Pipe</starting_staff>
+                -->
+                <items>
+                    <item>Swiss Cheese</item>
+                    <item>Moffet Vertebra</item>
+                </items>
+            </staff>
+        </staffs>
+        <collectibles>
+            <experience>2510</experience>
+            <bottle_caps>31</bottle_caps>
+            <trash_artifacts>2</trash_artifacts>
+        </collectibles>
+    </current_game>
+    <unlockables>
+        <passive_abilities>
+            <passive_ability>XP Hoarder</passive_ability>
+            <passive_ability>Stinky Butt</passive_ability>
+        </passive_abilities>
+        <skins>
+            <skin>Construction Worker</skin>
+            <skin>Dr. Weird</skin>
+            <skin>Benjamin Trashklin</skin>
+            <skin>Silvio Rigatoni</skin>
+            <skin>Trash King</skin>
+        </skins>
+        <hats>
+            <hat>Street Cone</hat>
+            <hat>Cowboy</hat>
+            <hat>M'lady</hat>
+            <hat>Knight Helm</hat>
+        </hats>
+        <!--
+        <starting_staffs>
+            <starting_staff>Metal Pipe</starting_staff>
+            <starting_staff>Wooden Stick</starting_staff>
+            <starting_staff>Pink Highlighter</starting_staff>
+        </starting_staffs>
+        -->
+        <known_combinations>
+            <combination>The Shocker</combination><!-- TO DEFINE IN ItemsCombinations.xml FILE-->
+            <combination>Thunder Duck</combination>
+        </known_combinations>
+        <staff_slots>1</staff_slots>
+    </unlockables>
+    <game_progression>
+        <max_stage_reached>4</max_stage_reached>
+        <last_boss_defeated>Yo Mama</last_boss_defeated>
+    </game_progression>
+</save_file>
